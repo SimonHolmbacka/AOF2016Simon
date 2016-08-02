@@ -1,0 +1,32 @@
+\begin{thebibliography}{}
+
+\bibitem[{Epec Engineered Technologies}, 2015]{BatteryCapacity}
+{Epec Engineered Technologies} (2015).
+\newblock New battery technology developments.
+
+\bibitem[Holmbacka et~al., 2014a]{HolmbackaTechrep}
+Holmbacka, S., H\"{a}llis, F., Lund, W., Lafond, S., and Lilius, J. (2014a).
+\newblock Energy and power management, measurement and analysis for multi-core
+  processors.
+\newblock Technical Report 1117.
+
+\bibitem[Holmbacka et~al., 2015]{HolmbackaHipeac}
+Holmbacka, S., Lafond, S., and Lilius, J. (2015).
+\newblock Performance monitor based power management for big.little platforms.
+\newblock In Nikolopoulos, D. and Nunez-Yanez, J.-L., editors, {\em Workshop on
+  Energy Efficiency with Heterogeneous Computing}, page 1 – 6. HiPEAC.
+
+\bibitem[Holmbacka et~al., 2014b]{HolmbackaDasip}
+Holmbacka, S., Nogues, E., Pelcat, M., Lafond, S., and Lilius, J. (2014b).
+\newblock Energy efficiency and performance management of parallel dataflow
+  applications.
+\newblock In Pinzari, A. and Morawiec, A., editors, {\em The 2014 Conference on
+  Design \& Architectures for Signal \& Image Processing}, page 1 – 8. ECDI
+  Electronic Chips \& Systems design initiative.
+
+\bibitem[Triggs, 2015]{CPUCapacity}
+Triggs, R. (2015).
+\newblock How far we've come: a look at smartphone performance over the past 7
+  years.
+
+\end{thebibliography}
