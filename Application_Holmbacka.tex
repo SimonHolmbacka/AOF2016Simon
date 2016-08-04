@@ -113,8 +113,11 @@ for achieving maximum energy efficiency in combination with intel compiler tools
 Such recommendations are applied only on the algorithms in the program, and do not cover, the intention of the program for functioning efficiently together with the runtime system allocating the resources. 
 The low power programming guidelines from Intel also require the programming to construct the program in a certain way in order to become energy efficient, 
 and the underlying hardware architecture must be known. 
-On the contrary, my framework for energy efficient programming requires minimal effort of the programmer and it is hardware agnostic. 
-The only task of the programmer, using my framework, is to specify resource requirements using a simple library, whereafter the runtime environment allocates the required resources.
+In the thesis ``Developing Energy-Aware Software'' by Brinke \cite{Brinke:15} the author describes programming languages for modularity and modeling resource consumption for software.
+The \textit{awareness} of energy, is tightly bound to the application code and the programmer is expected to follow certain programming patterns to make the software energy aware.
+On the contrary, my framework for energy efficient software requires only the insertion of meta-data in the software.
+This means minimal effort of the programmer and the application algorithms can be implemented without influence over the energy awareness.
+The resource requirements are specified using a simple library, whereafter the runtime environment allocates the required resources.
 
 The \textbf{Carbon Research Group}\footnote{http://groups.csail.mit.edu/carbon/} at MIT has developed a heartbeat framework to evaluate performance as a generic parameter in software construction. The framework is capable of measuring performance of any application as a generic parameter by user inserted API calls to the heartbeat library. Measuring performance is the necessary first step when constructing a feedback-based control system. For example it enables the possibility to measure the framerate in a video decoder, but a controller is then needed to allocate the resources in order to keep the performance on a given setpoint. We consider using the heartbeat framework for measuring generic performance in our energy awareness framework, but we plan to extend the framework considerably in order to add the controller for allocating resources.\\
 
@@ -122,7 +125,7 @@ The \textbf{Hardkernel} project\footnote{http://www.hardkernel.com/main/main.php
 
 Our research group is currently a partner in the \textbf{INTERSYS} project\footnote{http://iot4health.utu.fi/?p=374} dedicated to standardize and optimize interconnected IoT devices handling streaming data. Since the number of IoT devices are expected to rapidly increase in the near future, the project is extending interoperability notions for handling the massive amount of data streams from small devices to gateways and servers. Still missing in the field of IoT is the notion of energy awareness, which is a crucial point as most devices operate on battery-only power and are expected to operate for long time intervals. We intend to work closely with this project and we plan to introduce the notion of energy awareness in IoT systems.\\
 
-\textbf{EMBECOSM}\footnote{http://www.embecosm.com/} focus on providing the GCC compiler with the notion of energy efficiency, in practice this means learning which compiler flags that minimizes the energy consumption for a selected architecture. The outcome of this project is similar to OpenTuner [REF] from MIT, which is capable of offline optimization of multi-criteria problems. Both projects provide a metric for offline optimization, but runtime support, which we suggest, is not stated in their scope. Runtime optimization is critical in virtually any environment containing multi-node and heterogeneous multi-node platforms. This is because the data used in especially streaming applications like multi-media software is arbitrary or difficult to predict. Compile time optimizations can for example not predict what kind of video format is being used in a video decoder.\\
+\textbf{EMBECOSM}\footnote{http://www.embecosm.com/} focus on providing the GCC compiler with the notion of energy efficiency, in practice this means learning which compiler flags that minimizes the energy consumption for a selected architecture. The outcome of this project is similar to OpenTuner \footnote{http://opentuner.org/} from MIT, which is capable of offline optimization of multi-criteria problems. Both projects provide a metric for offline optimization, but runtime support, which we suggest, is not stated in their scope. Runtime optimization is critical in virtually any environment containing multi-node and heterogeneous multi-node platforms. This is because the data used in especially streaming applications like multi-media software is arbitrary or difficult to predict. Compile time optimizations can for example not predict what kind of video format is being used in a video decoder.\\
 
 The \textbf{StarPU}\footnote{http://starpu.gforge.inria.fr/} project at INRIA Bordeaux has presented a runtime system to minimize the performance for heterogeneous architectures. The system builds a performance model of the implemented CUDA or OpenCL kernels based on benchmarking on CPUs and GPUs, after which the system is able to schedule the kernels onto the most performance efficient device. The \textbf{PEPPHER}\footnote{http://www.peppher.eu/} project has used StarPU as a backend and the outcome of the project is a tool capable of generating multi-variant tasks for StarPU (OpenMP, OpenCL etc.). However, StarPU only consider the optimizations in form of performance. When adding more complex criteria with multiple variables such as energy efficiency or cost, StarPU lacks the insight to such resource allocation.
 
@@ -324,7 +327,7 @@ Combined with the international co-operation, exchange period and close interact
 \section{Mobility plan}
 \todo[inline,color=orange]{Mobility etc}
 
-\bibliographystyle{apalike}
+\bibliographystyle{alpha}
 
 \bibliography{sample}
 
