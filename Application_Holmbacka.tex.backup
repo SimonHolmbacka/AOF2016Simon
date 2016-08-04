@@ -141,14 +141,56 @@ Figure \ref{fig:netflix} illustrates for example the ability to add a Quality-of
   \end{center}
   \caption{Quality-of-Service as a left click option in the Netflix app on Android}
   \label{fig:netflix}
-  \vspace{-40pt}
+  \vspace{-2cm}
 \end{wrapfigure}
 The user can use this option to select the trade-off between energy savings and performance in terms of decoding framerate or other parameters. 
-Options can set based on a defined value like ``decoding framerate'' illustrated in Figure XXX or as a more abstract option as illustrated in Figure XXX. 
+Options can set based on a defined value like ``decoding framerate'' illustrated in Figure XXX \todo[color=green]{add these} or as a more abstract option as illustrated in Figure XXX \todo[color=green]{add these}. 
 The intension of the energy aware framework is to expose the link between the application and the runtime system, while the design of using its abilities is up to the programmer.
 
 \subsection{Hypothesis}
 \todo[inline,color=orange]{Points here}
+
+\subsubsection{Previous work on energy aware software}
+In previous work, Eyerman et al. \cite{Eyerman:09} claim that no single throughput metric is fundamen tally generic for multiprogram workloads. 
+Performance should instead be expressed as related to the internal single case-study; a direction adopted in this research. 
+We plan to integrate this direction of thinking into user defined meta-data that expresses resource requirements in software.
+
+In early research, a high-level language CQML \cite{Aagedal:01} was suggested for describing QoS requirements integrated in UML. 
+CQML links a high level QoS description to system performance, and can describe system actions based on the result. 
+Applications specify a performance setpoint and a lower bound acceptable performance level in context of the application. 
+Applications then monitor own performance and signal this value to the QoS manager periodically. 
+Similar notations as this the language will be considered in this research to describe QoS in applications, 
+but more focus will put on the link between applications and hardware resources in a single computer system.
+Our methods for energy aware programming will not be tied to a certain programming language and the framework itself will have the flexibility to be integrated from various programming environments such as servers and PC Linux and Android.
+
+Hoffmann et. al propose heartbeats \cite{Hoffmann:10} as a generic performance parameter. 
+The heartbeats are setup by including a set of heartbeat API calls in applications, which are used to monitor the application performance. 
+By calling the heartbeat API on suitable places in the applications such as large loops, a notion of the update interval between API calls is created. 
+The heartbeat API registers multiple applications and the outside system monitors the heartbeat of each application separately. 
+Heartbeats is a suitable candidate, and fully compatible as a performance parameter in our research framework.
+An application can register a setpoint heartbeat after which the heartbeat monitor is used to derive the actual performance in heartbeats. 
+Earlier work by Vetter et al. \cite{Vetter:02} presents a similar approach, but by including performance assertions directly into the code. 
+Based on the assertions, the application can adapt itself in case significant performance is not achieved.
+The system allowed, however, only internal monitoring of the performance, and a runtime system was not in the scope.
+
+On the other hand, runtime systems for minimizing energy consumption in computer systems have been previously proposed.
+The PowerDial \cite{Hoffmann:11} approach allows graceful degradation in applications based on current application performance measured in heartbeats \cite{Hoffmann:10}. 
+The system transforms application parameters (such as peak-signal-to-noise in a video) into dynamic control variables stored in the application itself. 
+A callback function is inserted into the application using which the controller is able to adjust the control variables according to performance and policies.
+A heartbeat feedback monitors the execution and reports on the updated performance of the application. 
+Also, the work by Segovia \cite{Segovia:11} suggests graceful degradation of the application QoS by monitoring a happiness value from the application. 
+Based on this value, the runtime system can degrade quality points in the application in order to achieve the requested QoS. 
+Our planned runtime system is inspired by the same approach to treat input signals from applications: the performance is transformed into a generic parameter – QoS – upon which the controller acts.
+In contrast, Bricktop uses no graceful degradation in the applications, but
+hardware actuators to drive the power management.
+
+In previous research, there have been a strong separation between monitor and control.
+Several research projects offer the opportunity to monitor an executing application, but supports no control of the hardware.
+On the other hand, many controller-based research project do not support any proper framework for declaring meta-data requirements and monitoring of the execution.
+This research project will tie both parts together with the main focus on reducing the energy consumption with minimal programmer effort -- an effort not previously done.
+Our research project will also make the proper balance between academic research and practical useability,
+which means that there will be both a focus on planning the long term usage of the framework in terms of capabilities and scalability but also practical efforts to enable a programmer to pick up the tools and start developing energy aware software in the industry.
+
 
 \section{Expected scientific and societal impacts and potential breakthrough of the research}
 Our expected impact is on the research community is to address the energy awareness in software. 
@@ -198,6 +240,89 @@ My work is highly experimental based, and to validate our approach we need to de
 During the last years our group has gained considerable experience in developing our on benchmarks, as well as our own measurement setups. 
 Results have been summarized in our extensive technical report \cite{HolmbackaTechrep}. 
 Combining these four research methods we aim to deliver an energy aware programming framework verified by accurate benchmarks for end-users to use.
+
+\subsection{Management of research material and data}
+The project will create two kinds of concrete results: 1. Software, and 2. Measurement data. I subscribe to the idea of open reproducible science. 
+The computer architecture area has suffered from problems with reproducibility in that often neither the software nor the full measurement data are available. 
+I intend to be as open as possible about our research. All software will be released under an open-source license. 
+Our goal is to find a licensing model that allows the free reuse of the software, the only requirement being that our research group is given attribution in some form. 
+
+I also plan to publish our measurement data. 
+I will develop standard measurement protocols that will be published together with the data and the design documents of the measurement hardware and software. 
+I have selected Zenodo as the platform where we plan to publish. Zenodo has a number of practical features that make it suitable for us. 
+Each submission can get a DOI so it is citable, there is a way to directly upload data from Dropbox, and each submission can be released on a different.
+
+\subsection{Support form research environment}
+The research team will be well supported by infrastructure available at through the TUCS community. 
+Turku Centre for Computer Science (TUCS) is a joint research institute of University of Turku and \AA{}bo Akademi University. 
+TUCS conducts basic and applied research in computer science and engineering. 
+TUCS boasts a long history of high-level achievements of its affiliated researchers, in terms of articles in high-level journals and conferences, high number of citations, 
+invitations to speak in the most important conferences in the field, and memberships in editorial boards of many high-level international journals. 
+TUCS has been a Center of Excellence of Research of the Academy of Finland in the very first round of such centers in Finland, 1995-1999. 
+A unit of TUCS, the Centre for Reliable Software Technology (CREST), has also been a Center of Excellence during 2002-2007. 
+Two Academy Professors, as well as three FIDIPRO professors have been / are affiliated with TUCS. 
+TUCS is hosting the research activity of Academician Arto Salomaa.
+
+The team is part of the embedded systems laboratory that has a full time lab technician who builds our specialized equipment. 
+The team therefore has strong knowledge in manufacturing measurement tools for externally probing of running systems. 
+The team has developed power/energy measurement equipment with full Linux tool support capable of high-sample measurements with 0\% performance overhead in the host system. 
+This tool will be crucial for the success of the project.
+
+The team is experienced in building tools based on the theoretical models that enable the use of the models in practice. 
+Some of the previous programming tools created by \AA{}bo Akademi University is the Canals data-flow language and the RVC-CAL to OpenCL translator. 
+This competence will be put to good use in creating the energy aware programming framework.
+
+\subsection{Utilization of research infrastructure}
+\todo[inline,color=orange]{Points here}
+
+\section{Ethical issues}
+This research project has no ethical issues.
+
+\section{Implementation: schedule, budget, distribution of work}
+\todo[inline,color=orange]{The time table}
+
+\subsection{Work packages}
+
+\subsection{Budget}
+We expect the project to proceed according to the schedule in the figure.
+The budget of the project is defined in the following table:
+\begin{table}[h]
+\begin{center}
+% \caption{}
+\begin{tabular}{ | l | c | c |c |c |}
+\hline
+{Cost} & {2017} & {2018} & {2019} & {2020} \\ \hline
+{Salary Post-doc} & xxx & xxx & xxx & xxx \\ \hline
+{Travel} & xxx & xxx & xxx & xxx  \\ \hline
+{Open access fees} & xxx & xxx & xxx & xxx  \\ \hline
+{Mobility} & xxx & xxx & xxx & xxx  \\ \hline
+{Total} & xxx & xxx & xxx & xxx  \\ \hline
+\end{tabular}
+\label{tab:strconf}
+\end{center}
+
+\end{table}
+
+\section{Research team and collaboration}
+\todo[inline,color=orange]{Kaverin}
+
+\subsection{Collaboration}
+\todo[inline,color=orange]{Kaverin}
+
+\subsection{Relation to strategic centers of research}
+\todo[inline,color=orange]{Not sure what this is}
+
+\section{Researcher training and research careers}
+\textbf{Researcher training and supervision}: The supervision of PhD students are carried out as teamwork within participating senior researchers, 
+but every student has also official supervisors with whom the student makes a study and research plans according to the university regulations. 
+Each laboratory consists of researchers at various levels of their research career. 
+It is paramount for all of them (including professors, researchers and staff) to periodically participate in the researcher training programs and renew their education/training.\\ 
+\textbf{Promotion of Research Career}: With the current application, we seek funding for a post-doc researcher to work full-time within the project. 
+Combined with the international co-operation, exchange period and close interaction between participating institutes, the project gives to the involved postdoc good basis to proceed in the academic career after the project.
+
+\section{Mobility plan}
+\todo[inline,color=orange]{Mobility etc}
+
 \bibliographystyle{apalike}
 
 \bibliography{sample}

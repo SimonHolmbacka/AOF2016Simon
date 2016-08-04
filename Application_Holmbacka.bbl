@@ -1,8 +1,38 @@
 \begin{thebibliography}{}
 
+\bibitem[Aagedal, 2001]{Aagedal:01}
+Aagedal, J. (2001).
+\newblock {\em Quality of Service Support in Development of Distributed
+  Systems}.
+\newblock PhD thesis, University of Oslo, Oslo, Norway.
+
+\bibitem[Bob~S and Abhisek, 2011]{IntelLowPower}
+Bob~S, T. and Abhisek, A. (2011).
+\newblock Developing green software.
+
 \bibitem[{Epec Engineered Technologies}, 2015]{BatteryCapacity}
 {Epec Engineered Technologies} (2015).
 \newblock New battery technology developments.
+
+\bibitem[Eyerman et~al., 2009]{Eyerman:09}
+Eyerman, S., Eeckhout, L., Karkhanis, T., and Smith, J.~E. (2009).
+\newblock A mechanistic performance model for superscalar out-of-order
+  processors.
+\newblock {\em ACM Trans. Comput. Syst.}, 27(2):3:1--3:37.
+
+\bibitem[Hoffmann et~al., 2010]{Hoffmann:10}
+Hoffmann, H., Eastep, J., Santambrogio, M.~D., Miller, J.~E., and Agarwal, A.
+  (2010).
+\newblock Application heartbeats: A generic interface for specifying program
+  performance and goals in autonomous computing environments.
+\newblock In {\em Proceedings of the 7th International Conference on Autonomic
+  Computing}, ICAC '10, pages 79--88, New York, NY, USA. ACM.
+
+\bibitem[Hoffmann et~al., 2011]{Hoffmann:11}
+Hoffmann, H., Sidiroglou, S., Carbin, M., Misailovic, S., Agarwal, A., and
+  Rinard, M. (2011).
+\newblock Dynamic knobs for responsive power-aware computing.
+\newblock {\em SIGPLAN Not.}, 46(3):199--212.
 
 \bibitem[Holmbacka et~al., 2014a]{HolmbackaTechrep}
 Holmbacka, S., H\"{a}llis, F., Lund, W., Lafond, S., and Lilius, J. (2014a).
@@ -24,9 +54,21 @@ Holmbacka, S., Nogues, E., Pelcat, M., Lafond, S., and Lilius, J. (2014b).
   Design \& Architectures for Signal \& Image Processing}, page 1 – 8. ECDI
   Electronic Chips \& Systems design initiative.
 
+\bibitem[Segovia, 2011]{Segovia:11}
+Segovia, V. (2011).
+\newblock {\em Adaptive CPU resource management for multicore platforms}.
+\newblock Licentiate thesis, Lund University.
+
 \bibitem[Triggs, 2015]{CPUCapacity}
 Triggs, R. (2015).
 \newblock How far we've come: a look at smartphone performance over the past 7
   years.
+
+\bibitem[Vetter and Worley, 2002]{Vetter:02}
+Vetter, J.~S. and Worley, P.~H. (2002).
+\newblock Asserting performance expectations.
+\newblock In {\em Proceedings of the 2002 ACM/IEEE Conference on
+  Supercomputing}, SC '02, pages 1--13, Los Alamitos, CA, USA. IEEE Computer
+  Society Press.
 
 \end{thebibliography}
