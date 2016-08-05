@@ -108,12 +108,16 @@ This research is intended to go beyond the state-of-the-art by extending the pro
 
 \subsection{Related work}
 ``Low energy programming'' or ``Low power programming'' has previously existed in the form focusing on the programming paradigm or on the programming syntax. 
-Guidelines from Intel [REF] suggests the use of a certain level of loop unrolling, memory intensity \todo[color=green]{More here} for achieving maximum energy efficiency in combination with intel compiler tools. 
-Such recommendations do not cover, however, the intention of the program for functioning efficiently together with the runtime system allocating the resources. 
+Guidelines from Intel \cite{IntelLowPower} suggests the use of a certain level of loop unrolling, vectorization, memory intensity cache usage etc.
+for achieving maximum energy efficiency in combination with intel compiler tools. 
+Such recommendations are applied only on the algorithms in the program, and do not cover, the intention of the program for functioning efficiently together with the runtime system allocating the resources. 
 The low power programming guidelines from Intel also require the programming to construct the program in a certain way in order to become energy efficient, 
 and the underlying hardware architecture must be known. 
-On the contrary, my framework for energy efficient programming requires minimal effort of the programmer and it is hardware agnostic. 
-The only task of the programmer, using my framework, is to specify resource requirements using a simple library, whereafter the runtime environment allocates the required resources.
+In the thesis ``Developing Energy-Aware Software'' by Brinke \cite{Brinke:15} the author describes programming languages for modularity and modeling resource consumption for software.
+The \textit{awareness} of energy, is tightly bound to the application code and the programmer is expected to follow certain programming patterns to make the software energy aware.
+On the contrary, my framework for energy efficient software requires only the insertion of meta-data in the software.
+This means minimal effort of the programmer and the application algorithms can be implemented without influence over the energy awareness.
+The resource requirements are specified using a simple library, whereafter the runtime environment allocates the required resources.
 
 The \textbf{Carbon Research Group}\footnote{http://groups.csail.mit.edu/carbon/} at MIT has developed a heartbeat framework to evaluate performance as a generic parameter in software construction. The framework is capable of measuring performance of any application as a generic parameter by user inserted API calls to the heartbeat library. Measuring performance is the necessary first step when constructing a feedback-based control system. For example it enables the possibility to measure the framerate in a video decoder, but a controller is then needed to allocate the resources in order to keep the performance on a given setpoint. We consider using the heartbeat framework for measuring generic performance in our energy awareness framework, but we plan to extend the framework considerably in order to add the controller for allocating resources.\\
 
@@ -121,7 +125,7 @@ The \textbf{Hardkernel} project\footnote{http://www.hardkernel.com/main/main.php
 
 Our research group is currently a partner in the \textbf{INTERSYS} project\footnote{http://iot4health.utu.fi/?p=374} dedicated to standardize and optimize interconnected IoT devices handling streaming data. Since the number of IoT devices are expected to rapidly increase in the near future, the project is extending interoperability notions for handling the massive amount of data streams from small devices to gateways and servers. Still missing in the field of IoT is the notion of energy awareness, which is a crucial point as most devices operate on battery-only power and are expected to operate for long time intervals. We intend to work closely with this project and we plan to introduce the notion of energy awareness in IoT systems.\\
 
-\textbf{EMBECOSM}\footnote{http://www.embecosm.com/} focus on providing the GCC compiler with the notion of energy efficiency, in practice this means learning which compiler flags that minimizes the energy consumption for a selected architecture. The outcome of this project is similar to OpenTuner [REF] from MIT, which is capable of offline optimization of multi-criteria problems. Both projects provide a metric for offline optimization, but runtime support, which we suggest, is not stated in their scope. Runtime optimization is critical in virtually any environment containing multi-node and heterogeneous multi-node platforms. This is because the data used in especially streaming applications like multi-media software is arbitrary or difficult to predict. Compile time optimizations can for example not predict what kind of video format is being used in a video decoder.\\
+\textbf{EMBECOSM}\footnote{http://www.embecosm.com/} focus on providing the GCC compiler with the notion of energy efficiency, in practice this means learning which compiler flags that minimizes the energy consumption for a selected architecture. The outcome of this project is similar to OpenTuner \footnote{http://opentuner.org/} from MIT, which is capable of offline optimization of multi-criteria problems. Both projects provide a metric for offline optimization, but runtime support, which we suggest, is not stated in their scope. Runtime optimization is critical in virtually any environment containing multi-node and heterogeneous multi-node platforms. This is because the data used in especially streaming applications like multi-media software is arbitrary or difficult to predict. Compile time optimizations can for example not predict what kind of video format is being used in a video decoder.\\
 
 The \textbf{StarPU}\footnote{http://starpu.gforge.inria.fr/} project at INRIA Bordeaux has presented a runtime system to minimize the performance for heterogeneous architectures. The system builds a performance model of the implemented CUDA or OpenCL kernels based on benchmarking on CPUs and GPUs, after which the system is able to schedule the kernels onto the most performance efficient device. The \textbf{PEPPHER}\footnote{http://www.peppher.eu/} project has used StarPU as a backend and the outcome of the project is a tool capable of generating multi-variant tasks for StarPU (OpenMP, OpenCL etc.). However, StarPU only consider the optimizations in form of performance. When adding more complex criteria with multiple variables such as energy efficiency or cost, StarPU lacks the insight to such resource allocation.
 
@@ -282,6 +286,28 @@ This research project has no ethical issues.
 \todo[inline,color=orange]{The time table}
 
 \subsection{Work packages}
+\subsubsection{WP1 -- Exposing the meta-data}
+\begin{itemize}
+ \item Task 1.1 Defining and injecting meta-data
+ \item Task 1.2 Constructing monitoring framwork
+ \item Task 1.3 Tools for introducing meta-data in software
+ \item Task 1.4 Tools for monitoring
+\end{itemize}
+
+\subsubsection{WP2 -- Energy aware controller}
+\begin{itemize}
+ \item Optimization of energy consumption
+ \item Modelling energy consumption
+ \item Tools for generating energy models
+ \item Implementation of controller
+\end{itemize}
+
+\subsubsection{WP3 -- A framwork for energy aware progamming}
+\begin{itemize}
+ \item Construction of API (Library / pragma)
+ \item Use-cases
+\end{itemize}
+
 
 \subsection{Budget}
 We expect the project to proceed according to the schedule in the figure.
@@ -307,7 +333,28 @@ The budget of the project is defined in the following table:
 \todo[inline,color=orange]{Kaverin}
 
 \subsection{Collaboration}
-\todo[inline,color=orange]{Kaverin}
+The team is internationally well connected and has established cooperation with several teams abroad. 
+The cooperations listed here are the ones relevant to this application and that are documented through joint publications.
+
+The cooperation between Prof. Jean-Francois Nezan, INSA, Rennes, and the embedded systems lab has concentrated on the run-time management of dataflow networks, 
+and has been executed through exchange of PhD students.
+INSA de Rennes has a strong background in tool support. 
+The previously developed PREESM tool which was used to determine parallelism in data-flow programs to be used in a power optimizer developed by \AA{}bo Akademi University.
+This work resulted in the best paper award at the 2014 DASIP conference and is of great importance in WP XXX.
+I visited INSA de Rennes for 4 months in 2013-2014, which resulted in two journal publications and two proceedings publications.
+
+Previous exchanges between \AA{}bo Akademi and INSA de Rennes:\\
+* Jerome Gorin (INSA $\longrightarrow$ \AA{}bo) Spring 2010\\
+* Andreas Dahlin (\AA{}bo $\longrightarrow$ INSA) Spring 2010\\
+* Julien Heulot (INSA $\longrightarrow$ \AA{}bo) Autumn 2013\\
+* Simon Holmbacka (\AA{}bo $\longrightarrow$ INSA) Winter 2013-2014\\
+
+A cooperation between Holmbacka and Prof. J\"{o}rg Keller at the Fernuniversit\"{a}t in Hagen started in 2014, since which we have worked on energy efficient scheduling for multi-core systems. 
+The lab group in Hagen has previously worked on performance models for very parallel systems such as the Intel SCC.
+One scientific journal and one proceedings publication about energy efficient scheduling has been published during this cooperation,
+and this connection is therefore important mainly for the energy optimization in WP2 and the construction of the controller in WP2.
+I am currently working in Hagen as a Post-doc exchange, and the cooperation with FernUni is currently very active.
+
 
 \subsection{Relation to strategic centers of research}
 \todo[inline,color=orange]{Not sure what this is}
@@ -323,7 +370,7 @@ Combined with the international co-operation, exchange period and close interact
 \section{Mobility plan}
 \todo[inline,color=orange]{Mobility etc}
 
-\bibliographystyle{apalike}
+\bibliographystyle{alpha}
 
 \bibliography{sample}
 
