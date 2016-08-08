@@ -51,18 +51,26 @@
 \maketitle % Insert the title, author and date
 
 \section{Rationale}
+\todo[inline,color=orange]{Make rationale more rationaley}
 Energy efficiency in computer systems is currently a major concern in field computer engineering for several reasons such as increased frequency of the battery re-charge intervals, 
 monetary cost because of high electrical consumption and thermal effects leading to increased cooling requirements with high noise levels. 
-Furthermore, energy efficiency is also a concern for achieving increased performance. 
-One of the performance limits in current microprocessors because the Dennard scaling [16 from thesis] is no longer valid. 
+Furthermore, energy efficiency is also a concern for achieving increased performance.
+\todo[inline,color=green]{More about how terrible energy consumption is}
+One of the performance limits in current microprocessors because the Dennard scaling \cite{Dennard:74} is no longer valid. 
 Dennard scaling forecasts that the power density of transistors stays constant as the manufacturing technology decreases. 
 This means that as transistors become smaller, energy efficiency is improved by transistor technology such that the power remains in proportion to the area. 
 In recent hardware, this scaling no longer applies since the voltage range used in transistors no longer can be lowered. 
 The end of Dennard scaling brings consequences such as an disproportional increase in thermal dissipation leading to dark silicon, 
 which means that all processing power on a chip cannot be used simultaneously because of the limited power envelope.
+\todo{Does it sound too technical?}
+
+
 To tackle these problems, power management systems are implemented to scale the performance of the system according to the current resource demand. 
 Power management has traditionally been an area of research providing hardware solutions or runtime power management in the operating system in form of frequency governors. 
+\todo{Introduce energy awareness a bit first}
 Energy awareness in the application software is currently non-existent. This means that applications are not involved in the power management decisions, 
+\todo{Redo this part}
+\todo{The human eye can only see 25 fps}
 nor does any interface between the applications and the runtime system to provide such facilities exist. 
 Power management in the operating system is therefore performed purely based on indirect implications of software execution, usually referred to as the workload. 
 Workload in operating systems is measured as a sliding window average over an active and idle CPU as illustrated in Figure~\ref{fig:workload}. 
@@ -91,7 +99,28 @@ Energy awareness, on the other hand, allows the application to express the requi
 For example, the video decoder requires a frame rate of 25 frames per second in order for the human eye to interpret the video as smoothly moving. 
 
 \subsection{Application meta-data}
-\todo[inline,color=orange]{Add this}
+The main challenge in creating energy aware software is to enable the expression of resource requirements in applications.
+As previously mentioned, the traditional way of solely monitoring the workload is a very innacurate and often counter productive both in terms of performance and energy.
+We tackle this challenge by allowing the applications to express the resource requirements internally.
+This means that the application should include a small part of code -- the meta-data -- which expresses the intensions of the application.
+For example, the previously mentioned video decoder can demand a framerate of 25 frames per seconds instead of decoding as fast as possible.
+\todo{More about meta-data}
+\todo{Code example}
+In theis research, we will investigate the types on meta-data needed to describe and appliction sufficiently in terms of performance requirements.
+On of the challenges is to obtain a sufficiently descriptive form of meta-data that can be generalized to any application.
+We will aim this research initially in pinpointing the required meta-data for generalizing resource requirements in software.
+Once the meta-data descriptions have been established, the injection of the data into both new- and legacy applications must be achieved effort-less in order for the programmers to make the additional effort.
+A trade-off between desriptiveness and programmer effort is to be expected.
+
+Since applications in general are dynamic, the performance of the application depends on a wide set of factors such as memory intensity, use of caches, user interrupts, the data sizes and data types used, interaction with other applications etc. 
+This means that the performance of an application cannot be guaranteed with fixed resources.
+For example a completely black video frame requires much less resources for decoding than a video frame with many details and motions.
+In order to adapt the resources allocated to the needs of the application, the application must be monitored at runtime.
+Such a monitoring facility can determine the \textit{current} performance of the application to the \textit{required} performance annotated in the meta-data.
+In case the currently allocated performance is either too high or too low, the monitoring framework allocates or deallocates resources to accommodate to the real resource requirement.
+A main part of this research is therefore to create a proper monitoring framework.
+Such a framework must be detailed enough to provide sufficient tools for measuring performance, but simple enough to reduce programmer effort.
+Since the monitoring framework is a runtime system, significantly low overhead must be guaranteed to not interfere with the energy consumption and performance of the host system.
 
 \subsection{Previous work}
 I have worked the five past years on low power and energy aware software in the embedded systems lab in the \AA{}bo Akademi University. 

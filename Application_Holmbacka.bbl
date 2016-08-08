@@ -1,5 +1,5 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{HNP{\etalchar{+}}14}
+\begin{thebibliography}{DGR{\etalchar{+}}74}
 
 \bibitem[Aag01]{Aagedal:01}
 Jan Aagedal.
@@ -10,6 +10,11 @@ Jan Aagedal.
 \bibitem[BSA11]{IntelLowPower}
 Teigerwald Bob~S and Agrawal Abhisek.
 \newblock Developing green software, June 2011.
+
+\bibitem[DGR{\etalchar{+}}74]{Dennard:74}
+R.H. Dennard, F.H. Gaensslen, V.L. Rideout, E.~Bassous, and A.R. LeBlanc.
+\newblock Design of ion-implanted mosfet's with very small physical dimensions.
+\newblock {\em Solid-State Circuits, IEEE Journal of}, 9(5):256--268, Oct 1974.
 
 \bibitem[EEKS09]{Eyerman:09}
 Stijn Eyerman, Lieven Eeckhout, Tejas Karkhanis, and James~E. Smith.

@@ -51,18 +51,26 @@
 \maketitle % Insert the title, author and date
 
 \section{Rationale}
+\todo[inline,color=orange]{Make rationale more rationaley}
 Energy efficiency in computer systems is currently a major concern in field computer engineering for several reasons such as increased frequency of the battery re-charge intervals, 
 monetary cost because of high electrical consumption and thermal effects leading to increased cooling requirements with high noise levels. 
-Furthermore, energy efficiency is also a concern for achieving increased performance. 
-One of the performance limits in current microprocessors because the Dennard scaling [16 from thesis] is no longer valid. 
+Furthermore, energy efficiency is also a concern for achieving increased performance.
+\todo[inline,color=green]{More about how terrible energy consumption is}
+One of the performance limits in current microprocessors because the Dennard scaling \cite{Dennard:74} is no longer valid. 
 Dennard scaling forecasts that the power density of transistors stays constant as the manufacturing technology decreases. 
 This means that as transistors become smaller, energy efficiency is improved by transistor technology such that the power remains in proportion to the area. 
 In recent hardware, this scaling no longer applies since the voltage range used in transistors no longer can be lowered. 
-The end of Dennard scaling brings consequences such as an unproportioned increase in thermal dissipation leading to dark silicon, 
+The end of Dennard scaling brings consequences such as an disproportional increase in thermal dissipation leading to dark silicon, 
 which means that all processing power on a chip cannot be used simultaneously because of the limited power envelope.
+\todo{Does it sound too technical?}
+
+
 To tackle these problems, power management systems are implemented to scale the performance of the system according to the current resource demand. 
 Power management has traditionally been an area of research providing hardware solutions or runtime power management in the operating system in form of frequency governors. 
+\todo{Introduce energy awareness a bit first}
 Energy awareness in the application software is currently non-existent. This means that applications are not involved in the power management decisions, 
+\todo{Redo this part}
+\todo{The human eye can only see 25 fps}
 nor does any interface between the applications and the runtime system to provide such facilities exist. 
 Power management in the operating system is therefore performed purely based on indirect implications of software execution, usually referred to as the workload. 
 Workload in operating systems is measured as a sliding window average over an active and idle CPU as illustrated in Figure~\ref{fig:workload}. 
@@ -91,7 +99,23 @@ Energy awareness, on the other hand, allows the application to express the requi
 For example, the video decoder requires a frame rate of 25 frames per second in order for the human eye to interpret the video as smoothly moving. 
 
 \subsection{Application meta-data}
-\todo[inline,color=orange]{Add this}
+The main challenge in creating energy aware software is to enable the expression of resource requirements in applications.
+As previously mentioned, the traditional way of solely monitoring the workload is a very innacurate and often counter productive both in terms of performance and energy.
+We tackle this challenge by allowing the applications to express the resource requirements internally.
+This means that the application should include a small part of code -- the meta-data -- which expresses the intensions of the application.
+For example, the previously mentioned video decoder can demand a framerate of 25 frames per seconds instead of decoding as fast as possible.
+\todo{More about meta-data}
+\todo{Code example}
+In theis research, we will investigate the types on meta-data needed to describe and appliction sufficiently in terms of performance requirements.
+On of the challenges is to obtain a sufficiently descriptive form of meta-data that can be generalized to any application.
+We will aim this research initially in pinpointing the required meta-data for generalizing resource requirements in software.
+Once the meta-data descriptions have been established, the injection of the data into both new- and legacy applications must be achieved effort-less in order for the programmers to make the additional effort.
+A trade-off between desriptiveness and programmer effort is to be expected.
+
+Since applications in general are dynamic, the performance of the application depends on a wide set of factors such as memory intensity, use of caches, user interrupts, the data sizes and data types used, interaction with other applications etc. 
+This means that the performance of an application cannot be guaranteed with fixed resources.
+For example a completely black video frame requires much less resources for decoding than a video frame with many details and motions.
+
 
 \subsection{Previous work}
 I have worked the five past years on low power and energy aware software in the embedded systems lab in the \AA{}bo Akademi University. 
@@ -109,7 +133,7 @@ This research is intended to go beyond the state-of-the-art by extending the pro
 \subsection{Related work}
 ``Low energy programming'' or ``Low power programming'' has previously existed in the form focusing on the programming paradigm or on the programming syntax. 
 Guidelines from Intel \cite{IntelLowPower} suggests the use of a certain level of loop unrolling, vectorization, memory intensity cache usage etc.
-for achieving maximum energy efficiency in combination with intel compiler tools. 
+for achieving maximum energy efficiency in combination with Intel compiler tools. 
 Such recommendations are applied only on the algorithms in the program, and do not cover, the intention of the program for functioning efficiently together with the runtime system allocating the resources. 
 The low power programming guidelines from Intel also require the programming to construct the program in a certain way in order to become energy efficient, 
 and the underlying hardware architecture must be known. 
@@ -117,7 +141,7 @@ In the thesis ``Developing Energy-Aware Software'' by Brinke \cite{Brinke:15} th
 The \textit{awareness} of energy, is tightly bound to the application code and the programmer is expected to follow certain programming patterns to make the software energy aware.
 On the contrary, my framework for energy efficient software requires only the insertion of meta-data in the software.
 This means minimal effort of the programmer and the application algorithms can be implemented without influence over the energy awareness.
-The resource requirements are specified using a simple library, whereafter the runtime environment allocates the required resources.
+The resource requirements are specified using a simple library, where after the runtime environment allocates the required resources.
 
 The \textbf{Carbon Research Group}\footnote{http://groups.csail.mit.edu/carbon/} at MIT has developed a heartbeat framework to evaluate performance as a generic parameter in software construction. The framework is capable of measuring performance of any application as a generic parameter by user inserted API calls to the heartbeat library. Measuring performance is the necessary first step when constructing a feedback-based control system. For example it enables the possibility to measure the framerate in a video decoder, but a controller is then needed to allocate the resources in order to keep the performance on a given setpoint. We consider using the heartbeat framework for measuring generic performance in our energy awareness framework, but we plan to extend the framework considerably in order to add the controller for allocating resources.\\
 
@@ -155,7 +179,7 @@ The intension of the energy aware framework is to expose the link between the ap
 \todo[inline,color=orange]{Points here}
 
 \subsubsection{Previous work on energy aware software}
-In previous work, Eyerman et al. \cite{Eyerman:09} claim that no single throughput metric is fundamen tally generic for multiprogram workloads. 
+In previous work, Eyerman et al. \cite{Eyerman:09} claim that no single throughput metric is fundamentally generic for multiprogram workloads. 
 Performance should instead be expressed as related to the internal single case-study; a direction adopted in this research. 
 We plan to integrate this direction of thinking into user defined meta-data that expresses resource requirements in software.
 
@@ -192,7 +216,7 @@ In previous research, there have been a strong separation between monitor and co
 Several research projects offer the opportunity to monitor an executing application, but supports no control of the hardware.
 On the other hand, many controller-based research project do not support any proper framework for declaring meta-data requirements and monitoring of the execution.
 This research project will tie both parts together with the main focus on reducing the energy consumption with minimal programmer effort -- an effort not previously done.
-Our research project will also make the proper balance between academic research and practical useability,
+Our research project will also make the proper balance between academic research and practical usability,
 which means that there will be both a focus on planning the long term usage of the framework in terms of capabilities and scalability but also practical efforts to enable a programmer to pick up the tools and start developing energy aware software in the industry.
 
 
@@ -289,20 +313,20 @@ This research project has no ethical issues.
 \subsubsection{WP1 -- Exposing the meta-data}
 \begin{itemize}
  \item Task 1.1 Defining and injecting meta-data
- \item Task 1.2 Constructing monitoring framwork
+ \item Task 1.2 Constructing monitoring framework
  \item Task 1.3 Tools for introducing meta-data in software
  \item Task 1.4 Tools for monitoring
 \end{itemize}
 
 \subsubsection{WP2 -- Energy aware controller}
 \begin{itemize}
- \item Optimization of energy consumption
- \item Modelling energy consumption
+ \item Scheduling and optimization of energy consumption
+ \item Modeling energy consumption
  \item Tools for generating energy models
  \item Implementation of controller
 \end{itemize}
 
-\subsubsection{WP3 -- A framwork for energy aware progamming}
+\subsubsection{WP3 -- A framework for energy aware programming}
 \begin{itemize}
  \item Construction of API (Library / pragma)
  \item Use-cases
@@ -355,9 +379,22 @@ One scientific journal and one proceedings publication about energy efficient sc
 and this connection is therefore important mainly for the energy optimization in WP2 and the construction of the controller in WP2.
 I am currently working in Hagen as a Post-doc exchange, and the cooperation with FernUni is currently very active.
 
+I have been cooperating with the Electronic Commerce Group in TU Wien led by Prof. 
+Ivona Brandi\'{c} since spring 2015. 
+Work on cost and energy efficient cloud scheduling was done by extending the Philharmonic cloud simulator created at TU Wien with a multi-core model developed at \AA{}bo Akademi University. 
+A journal has been accepted in the IEEE Transactions journal as a result of this cooperation.
+\todo[inline, color=green]{Where to be placed?}
+
+The most recent of my collaboration network is Alexandra Jimborean from Uppsala University in Sweden.
+Their lab group is working on compile-time and runtime code analysis and transformation for performance and energy efficiency.
+Complementary to our lab, she is working on low level optimizations in memory and caches, which is useful when realizing the final framework in WP3.
+We are currently planning cooperation work on meta-data based energy efficient scheduling in big.LITTLE systems.
 
 \subsection{Relation to strategic centers of research}
-\todo[inline,color=orange]{Not sure what this is}
+Since the Strategic Centres for Science, Technology and Innovation are being shut down, there is no concrete cooperation planned. 
+However many of the SHOKs are planning new ways to continue their activities and since prof. Lilius of the Embedded Systems Lab in \AA{}bo Akademi is a member of the FIMECC SG, 
+he will have the opportunity to connect up the work in this project with the work done within FIMECC.
+
 
 \section{Researcher training and research careers}
 \textbf{Researcher training and supervision}: The supervision of PhD students are carried out as teamwork within participating senior researchers, 
@@ -365,10 +402,22 @@ but every student has also official supervisors with whom the student makes a st
 Each laboratory consists of researchers at various levels of their research career. 
 It is paramount for all of them (including professors, researchers and staff) to periodically participate in the researcher training programs and renew their education/training.\\ 
 \textbf{Promotion of Research Career}: With the current application, we seek funding for a post-doc researcher to work full-time within the project. 
-Combined with the international co-operation, exchange period and close interaction between participating institutes, the project gives to the involved postdoc good basis to proceed in the academic career after the project.
+Combined with the international co-operation, exchange period and close interaction between participating institutes, the project gives to the involved post-doc good basis to proceed in the academic career after the project.
 
 \section{Mobility plan}
-\todo[inline,color=orange]{Mobility etc}
+We plan a 6 months of mobility per year. The first mobilities are as follows:
+\begin{itemize}
+ \item Simon Holmbacka will visit Prof. Jörg Keller for 6 months in the middle
+of the project (visit to start XXX) to work on energy efficient scheduling issues in WP2
+\item ????
+\item ????
+
+\end{itemize}
+
+
+The exact details of the mobilities 2018-> will be defined later in the project
+schedule.
+
 
 \bibliographystyle{alpha}
 
