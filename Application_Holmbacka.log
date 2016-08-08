@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.1)  8 AUG 2016 13:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.1)  8 AUG 2016 14:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1073,25 +1073,35 @@ Missing character: There is no “ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
- [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 455--460
+ [6] [7]
+<fig/schedule.pdf, id=43, 1101.11375pt x 334.24875pt>
+File: fig/schedule.pdf Graphic file (type pdf)
+ <use fig/schedule.pdf>
+Package pdftex.def Info: fig/schedule.pdf used on input line 398.
+(pdftex.def)             Requested size: 495.49661pt x 150.41054pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8] [9 <./fig/schedule.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 471--476
 
  []
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 471--475
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--491
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 476--477
+Underfull \hbox (badness 10000) in paragraph at lines 492--493
 
  []
 
 [10]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¶ in font cmr10!
- (./Application_Holmbacka.bbl
+ (./Application_Holmbacka.bbl [11]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no © in font cmr10!
 Missing character: There is no â in font cmr10!
@@ -1102,29 +1112,29 @@ Missing character: There is no © in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
-) [11] [12] (./Application_Holmbacka.aux) ) 
+) [12] (./Application_Holmbacka.aux) ) 
 Here is how much of TeX's memory you used:
- 20189 strings out of 494167
- 414538 string characters out of 6159783
- 448044 words of memory out of 5000000
- 23201 multiletter control sequences out of 15000+600000
+ 20193 strings out of 494167
+ 414591 string characters out of 6159783
+ 448000 words of memory out of 5000000
+ 23204 multiletter control sequences out of 15000+600000
  11228 words of font info for 42 fonts, out of 8000000 for 9000
  438 hyphenation exceptions out of 8191
  63i,9n,80p,10449b,671s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Application_Holmbacka.pdf (12 pages, 356510 bytes).
+</usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Application_Holmbacka.pdf (12 pages, 410763 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+ 103 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 28 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

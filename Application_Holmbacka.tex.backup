@@ -45,15 +45,28 @@
 % \author{\textbf{Principal investigator}: Simon Holmbacka\\ \AA{}bo Akademi University, Embedded Systems Laboratory} % Author name
 
 \begin{document}
-Energy Aware Software\\
-\textbf{Principal investigator}: Dr. Simon Holmbacka\\ 
+\huge{Energy Aware Software}\\\\
+\normalsize\textbf{Principal investigator}: Dr. Simon Holmbacka\\ 
 \textbf{Project starting time}: xxx\\
-\textbf{Duration of the project}: xxx\\
+\textbf{Duration of the project}: xxx\\\\
 \textbf{Site of research}:\\
-\AA{}bo Akademi University \\
-Faculty of Science and Engineering\\
-Embedded Systems Laboratory\\
-Vattenborgsv\"{a}gen 5 20500 Turku, Finland
+\textit{\AA{}bo Akademi University} \\
+\textit{Faculty of Science and Engineering}\\
+\textit{Embedded Systems Laboratory}\\
+\textit{Vattenborgsv\"{a}gen 5 20500 Turku, Finland}\\
+
+\textbf{Sites for research cooperation:}\\
+\textit{IETR - INSA Rennes\\
+Institut d'Electroniques et de T\'{e}l\'{e}communications\\
+35708 Rennes Cedex 7, France\\}
+
+\textit{FernUniversit\"{a}t in Hagen\\
+Fakult\"{a}t f\"{u}r Mathematik und Informatik\\
+58084, Universit\"{a}tstrasse 11, Hagen, Germany\\}
+
+\textit{TU Wien\\
+Institute for Software Technology and Interactive Systems\\
+1040 Favoritenstrasse 9-11 Vienna, Austria}
 
 \date{\today} % Date for the report
 
@@ -73,7 +86,6 @@ The end of Dennard scaling brings consequences such as an disproportional increa
 which means that all processing power on a chip cannot be used simultaneously because of the limited power envelope.
 \todo{Energy awareness is what we want to solve!}
 
-
 To tackle these problems, power management systems are implemented to scale the performance of the system according to the current resource demand. 
 Power management has traditionally been an area of research providing hardware solutions or runtime power management in the operating system in form of frequency governors. 
 \todo{Introduce energy awareness a bit first}
@@ -84,14 +96,6 @@ nor does any interface between the applications and the runtime system to provid
 Power management in the operating system is therefore performed purely based on indirect implications of software execution, usually referred to as the workload. 
 Workload in operating systems is measured as a sliding window average over an active and idle CPU as illustrated in Figure~\ref{fig:workload}. 
 
-\begin{wrapfigure}{r}{0.4\textwidth}
-  \begin{center}
-    \includegraphics[width=0.4\textwidth]{fig/workload.png}
-  \end{center}
-  \caption{Load calculated as a ratio between active and idle for a defined window (Gray rectangles represent an active CPU).}
-  \label{fig:workload}
-%   \vspace{-2cm}
-\end{wrapfigure}
 
 The power management is then based on the idle percentage of such a window. 
 Based on this, the hardware resources (for example in terms of increased clock frequency) are allocated as the percentage increases beyond a given threshold. 
@@ -101,6 +105,14 @@ This means that the CPU is clocked to the maximum frequency as long as the frame
 even if the required decoding rate is only 25 frames per second. In other words, the application will be executed unnecessarily fast. 
 As results from \cite{HolmbackaHipeac, HolmbackaDasip} show, executing the application unnecessarily fast wastes significantly more energy than executing the application on a moderate, 
 but still at a sufficiently fast, performance level. 
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{fig/workload.png}
+  \end{center}
+  \caption{Load calculated as a ratio between active and idle for a defined window (Gray rectangles represent an active CPU).}
+  \label{fig:workload}
+%   \vspace{-2cm}
+\end{wrapfigure}
 Executing applications on this performance level also decreases the thermal dissipation, and the overhead of performance level switches are significantly reduced.
 The currently unsolved problem is to manage to execute an application on a moderate, yet sufficiently high, performance level. 
 In order to execute applications at the most energy efficient performance level, additional knowledge about resource requirement must be set in the application. 
@@ -195,17 +207,19 @@ The system builds a performance model of the implemented CUDA or OpenCL kernels 
 The \textbf{PEPPHER}\footnote{http://www.peppher.eu/} project has used StarPU as a backend and the outcome of the project is a tool capable of generating multi-variant tasks for StarPU (OpenMP, OpenCL etc.). 
 However, StarPU only consider the optimizations in form of performance. 
 When adding more complex criteria with multiple variables such as energy efficiency or monetary cost, StarPU lacks the insight to such resource allocation.
+\clearpage
+
 
 \section{Objectives and expected results}
 
 \subsection{Objectives}
-\begin{wrapfigure}{tr}{0.3\textwidth}
+\begin{wrapfigure}{tr}{0.25\textwidth}
   \begin{center}
-    \includegraphics[width=0.3\textwidth]{fig/netflix.png}
+    \includegraphics[width=0.22\textwidth]{fig/netflix.png}
   \end{center}
   \caption{Quality-of-Service as a left click option in the Netflix app on Android}
   \label{fig:netflix}
-  \vspace{-2cm}
+  \vspace{0.5cm}
 \end{wrapfigure}
 Our current design recommendations for energy aware programming described in the thesis of the PI extends the application to signal resource requirements to the runtime system which allocates the hardware resources.
 \textbf{The objectives of this research is to develop a framework for programming energy aware software.}
@@ -217,8 +231,7 @@ Figure \ref{fig:netflix} illustrates for example the ability to add a Quality-of
 The user can use this option to select the trade-off between energy savings and performance in terms of decoding framerate or other parameters. 
 Options can set based on a defined value like ``decoding framerate'' or as a more abstract option as illustrated in Figure \ref{fig:slider}. 
 The intension of the energy aware framework is to expose the link between the application and the runtime system, while the design of using its abilities is up to the programmer.
-
-\begin{wrapfigure}{tr}{0.4\textwidth}
+\begin{wrapfigure}{hr}{0.4\textwidth}
   \begin{center}
     \includegraphics[width=0.4\textwidth]{fig/slider.png}
   \end{center}
@@ -226,6 +239,12 @@ The intension of the energy aware framework is to expose the link between the ap
   \label{fig:slider}
 %   \vspace{-2cm}
 \end{wrapfigure}
+
+dsgfdsf sdfg dsfg dsfgsdgfsdgs
+dsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgs
+g
+
+dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgs
 
 \subsection{Hypothesis}
 \todo[inline,color=orange]{Points here}
@@ -373,22 +392,34 @@ This competence will be put to good use in creating the energy aware programming
 This research project has no ethical issues.
 
 \section{Implementation: schedule, budget, distribution of work}
-\todo[inline,color=orange]{The time table}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.45]{fig/schedule.pdf}
+	\caption{Time schedule for the project}
+	\label{fig:schedule}
+\end{figure}
 
 \subsection{Work packages}
-\subsubsection{WP1 -- Exposing the meta-data}
+The initial part of the project is to determine how to expose the meta-data to the progammer.
+The WP is intended to firstly define what exactly should be included in the meta-data and how it should be used.
+What must be determined is guideline for how, where, and when the meta-data should be injected in software.
+Secondly, the integration of the monitoring sub system is part of WP1.
+This includes how to interconnect the monitor with the application, determine the information flow between the application and the monitor and also how to forward this information to the resource allocation controller.
+Included in this WP is tool support for automatic meta-data injection and tool support for monitoring.
+\subsubsection{WP1 -- Exposing the meta-data} \vspace{-0.3cm}
 \begin{itemize}
- \item Task 1.1 Defining and injecting meta-data
- \item Task 1.2 Constructing monitoring framework
- \item Task 1.3 Tools for introducing meta-data in software
+ \item Task 1.1 Defining and injecting meta-data \vspace{-0.3cm}
+ \item Task 1.2 Constructing monitoring framework \vspace{-0.3cm}
+ \item Task 1.3 Tools for introducing meta-data in software \vspace{-0.3cm}
  \item Task 1.4 Tools for monitoring
 \end{itemize}
 
-\subsubsection{WP2 -- Energy aware controller}
+\subsubsection{WP2 -- Energy aware controller} \vspace{-0.3cm}
 \begin{itemize}
- \item Scheduling and optimization of energy consumption
- \item Modeling energy consumption
- \item Tools for generating energy models
+ \item Scheduling and optimization of energy consumption \vspace{-0.3cm}
+ \item Modeling energy consumption \vspace{-0.3cm}
+ \item Tools for generating energy models \vspace{-0.3cm}
  \item Implementation of controller
 \end{itemize}
 

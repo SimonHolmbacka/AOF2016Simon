@@ -392,22 +392,40 @@ This competence will be put to good use in creating the energy aware programming
 This research project has no ethical issues.
 
 \section{Implementation: schedule, budget, distribution of work}
-\todo[inline,color=orange]{The time table}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.45]{fig/schedule.pdf}
+	\caption{Time schedule for the project}
+	\label{fig:schedule}
+\end{figure}
 
 \subsection{Work packages}
 \subsubsection{WP1 -- Exposing the meta-data}
+The initial part of the project is to determine how to expose the meta-data to the progammer.
+The WP is intended to firstly define what exactly should be included in the meta-data and how it should be used.
+What must be determined is guideline for how, where, and when the meta-data should be injected in software.
+Secondly, the integration of the monitoring sub system is part of WP1.
+This includes how to interconnect the monitor with the application, determine the information flow between the application and the monitor and also how to forward this information to the resource allocation controller.
+Included in this WP is tool support for automatic meta-data injection and tool support for monitoring.
 \begin{itemize}
- \item Task 1.1 Defining and injecting meta-data
- \item Task 1.2 Constructing monitoring framework
- \item Task 1.3 Tools for introducing meta-data in software
+ \item Task 1.1 Defining and injecting meta-data \vspace{-0.3cm}
+ \item Task 1.2 Constructing monitoring framework \vspace{-0.3cm}
+ \item Task 1.3 Tools for introducing meta-data in software \vspace{-0.3cm}
  \item Task 1.4 Tools for monitoring
 \end{itemize}
 
 \subsubsection{WP2 -- Energy aware controller}
+WP2 is about using the meta-data definitions in WP1 and use them for energy optimizations by a runtime system controller.
+The main challenge in WP2 is to define energy efficient schdules and how the resources should be allocated to achieve energy efficiency.
+This means firstly modeling the underlying system and secondly applying mathematical optimization methods on the model.
+The work was initiated in the thesis of the PI, and WP2 is intended to refine the optimization methods for a larger selection of platforms and improve on existing optimization methods.
+WP2 also include the implementation of tools for automatic model generation for increasing the portability of the framework and finally the implementation of the runtime system controller itself.
+
 \begin{itemize}
- \item Scheduling and optimization of energy consumption
- \item Modeling energy consumption
- \item Tools for generating energy models
+ \item Scheduling and optimization of energy consumption \vspace{-0.3cm}
+ \item Modeling energy consumption \vspace{-0.3cm}
+ \item Tools for generating energy models \vspace{-0.3cm}
  \item Implementation of controller
 \end{itemize}
 
@@ -439,8 +457,6 @@ The budget of the project is defined in the following table:
 \end{table}
 
 \section{Research team and collaboration}
-\todo[inline,color=orange]{Kaverin}
-
 \subsection{Collaboration}
 The team is internationally well connected and has established cooperation with several teams abroad. 
 The cooperations listed here are the ones relevant to this application and that are documented through joint publications.
@@ -449,7 +465,7 @@ The cooperation between Prof. Jean-Francois Nezan, INSA, Rennes, and the embedde
 and has been executed through exchange of PhD students.
 INSA de Rennes has a strong background in tool support. 
 The previously developed PREESM tool which was used to determine parallelism in data-flow programs to be used in a power optimizer developed by \AA{}bo Akademi University.
-This work resulted in the best paper award at the 2014 DASIP conference and is of great importance in WP XXX.
+This work resulted in the best paper award at the 2014 DASIP conference and is of great importance in WP1 and the demonstrators in WP3.
 The PI visited INSA de Rennes for 4 months in 2013-2014, which resulted in two journal publications and two proceedings publications.
 
 Previous exchanges between \AA{}bo Akademi and INSA de Rennes:\\
