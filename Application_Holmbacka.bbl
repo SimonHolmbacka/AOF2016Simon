@@ -78,11 +78,4 @@ Rob Triggs.
 \newblock How far we've come: a look at smartphone performance over the past 7
   years, July 2015.
 
-\bibitem[VW02]{Vetter:02}
-Jeffrey~S. Vetter and Patrick~H. Worley.
-\newblock Asserting performance expectations.
-\newblock In {\em Proceedings of the 2002 ACM/IEEE Conference on
-  Supercomputing}, SC '02, pages 1--13, Los Alamitos, CA, USA, 2002. IEEE
-  Computer Society Press.
-
 \end{thebibliography}

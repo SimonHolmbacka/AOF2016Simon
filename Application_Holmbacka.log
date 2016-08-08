@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.1)  8 AUG 2016 09:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.1)  8 AUG 2016 12:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -976,7 +976,7 @@ LaTeX Warning: Marginpar on page 1 moved.
 File: fig/workload.png Graphic file (type png)
  <use fig/workload.png>
 Package pdftex.def Info: fig/workload.png used on input line 80.
-(pdftex.def)             Requested size: 264.50755pt x 106.23663pt.
+(pdftex.def)             Requested size: 200.19054pt x 80.4037pt.
 
 [1
 
@@ -985,58 +985,64 @@ Package pdftex.def Info: fig/workload.png used on input line 80.
 
 LaTeX Warning: Marginpar on page 2 moved.
 
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 129.
 
- []
-
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 153--154
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 129.
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 167--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
+Underfull \hbox (badness 10000) in paragraph at lines 173--176
 
  []
 
-[3] <fig/netflix.png, id=27, 178.047pt x 316.674pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--183
+
+ []
+
+[3] <fig/netflix.png, id=28, 178.047pt x 316.674pt>
 File: fig/netflix.png Graphic file (type png)
  <use fig/netflix.png>
-Package pdftex.def Info: fig/netflix.png used on input line 173.
+Package pdftex.def Info: fig/netflix.png used on input line 195.
 (pdftex.def)             Requested size: 150.14671pt x 267.0722pt.
 
 
-LaTeX Warning: Marginpar on page 4 moved.
+Package wrapfig Warning: Collision between wrapping environments on input line 
+212.
+
+<fig/slider.png, id=29, 521.69907pt x 174.6525pt>
+File: fig/slider.png Graphic file (type png)
+ <use fig/slider.png>
+Package pdftex.def Info: fig/slider.png used on input line 214.
+(pdftex.def)             Requested size: 200.19054pt x 67.01889pt.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 22
+1.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 22
+2.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 22
+4.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 22
+5.
 
 [4 <./fig/netflix.png>]
 Missing character: There is no ‚ in font cmr10!
@@ -1047,35 +1053,16 @@ Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
- [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 247.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 247.
- [6] [7]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 375--380
+ [5 <./fig/slider.png>] [6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 417--422
 
  []
 
-[9]
+[8]
 Missing character: There is no √ in font cmr10!
 Missing character: There is no ∂ in font cmr10!
- (./Application_Holmbacka.bbl
+ (./Application_Holmbacka.bbl [9]
 Missing character: There is no √ in font cmr10!
 Missing character: There is no © in font cmr10!
 Missing character: There is no ‚ in font cmr10!
@@ -1086,29 +1073,29 @@ Missing character: There is no © in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
- [10]) [11] (./Application_Holmbacka.aux) ) 
+) [10] (./Application_Holmbacka.aux) ) 
 Here is how much of TeX's memory you used:
- 20200 strings out of 494167
- 414808 string characters out of 6159783
- 448700 words of memory out of 5000000
- 23211 multiletter control sequences out of 15000+600000
+ 20196 strings out of 494167
+ 414658 string characters out of 6159783
+ 447641 words of memory out of 5000000
+ 23206 multiletter control sequences out of 15000+600000
  12190 words of font info for 46 fonts, out of 8000000 for 9000
  438 hyphenation exceptions out of 8191
- 63i,9n,80p,10449b,677s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Application_Holmbacka.pdf (11 pages, 337199 bytes).
+ 63i,9n,80p,10449b,671s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Application_Holmbacka.pdf (10 pages, 347327 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 86 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

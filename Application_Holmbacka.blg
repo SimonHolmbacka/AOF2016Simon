@@ -4,45 +4,45 @@ The top-level auxiliary file: Application_Holmbacka.aux
 The style file: alpha.bst
 Database file #1: sample.bib
 Warning--empty institution in HolmbackaTechrep
-You've used 14 entries,
+You've used 13 entries,
             2543 wiz_defined-function locations,
-            665 strings with 7356 characters,
-and the built_in function-call counts, 5997 in all, are:
-= -- 593
-> -- 330
-< -- 10
-+ -- 115
-- -- 114
-* -- 441
-:= -- 999
-add.period$ -- 43
-call.type$ -- 14
-change.case$ -- 96
-chr.to.int$ -- 14
-cite$ -- 15
-duplicate$ -- 235
-empty$ -- 392
-format.name$ -- 127
-if$ -- 1226
+            655 strings with 7139 characters,
+and the built_in function-call counts, 5517 in all, are:
+= -- 539
+> -- 311
+< -- 9
++ -- 109
+- -- 108
+* -- 410
+:= -- 927
+add.period$ -- 39
+call.type$ -- 13
+change.case$ -- 90
+chr.to.int$ -- 13
+cite$ -- 14
+duplicate$ -- 213
+empty$ -- 355
+format.name$ -- 120
+if$ -- 1118
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 7
-newline$ -- 71
-num.names$ -- 46
-pop$ -- 99
+missing$ -- 6
+newline$ -- 66
+num.names$ -- 43
+pop$ -- 94
 preamble$ -- 1
-purify$ -- 112
+purify$ -- 105
 quote$ -- 0
-skip$ -- 212
+skip$ -- 192
 stack$ -- 0
-substring$ -- 244
-swap$ -- 58
-text.length$ -- 10
+substring$ -- 218
+swap$ -- 52
+text.length$ -- 9
 text.prefix$ -- 4
 top$ -- 0
-type$ -- 112
+type$ -- 104
 warning$ -- 1
-while$ -- 52
+while$ -- 46
 width$ -- 18
-write$ -- 185
+write$ -- 169
 (There was 1 warning)

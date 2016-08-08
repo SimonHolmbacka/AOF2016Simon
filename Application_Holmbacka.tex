@@ -62,7 +62,7 @@ This means that as transistors become smaller, energy efficiency is improved by 
 In recent hardware, this scaling no longer applies since the voltage range used in transistors no longer can be lowered. 
 The end of Dennard scaling brings consequences such as an disproportional increase in thermal dissipation leading to dark silicon, 
 which means that all processing power on a chip cannot be used simultaneously because of the limited power envelope.
-\todo{Does it sound too technical?}
+\todo{Energy awareness is what we want to solve!}
 
 
 To tackle these problems, power management systems are implemented to scale the performance of the system according to the current resource demand. 
@@ -75,12 +75,14 @@ nor does any interface between the applications and the runtime system to provid
 Power management in the operating system is therefore performed purely based on indirect implications of software execution, usually referred to as the workload. 
 Workload in operating systems is measured as a sliding window average over an active and idle CPU as illustrated in Figure~\ref{fig:workload}. 
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.5]{fig/workload.png}
-	\caption{Load calculated as a ratio between active and idle for a defined window (Gray rectangles represent an active CPU).}
-	\label{fig:workload}
-\end{figure}
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{fig/workload.png}
+  \end{center}
+  \caption{Load calculated as a ratio between active and idle for a defined window (Gray rectangles represent an active CPU).}
+  \label{fig:workload}
+%   \vspace{-2cm}
+\end{wrapfigure}
 
 The power management is then based on the idle percentage of such a window. 
 Based on this, the hardware resources (for example in terms of increased clock frequency) are allocated as the percentage increases beyond a given threshold. 
@@ -122,18 +124,30 @@ A main part of this research is therefore to create a proper monitoring framewor
 Such a framework must be detailed enough to provide sufficient tools for measuring performance, but simple enough to reduce programmer effort.
 Since the monitoring framework is a runtime system, significantly low overhead must be guaranteed to not interfere with the energy consumption and performance of the host system.
 
+\todo{State points to be solved in this project}
+\begin{itemize}
+ \item thing 1
+ \item thing 2
+ \item thing 3
+\end{itemize}
+
+
 \subsection{Previous work}
-I have worked the five past years on low power and energy aware software in the embedded systems lab in the \AA{}bo Akademi University. 
-During these years I have put a special interest in mobile phone processors and their significance for energy awareness in general. 
+% \begin{figure}[b]
+% 	\centering
+% 	\includegraphics[scale=0.1]{fig/featureimage.png}
+% \end{figure}
+The embedded systems lab in the \AA{}bo Akademi University has for the last six years focused on low power and energy aware software. 
+During these years a special interest had been put in mobile phone processors and their significance for energy awareness in general. 
 This is because it has been noted that the trend of performance requirements by far exceeds the battery capacity of a mobile device, especially since the mobile multi-core revolution \cite{BatteryCapacity,CPUCapacity}. 
 This means that the performance of the hardware and the demand for performance of the user is greater than the energy a battery with limited dimensions can physically store. 
 Because of the slow capacity increase in batteries, the available energy must be used more efficiently in order for such a mobile device to retain its usability.
-In my PhD thesis ``\textit{Energy Aware Software for Many-Core Systems}'' I presented two guidelines for creating energy aware software on modern many-core hardware. 
-Implementing the recommendations in software has proven to reduce the energy consumption significantly without degrading the performance, especially on mobile multi-core hardware \cite{HolmbackaHipeac}. 
+In the thesis of the PI ``\textit{Energy Aware Software for Many-Core Systems}'' two guidelines were presented for creating energy aware software on modern many-core hardware. 
+Implementing the recommendations in software has proven to reduce the energy consumption up to 50\% without degrading the performance \cite{HolmbackaHipeac}, especially on mobile multi-core hardware. 
 The recommendations called ``Energy aware mapping'' and ``Energy aware resource allocation'' are used to tailor the resource allocation to the software executing, 
 and a prototype runtime system was implemented as a phase of the PhD thesis. 
-Using this software, I implemented and released the Android app “Low Energy Player” on Google store\footnote{https://play.google.com/store/apps/details?id=org.videolan.vlc.LEL.lite.green} as a state-of-the-art demonstration of the work in my PhD work. 
-This research is intended to go beyond the state-of-the-art by extending the prototype runtime environment to a proper framework for energy aware programming.
+Using this software, practical state-of-the-art demonstrator were created, for example the Android app ``Low Energy Player'' available on Google store\footnote{https://play.google.com/store/apps/details?id=org.videolan.vlc.LEL.lite.green}
+This research is intended to go beyond the state-of-the-art by the development of a programming framework for energy aware software and practical demonstrators.
 
 \subsection{Related work}
 ``Low energy programming'' or ``Low power programming'' has previously existed in the form focusing on the programming paradigm or on the programming syntax. 
@@ -144,31 +158,39 @@ The low power programming guidelines from Intel also require the programming to 
 and the underlying hardware architecture must be known. 
 In the thesis ``Developing Energy-Aware Software'' by Brinke \cite{Brinke:15} the author describes programming languages for modularity and modeling resource consumption for software.
 The \textit{awareness} of energy, is tightly bound to the application code and the programmer is expected to follow certain programming patterns to make the software energy aware.
-On the contrary, my framework for energy efficient software requires only the insertion of meta-data in the software.
+On the contrary, the planned framework for energy efficient software requires only the insertion of meta-data in the software.
 This means minimal effort of the programmer and the application algorithms can be implemented without influence over the energy awareness.
 The resource requirements are specified using a simple library, where after the runtime environment allocates the required resources.
 
 The \textbf{Carbon Research Group}\footnote{http://groups.csail.mit.edu/carbon/} at MIT has developed a heartbeat framework to evaluate performance as a generic parameter in software construction. The framework is capable of measuring performance of any application as a generic parameter by user inserted API calls to the heartbeat library. Measuring performance is the necessary first step when constructing a feedback-based control system. For example it enables the possibility to measure the framerate in a video decoder, but a controller is then needed to allocate the resources in order to keep the performance on a given setpoint. We consider using the heartbeat framework for measuring generic performance in our energy awareness framework, but we plan to extend the framework considerably in order to add the controller for allocating resources.\\
 
-The \textbf{Hardkernel} project\footnote{http://www.hardkernel.com/main/main.php} creating the Odroid family boards recently released the Global Task Scheduling (GTS) support for the ARM big.LITTLE devices. “High performance threads” are scheduled to the big high performance cores and “Low performance threads” are scheduled to LITTLE energy efficient cores based on the workload activity of the threads in order to save energy. Even though the activity level of a thread is an early attempt introduce energy awareness in the system, the practical results are poor. In other words, the scheduler most often schedule a thread on “the wrong core”. This results not only in poor energy efficiency, but also in poor performance of the applications and poor user experience. We intend to use this platform as one of the reference models for our energy awareness framework because its SoC is very popular and is being used in millions of Android devices worldwide.\\
+The \textbf{Hardkernel} project\footnote{http://www.hardkernel.com/main/main.php} creating the Odroid family boards recently released the Global Task Scheduling (GTS) support for the ARM big.LITTLE devices. ``High performance threads'' are scheduled to the big high performance cores and ``Low performance threads'' are scheduled to LITTLE energy efficient cores based on the workload activity of the threads in order to save energy. 
+Even though the activity level of a thread is an early attempt introduce energy awareness in the system, the practical results are poor. 
+In other words, the scheduler most often schedule a thread on \textit{the wrong core}. 
+This results not only in poor energy efficiency, but also in poor performance of the applications and poor user experience. 
+We intend to use this platform as one of the reference models for our energy awareness framework because its SoC is very popular and is being used in millions of Android devices worldwide.\\
 
-Our research group is currently a partner in the \textbf{INTERSYS} project\footnote{http://iot4health.utu.fi/?p=374} dedicated to standardize and optimize interconnected IoT devices handling streaming data. Since the number of IoT devices are expected to rapidly increase in the near future, the project is extending interoperability notions for handling the massive amount of data streams from small devices to gateways and servers. Still missing in the field of IoT is the notion of energy awareness, which is a crucial point as most devices operate on battery-only power and are expected to operate for long time intervals. We intend to work closely with this project and we plan to introduce the notion of energy awareness in IoT systems.\\
+Our research group is currently a partner in the \textbf{INTERSYS} project\footnote{http://iot4health.utu.fi/?p=374} dedicated to standardize and optimize interconnected IoT devices handling streaming data. Since the number of IoT devices are expected to rapidly increase in the near future, the project is extending interoperability notions for handling the massive amount of data streams from small devices to gateways and servers. 
+Still missing in the field of IoT is the notion of energy awareness, which is a crucial point as most devices operate on battery-only power and are expected to operate for long time intervals. 
+We intend to work closely with this project and we plan to introduce the notion of energy awareness in IoT systems.\\
 
-\textbf{EMBECOSM}\footnote{http://www.embecosm.com/} focus on providing the GCC compiler with the notion of energy efficiency, in practice this means learning which compiler flags that minimizes the energy consumption for a selected architecture. The outcome of this project is similar to OpenTuner \footnote{http://opentuner.org/} from MIT, which is capable of offline optimization of multi-criteria problems. Both projects provide a metric for offline optimization, but runtime support, which we suggest, is not stated in their scope. Runtime optimization is critical in virtually any environment containing multi-node and heterogeneous multi-node platforms. This is because the data used in especially streaming applications like multi-media software is arbitrary or difficult to predict. Compile time optimizations can for example not predict what kind of video format is being used in a video decoder.\\
+\textbf{EMBECOSM}\footnote{http://www.embecosm.com/} focus on providing the GCC compiler with the notion of energy efficiency, in practice this means learning which compiler flags that minimizes the energy consumption for a selected architecture. 
+The outcome of this project is similar to OpenTuner \footnote{http://opentuner.org/} from MIT, which is capable of offline optimization of multi-criteria problems. 
+Both projects provide a metric for offline optimization but runtime support, which we suggest, is not stated in their scope. 
+Runtime optimization is critical in virtually any environment containing multi-node and heterogeneous multi-node platforms. 
+This is because the data used in especially streaming applications like multi-media software is arbitrary or very difficult to predict. 
+Compile time optimizations can for example not predict what kind of video format is being used in a video decoder.\\
 
-The \textbf{StarPU}\footnote{http://starpu.gforge.inria.fr/} project at INRIA Bordeaux has presented a runtime system to minimize the performance for heterogeneous architectures. The system builds a performance model of the implemented CUDA or OpenCL kernels based on benchmarking on CPUs and GPUs, after which the system is able to schedule the kernels onto the most performance efficient device. The \textbf{PEPPHER}\footnote{http://www.peppher.eu/} project has used StarPU as a backend and the outcome of the project is a tool capable of generating multi-variant tasks for StarPU (OpenMP, OpenCL etc.). However, StarPU only consider the optimizations in form of performance. When adding more complex criteria with multiple variables such as energy efficiency or cost, StarPU lacks the insight to such resource allocation.
+The \textbf{StarPU}\footnote{http://starpu.gforge.inria.fr/} project at INRIA Bordeaux has presented a runtime system to minimize the performance for heterogeneous architectures. 
+The system builds a performance model of the implemented CUDA or OpenCL kernels based on benchmarking on CPUs and GPUs, after which the system is able to schedule the kernels onto the most performance efficient device. 
+The \textbf{PEPPHER}\footnote{http://www.peppher.eu/} project has used StarPU as a backend and the outcome of the project is a tool capable of generating multi-variant tasks for StarPU (OpenMP, OpenCL etc.). 
+However, StarPU only consider the optimizations in form of performance. 
+When adding more complex criteria with multiple variables such as energy efficiency or monetary cost, StarPU lacks the insight to such resource allocation.
 
 \section{Objectives and expected results}
-\subsection{Objectives}
-My design recommendations for energy aware programming extends the application to signal resource requirements to the runtime system which allocates the hardware resources.
-\todo[inline,color=orange]{Explain how it is used}
-\todo[inline,color=orange]{Explain the meta data}
-The objectives of my research is to create a framework for programming energy aware software. 
-This means that a programmer is able to implement my low energy design recommendations by implementing a few lines of code in both newly designed and in legacy software.
-The end-user of the software might- or might not be able to influence the decision process of the runtime system. 
-Figure \ref{fig:netflix} illustrates for example the ability to add a Quality-of-Service option to the Netflix app running on Android. 
 
-\begin{wrapfigure}{r}{0.4\textwidth}
+\subsection{Objectives}
+\begin{wrapfigure}{tr}{0.3\textwidth}
   \begin{center}
     \includegraphics[width=0.3\textwidth]{fig/netflix.png}
   \end{center}
@@ -176,9 +198,25 @@ Figure \ref{fig:netflix} illustrates for example the ability to add a Quality-of
   \label{fig:netflix}
   \vspace{-2cm}
 \end{wrapfigure}
+Our current design recommendations for energy aware programming described in the thesis of the PI extends the application to signal resource requirements to the runtime system which allocates the hardware resources.
+\textbf{The objectives of this research is to develop a framework for programming energy aware software.}
+By using the framework, the programmer can specify resource requirement or ``Quality-of-Service'' requirements directly in the souce code.
+Furthermore, the end-user of the software might- or might not be able to influence these requirements at runtime.
+For example, a video decoder might occasionally experience buffer underruns in case the decoding framerate is too low.
+By safe guarding, by using a slightly higher setpoint, the video playback becomes more smooth at the cost of slightly higher energy consumption.
+Figure \ref{fig:netflix} illustrates for example the ability to add a Quality-of-Service option to the Netflix app running on Android.
 The user can use this option to select the trade-off between energy savings and performance in terms of decoding framerate or other parameters. 
-Options can set based on a defined value like ``decoding framerate'' illustrated in Figure XXX \todo[color=green]{add these} or as a more abstract option as illustrated in Figure XXX \todo[color=green]{add these}. 
+Options can set based on a defined value like ``decoding framerate'' or as a more abstract option as illustrated in Figure \ref{fig:slider}. 
 The intension of the energy aware framework is to expose the link between the application and the runtime system, while the design of using its abilities is up to the programmer.
+
+\begin{wrapfigure}{tr}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{fig/slider.png}
+  \end{center}
+  \caption{Slider option for QoS in Android app}
+  \label{fig:slider}
+%   \vspace{-2cm}
+\end{wrapfigure}
 
 \subsection{Hypothesis}
 \todo[inline,color=orange]{Points here}
@@ -194,17 +232,17 @@ Applications specify a performance setpoint and a lower bound acceptable perform
 Applications then monitor own performance and signal this value to the QoS manager periodically. 
 Similar notations as this the language will be considered in this research to describe QoS in applications, 
 but more focus will put on the link between applications and hardware resources in a single computer system.
-Our methods for energy aware programming will not be tied to a certain programming language and the framework itself will have the flexibility to be integrated from various programming environments such as servers and PC Linux and Android.
+Our methods for energy aware programming will not be strongly tied to a certain programming language and the framework itself will have the flexibility to be integrated from various programming environments such as servers and PC Linux and Android.
 
-Hoffmann et. al propose heartbeats \cite{Hoffmann:10} as a generic performance parameter. 
-The heartbeats are setup by including a set of heartbeat API calls in applications, which are used to monitor the application performance. 
-By calling the heartbeat API on suitable places in the applications such as large loops, a notion of the update interval between API calls is created. 
-The heartbeat API registers multiple applications and the outside system monitors the heartbeat of each application separately. 
-Heartbeats is a suitable candidate, and fully compatible as a performance parameter in our research framework.
-An application can register a setpoint heartbeat after which the heartbeat monitor is used to derive the actual performance in heartbeats. 
-Earlier work by Vetter et al. \cite{Vetter:02} presents a similar approach, but by including performance assertions directly into the code. 
-Based on the assertions, the application can adapt itself in case significant performance is not achieved.
-The system allowed, however, only internal monitoring of the performance, and a runtime system was not in the scope.
+% Hoffmann et. al propose heartbeats \cite{Hoffmann:10} as a generic performance parameter. 
+% The heartbeats are setup by including a set of heartbeat API calls in applications, which are used to monitor the application performance. 
+% By calling the heartbeat API on suitable places in the applications such as large loops, a notion of the update interval between API calls is created. 
+% The heartbeat API registers multiple applications and the outside system monitors the heartbeat of each application separately. 
+% Heartbeats is a suitable candidate, and fully compatible as a performance parameter in our research framework.
+% An application can register a setpoint heartbeat after which the heartbeat monitor is used to derive the actual performance in heartbeats. 
+% Earlier work by Vetter et al. \cite{Vetter:02} presents a similar approach, but by including performance assertions directly into the code. 
+% Based on the assertions, the application can adapt itself in case significant performance is not achieved.
+% The system allowed, however, only internal monitoring of the performance, and a runtime system was not in the scope.
 
 On the other hand, runtime systems for minimizing energy consumption in computer systems have been previously proposed.
 The PowerDial \cite{Hoffmann:11} approach allows graceful degradation in applications based on current application performance measured in heartbeats \cite{Hoffmann:10}. 
@@ -214,76 +252,80 @@ A heartbeat feedback monitors the execution and reports on the updated performan
 Also, the work by Segovia \cite{Segovia:11} suggests graceful degradation of the application QoS by monitoring a happiness value from the application. 
 Based on this value, the runtime system can degrade quality points in the application in order to achieve the requested QoS. 
 Our planned runtime system is inspired by the same approach to treat input signals from applications: the performance is transformed into a generic parameter – QoS – upon which the controller acts.
-In contrast, Bricktop uses no graceful degradation in the applications, but
-hardware actuators to drive the power management.
+In contrast, our controller uses no graceful degradation in the applications, but the actual hardware actuators to allocate resources.
 
 In previous research, there have been a strong separation between monitor and control.
 Several research projects offer the opportunity to monitor an executing application, but supports no control of the hardware.
 On the other hand, many controller-based research project do not support any proper framework for declaring meta-data requirements and monitoring of the execution.
 This research project will tie both parts together with the main focus on reducing the energy consumption with minimal programmer effort -- an effort not previously done.
 Our research project will also make the proper balance between academic research and practical usability,
-which means that there will be both a focus on planning the long term usage of the framework in terms of capabilities and scalability but also practical efforts to enable a programmer to pick up the tools and start developing energy aware software in the industry.
-
+which means that there is both a focus on planning the long term usage of the framework in terms of capabilities and scalability, but also practical efforts to enable a programmer to pick up the tools and start developing energy aware software in the industry.
 
 \section{Expected scientific and societal impacts and potential breakthrough of the research}
 Our expected impact is on the research community is to address the energy awareness in software. 
 In other words, the need for communication between the application layer and the runtime environment. 
 We expect to determine the information flow needed to create energy aware software especially for heterogeneous architectures. 
-Our potential breakthrough is to introduce energy awareness as natural part of programming. 
+Our potential breakthrough is to introduce \textbf{energy awareness as natural part of programming}.\\ 
 For decades it has been a natural step to introduce meta-data in the software for creating parallel programs. 
 The programmer has been willing to add \#pragmas in OpenMP, Keywords in Cilk or Initializations in OpenCL to create parallel software because of the minimal programming effort and significant performance gain. 
-We intend to extend this notion to energy awareness, and demonstrate the potential reward in terms of energy awareness with the introduction of energy awareness meta-data in the programming. 
+We intend to extend this notion to energy awareness, and demonstrate the potential reward in terms of energy efficiency. 
 Furthermore, the development of runtime systems becomes more straight forward. 
 Without energy aware programming as the underlying notion, runtime systems in any domain have no common ground on which the decision making is based. 
-Optimizations remain based on ad-hoc ideas and “hacked” hard-code which is usually not portable between either domains or even between different architectures. 
+Optimizations remain based on ad-hoc ideas and ``hacked'' hard-code which is usually not portable between either domains or even between different architectures. 
 Even though the implementation of the runtime systems between domains can be different, the core idea of resource allocation decisions based on energy aware programming remains common. 
 With this common denominator, runtime systems engineers between projects and domains can incorporate shared ideas for implementing new, or improving existing runtime systems. 
 For example the GTS scheduler appearing in most high-end Android phones and tablets is currently highly inefficient due to a poor decision making model. 
 Moreover, its implementation model is completely isolated from any other runtime system – leaving it highly unportable. 
-By introducing the notion of energy aware programming, the development of runtime systems, needed in any modern computer system, has the potential to shift from an ad-hoc single-purpose environment to a sharing environment where engineers have a better platform to cooperate on.
+By introducing the notion of energy aware programming, the development of runtime systems needed in any modern computer system has the potential to shift from an ad-hoc single-purpose environment to a sharing environment where engineers have a better platform to cooperate on.
 
 \subsection{Applicability}
 \begin{itemize}
- \item Energy efficient programming: Today most guidelines for energy efficient programming is driven by creating code with efficient algorithms such as using loop unrolling, SIMD vectors, compiler options etc., which generates software specifically for a given platform. By instead relying on application meta-data describing software requirements, similarly as Cilk and OpenMP handle forking and joining task, resource allocation is based on what the software actually needs instead of blindly following the workload of the system.
- \item Performance portability: one of the major obstacles within the embedded industry is the high portability costs of software which is due to the requirements for high customization of software to particular embedded architectures. With the suggested energy awareness framework, the mapping and scheduling decisions are shifted from the developer to the runtime system. This allows a more architecture generic programming paradigm while still keeping the performance of dedicated code.
- \item Development of runtime systems: Using the energy awareness framework, the development time of runtime systems is not only decreased but also more standardized. Even potential for automatic runtime system generation emerges as a result of standardizing the foundation.
- \item Fog computing is currently being proposed as an implementation framework for the IoT. In the fog heterogeneous computing nodes are scattered in the network to enable computations neared to the source to guarantee real-time properties. IoT systems are one the most energy-prone fields of computer engineering because many of such systems are designed to run for long intervals without being connected to the power grid. Currently there are no standardized mechanism for declaring energy awareness in IoT systems. The framework for energy aware programming is extendable to IoT system as well because the paradigm only requires the ability of inserting resources requirement meta-data into the application software. 
+ \item Energy efficient programming: Today most guidelines for energy efficient programming is driven by creating code with efficient algorithms such as using loop unrolling, SIMD vectors, compiler options etc., which generates software specifically for a given platform. 
+ By instead relying on application meta-data describing software requirements, similarly as Cilk and OpenMP handle forking and joining task, resource allocation is based on what the software actually needs instead of blindly following the workload of the system.
+ \item Performance portability: one of the major obstacles within the embedded industry is the high portability costs of software which is due to the requirements for high customization of software to particular embedded architectures. 
+ With the suggested energy awareness framework, the mapping and scheduling decisions are shifted from the developer to the runtime system. 
+ This allows a more architecture generic programming paradigm while still keeping the performance of dedicated code.
+ \item Development of runtime systems: Using the energy awareness framework, the development time of runtime systems is not only decreased but also more standardized. 
+ Even potential for automatic runtime system generation emerges as a result of standardizing the foundation.
+ \item Fog computing is currently being proposed as an implementation framework for the IoT. 
+ In the fog heterogeneous computing nodes are scattered in the network to enable computations neared to the source to guarantee real-time properties. 
+ IoT systems are one the most energy-prone fields of computer engineering because many of such systems are designed to run for long intervals without being connected to the power grid. 
+%  Currently there are no standardized mechanism for declaring energy awareness in IoT systems. 
+ The framework for energy aware programming is extendable to IoT system as well because the paradigm only requires the ability of inserting resources requirement meta-data into the application software. 
 \end{itemize}
 
 \subsection{Critical points for success}
 \todo[inline,color=orange]{Points here}
 
 \subsection{Publication plan}
-I will be publishing at the top journals and conferences based on the JuFo listings. I will select publication venues that use some form of open access model, most likely green open access. 
-To this end I have included a lump yearly sum to cover the publication fees. My publication rate is approximately 3--4 high-quality peer-reviewed publications per year.
+We intend to publish at the top journals and conferences based on the JuFo listings, and we will select publication venues that use some form of open access model, most likely green open access. 
+To this end I have included a lump yearly sum to cover the publication fees. 
+Further, we plan to also be visible in industrial event and fares to both demonstrate and get feedback on our reseach work.
+The publication rate with regard to the project is approximately 3--4 high-quality peer-reviewed publications per year.
 
 \section{Research methods and material, support from research environment}
-Stream Computing has been introduced as a paradigm in Cloud Computing and Big Data to emphasize the streaming nature of modern computing applications. 
-Such applications typically pull multiple streams of data and process these under real-time constraints. 
-Examples of such systems include video playback systems, web servers, digital filtering systems, telecommunications systems and other multi-media systems. 
+% Stream Computing has been introduced as a paradigm in Cloud Computing and Big Data to emphasize the streaming nature of modern computing applications. 
+% Such applications typically pull multiple streams of data and process these under real-time constraints. 
+% Examples of such systems include video playback systems, web servers, digital filtering systems, telecommunications systems and other multi-media systems. 
 
-We are working extensively within the streaming applications paradigm for a number of reasons. 
-Firstly, streaming systems are usually implemented in environments in which energy efficiency is of essence. 
-For example video playback on mobile phones or an IoT system dedicated to face recognition. 
+We are working extensively within the \textit{streaming applications} paradigm for a number of reasons. 
+Firstly, streaming systems are usually implemented in environments in which energy efficiency is of essence like video playback systems, web servers, digital filtering systems, telecommunications systems and other multi-media or IoT systems. 
 Secondly, since the content of the streaming data is to a large extent arbitrary, no compiler based optimization (or other static solution) can solve the energy problem. 
-The software itself must be energy aware, and backed up by a runtime systems making online decisions. 
+The software itself must therefore be energy aware, and backed up by a runtime systems making online decisions. 
 Thirdly, streaming systems are extremely common and is thus providing a large market to work on from tiny IoT systems up to large cloud server systems.
 
-My work is highly experimental based, and to validate our approach we need to develop characteristic benchmarks. 
+The work is highly experimental based, and to validate our approach we need to develop characteristic benchmarks. 
 During the last years our group has gained considerable experience in developing our on benchmarks, as well as our own measurement setups. 
 Results have been summarized in our extensive technical report \cite{HolmbackaTechrep}. 
-Combining these four research methods we aim to deliver an energy aware programming framework verified by accurate benchmarks for end-users to use.
+% Combining these four research methods we aim to deliver an energy aware programming framework verified by accurate benchmarks for end-users to use.
 
 \subsection{Management of research material and data}
-The project will create two kinds of concrete results: 1. Software, and 2. Measurement data. I subscribe to the idea of open reproducible science. 
+The project will create two kinds of concrete results: 1. Software, and 2. Measurement data. 
+We subscribe to the idea of open reproducible science. 
 The computer architecture area has suffered from problems with reproducibility in that often neither the software nor the full measurement data are available. 
-I intend to be as open as possible about our research. All software will be released under an open-source license. 
-Our goal is to find a licensing model that allows the free reuse of the software, the only requirement being that our research group is given attribution in some form. 
-
-I also plan to publish our measurement data. 
-I will develop standard measurement protocols that will be published together with the data and the design documents of the measurement hardware and software. 
-I have selected Zenodo as the platform where we plan to publish. Zenodo has a number of practical features that make it suitable for us. 
-Each submission can get a DOI so it is citable, there is a way to directly upload data from Dropbox, and each submission can be released on a different.
+We intend to be as open as possible about our research. 
+All software will be released under an open-source license. 
+Zenodo\footnote{http://zenodo.org/} has been selected as the platform where we plan to publish measurement results and each submission in Zenodo can get a citable DOI
 
 \subsection{Support form research environment}
 The research team will be well supported by infrastructure available at through the TUCS community. 
