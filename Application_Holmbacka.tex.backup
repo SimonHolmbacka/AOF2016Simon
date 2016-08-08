@@ -83,28 +83,22 @@ Dennard scaling forecasts that the power density of transistors stays constant a
 This means that as transistors become smaller, energy efficiency is improved by transistor technology such that the power remains in proportion to the area. 
 In recent hardware, this scaling no longer applies since the voltage range used in transistors no longer can be lowered. 
 The end of Dennard scaling brings consequences such as an disproportional increase in thermal dissipation leading to dark silicon, 
-which means that all processing power on a chip cannot be used simultaneously because of the limited power envelope.
-\todo{Energy awareness is what we want to solve!}
+which means that all processing power on a chip cannot be used simultaneously because of the limited power envelope.\\
 
 To tackle these problems, power management systems are implemented to scale the performance of the system according to the current resource demand. 
-Power management has traditionally been an area of research providing hardware solutions or runtime power management in the operating system in form of frequency governors. 
-\todo{Introduce energy awareness a bit first}
-Energy awareness in the application software is currently non-existent. This means that applications are not involved in the power management decisions, 
-\todo{Redo this part}
-\todo{The human eye can only see 25 fps}
-nor does any interface between the applications and the runtime system to provide such facilities exist. 
-Power management in the operating system is therefore performed purely based on indirect implications of software execution, usually referred to as the workload. 
+The resouce demand is measued as the utilization caused by the workload of the CPU. 
 Workload in operating systems is measured as a sliding window average over an active and idle CPU as illustrated in Figure~\ref{fig:workload}. 
-
-
-The power management is then based on the idle percentage of such a window. 
-Based on this, the hardware resources (for example in terms of increased clock frequency) are allocated as the percentage increases beyond a given threshold. 
-The problem with this approach is that the workload does not describe resource requirements. 
+A high workload indicates that the system needs more resources, and the clock frequency is scaled up to decrease the workload on the CPU.
+The problem with this approach is that the workload does not describe the performance of the applications.
+High workload does not necessary mean that an application requires more performance, it simply describes how much the application is using the CPU.
 For example, in case the CPU is set to decode a video, the workload will increase to 100\% as soon as the video frames are being decoded.  
 This means that the CPU is clocked to the maximum frequency as long as the frames are being decoded and the decoded frame rate is only limited by the speed of the CPU; 
-even if the required decoding rate is only 25 frames per second. In other words, the application will be executed unnecessarily fast. 
+even if the required decoding rate is only 25 frames per second, which the human eye is capable of observing.
+In other words, the application will be executed unnecessarily fast. 
 As results from \cite{HolmbackaHipeac, HolmbackaDasip} show, executing the application unnecessarily fast wastes significantly more energy than executing the application on a moderate, 
 but still at a sufficiently fast, performance level. 
+The currently unsolved problem is to manage to execute an application on a moderate, yet sufficiently high, performance level. 
+
 \begin{wrapfigure}{r}{0.4\textwidth}
   \begin{center}
     \includegraphics[width=0.4\textwidth]{fig/workload.png}
@@ -113,8 +107,13 @@ but still at a sufficiently fast, performance level.
   \label{fig:workload}
 %   \vspace{-2cm}
 \end{wrapfigure}
-Executing applications on this performance level also decreases the thermal dissipation, and the overhead of performance level switches are significantly reduced.
-The currently unsolved problem is to manage to execute an application on a moderate, yet sufficiently high, performance level. 
+
+What we propose is to \textbf{make the application software itself energy aware}.
+Energy awareness in the application software is currently non-existent. 
+This means that applications are not involved in the power management decisions, nor does any interface between the applications and the runtime system to provide such facilities exist. 
+
+
+
 In order to execute applications at the most energy efficient performance level, additional knowledge about resource requirement must be set in the application. 
 This is called making the application energy aware and is the proposed contribution in this research plan. To this date, no tool chain supports energy awareness in application software. 
 This forces the runtime system to make blind decisions about power management only based on the system workload. 
@@ -401,13 +400,13 @@ This research project has no ethical issues.
 \end{figure}
 
 \subsection{Work packages}
+\subsubsection{WP1 -- Exposing the meta-data}
 The initial part of the project is to determine how to expose the meta-data to the progammer.
 The WP is intended to firstly define what exactly should be included in the meta-data and how it should be used.
 What must be determined is guideline for how, where, and when the meta-data should be injected in software.
 Secondly, the integration of the monitoring sub system is part of WP1.
 This includes how to interconnect the monitor with the application, determine the information flow between the application and the monitor and also how to forward this information to the resource allocation controller.
 Included in this WP is tool support for automatic meta-data injection and tool support for monitoring.
-\subsubsection{WP1 -- Exposing the meta-data} \vspace{-0.3cm}
 \begin{itemize}
  \item Task 1.1 Defining and injecting meta-data \vspace{-0.3cm}
  \item Task 1.2 Constructing monitoring framework \vspace{-0.3cm}
@@ -415,7 +414,13 @@ Included in this WP is tool support for automatic meta-data injection and tool s
  \item Task 1.4 Tools for monitoring
 \end{itemize}
 
-\subsubsection{WP2 -- Energy aware controller} \vspace{-0.3cm}
+\subsubsection{WP2 -- Energy aware controller}
+WP2 is about using the meta-data definitions in WP1 and use them for energy optimizations by a runtime system controller.
+The main challenge in WP2 is to define energy efficient schdules and how the resources should be allocated to achieve energy efficiency.
+This means firstly modeling the underlying system and secondly applying mathematical optimization methods on the model.
+The work was initiated in the thesis of the PI, and WP2 is intended to refine the optimization methods for a larger selection of platforms and improve on existing optimization methods.
+WP2 also include the implementation of tools for automatic model generation for increasing the portability of the framework and finally the implementation of the runtime system controller itself.
+
 \begin{itemize}
  \item Scheduling and optimization of energy consumption \vspace{-0.3cm}
  \item Modeling energy consumption \vspace{-0.3cm}
@@ -451,8 +456,6 @@ The budget of the project is defined in the following table:
 \end{table}
 
 \section{Research team and collaboration}
-\todo[inline,color=orange]{Kaverin}
-
 \subsection{Collaboration}
 The team is internationally well connected and has established cooperation with several teams abroad. 
 The cooperations listed here are the ones relevant to this application and that are documented through joint publications.
@@ -461,7 +464,7 @@ The cooperation between Prof. Jean-Francois Nezan, INSA, Rennes, and the embedde
 and has been executed through exchange of PhD students.
 INSA de Rennes has a strong background in tool support. 
 The previously developed PREESM tool which was used to determine parallelism in data-flow programs to be used in a power optimizer developed by \AA{}bo Akademi University.
-This work resulted in the best paper award at the 2014 DASIP conference and is of great importance in WP XXX.
+This work resulted in the best paper award at the 2014 DASIP conference and is of great importance in WP1 and the demonstrators in WP3.
 The PI visited INSA de Rennes for 4 months in 2013-2014, which resulted in two journal publications and two proceedings publications.
 
 Previous exchanges between \AA{}bo Akademi and INSA de Rennes:\\
