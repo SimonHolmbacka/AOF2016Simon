@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.1)  8 AUG 2016 12:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.1)  8 AUG 2016 13:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -860,18 +860,18 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 (./Application_Holmbacka.aux)
 \openout1 = `Application_Holmbacka.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -961,8 +961,33 @@ File: siunitx-abbreviations.cfg 2013/07/31 v2.5s siunitx: Abbreviated units
 
 \c__siunitx_mathsf_int=\count183
 \c__siunitx_mathtt_int=\count184
-Missing character: There is no Â in font cmr12!
-Missing character: There is no   in font cmr12!
+Missing character: There is no Â in font cmr10!
+Missing character: There is no   in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--57
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--57
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--57
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+
+ []
+
 
 LaTeX Warning: Marginpar on page 1 moved.
 
@@ -975,76 +1000,70 @@ LaTeX Warning: Marginpar on page 1 moved.
 <fig/workload.png, id=4, 529.0164pt x 212.4738pt>
 File: fig/workload.png Graphic file (type png)
  <use fig/workload.png>
-Package pdftex.def Info: fig/workload.png used on input line 80.
+Package pdftex.def Info: fig/workload.png used on input line 110.
 (pdftex.def)             Requested size: 200.19054pt x 80.4037pt.
 
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fig/workload.png>]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
 LaTeX Warning: Marginpar on page 2 moved.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 129.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 150.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 129.
- [2]
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 150.
+ [2 <./fig/workload.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--172
+Underfull \hbox (badness 10000) in paragraph at lines 188--193
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 194--197
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--176
+Underfull \hbox (badness 10000) in paragraph at lines 198--204
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 177--183
-
- []
-
-[3] <fig/netflix.png, id=28, 178.047pt x 316.674pt>
+[4] <fig/netflix.png, id=30, 178.047pt x 316.674pt>
 File: fig/netflix.png Graphic file (type png)
  <use fig/netflix.png>
-Package pdftex.def Info: fig/netflix.png used on input line 195.
-(pdftex.def)             Requested size: 150.14671pt x 267.0722pt.
+Package pdftex.def Info: fig/netflix.png used on input line 218.
+(pdftex.def)             Requested size: 110.10709pt x 195.84296pt.
 
 
 Package wrapfig Warning: Collision between wrapping environments on input line 
-212.
+234.
 
-<fig/slider.png, id=29, 521.69907pt x 174.6525pt>
+<fig/slider.png, id=31, 521.69907pt x 174.6525pt>
 File: fig/slider.png Graphic file (type png)
  <use fig/slider.png>
-Package pdftex.def Info: fig/slider.png used on input line 214.
+Package pdftex.def Info: fig/slider.png used on input line 236.
 (pdftex.def)             Requested size: 200.19054pt x 67.01889pt.
 
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 22
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 24
 1.
 
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 22
-2.
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 24
+3.
 
+[5
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 22
-4.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 22
-5.
-
-[4 <./fig/netflix.png>]
+ <./fig/netflix.png> <./fig/slider.png>]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
@@ -1054,15 +1073,25 @@ Missing character: There is no “ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
- [5 <./fig/slider.png>] [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 417--422
+ [6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 455--460
 
  []
 
-[8]
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 471--475
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 476--477
+
+ []
+
+[10]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¶ in font cmr10!
- (./Application_Holmbacka.bbl [9]
+ (./Application_Holmbacka.bbl
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no © in font cmr10!
 Missing character: There is no â in font cmr10!
@@ -1073,29 +1102,29 @@ Missing character: There is no © in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
-) [10] (./Application_Holmbacka.aux) ) 
+) [11] [12] (./Application_Holmbacka.aux) ) 
 Here is how much of TeX's memory you used:
- 20196 strings out of 494167
- 414658 string characters out of 6159783
- 447641 words of memory out of 5000000
- 23206 multiletter control sequences out of 15000+600000
- 12190 words of font info for 46 fonts, out of 8000000 for 9000
+ 20189 strings out of 494167
+ 414538 string characters out of 6159783
+ 448044 words of memory out of 5000000
+ 23201 multiletter control sequences out of 15000+600000
+ 11228 words of font info for 42 fonts, out of 8000000 for 9000
  438 hyphenation exceptions out of 8191
  63i,9n,80p,10449b,671s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Application_Holmbacka.pdf (10 pages, 347327 bytes).
+</usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Application_Holmbacka.pdf (12 pages, 356510 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 92 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
