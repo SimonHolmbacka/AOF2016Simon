@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.1)  9 AUG 2016 14:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.1)  9 AUG 2016 15:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -801,7 +801,63 @@ File: tikzlibrarypositioning.code.tex 2008/10/06 v2.10 (rcs-revision 1.7)
 \WF@box=\box59
 \WF@everypar=\toks36
 Package: wrapfig 2003/01/31  v 3.6
-) (/usr/share/texlive/texmf-dist/tex/latex/pbox/pbox.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen260
+\captionmargin@=\dimen261
+\captionwidth=\dimen262
+\caption@tempdima=\dimen263
+\caption@indent=\dimen264
+\caption@parindent=\dimen265
+\caption@hangindent=\dimen266
+)
+\c@ContinuedFloat=\count174
+Package caption Info: wrapfig package is loaded.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2012/05/21 v1.0 Adjusting TeX boxes (trim, clip, ...)
+
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2012/05/16 v1.0 Trim and clip general TeX material
+
+(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box60
+)
+\tc@llx=\dimen267
+\tc@lly=\dimen268
+\tc@urx=\dimen269
+\tc@ury=\dimen270
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2012/05/13 v1.0 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen271
+\adjbox@Height=\dimen272
+\adjbox@Depth=\dimen273
+\adjbox@Totalheight=\dimen274
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2011/09/13 v1.0 Conditionals for odd/even page detection
+\c@checkoddpage=\count175
+)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box61
+\sift@deathcycles=\count176
+\@vwid@loff=\dimen275
+\@vwid@roff=\dimen276
+))
+(/usr/share/texlive/texmf-dist/tex/latex/pbox/pbox.sty
 Package: pbox 2011/12/07 v1.2 Dynamic parboxes
 \pb@xlen=\skip76
 )
@@ -815,17 +871,17 @@ Package ifvtex Info: VTeX not detected.
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count174
-\Gm@cntv=\count175
-\c@Gm@tempcnt=\count176
-\Gm@bindingoffset=\dimen260
-\Gm@wd@mp=\dimen261
-\Gm@odd@mp=\dimen262
-\Gm@even@mp=\dimen263
-\Gm@layoutwidth=\dimen264
-\Gm@layoutheight=\dimen265
-\Gm@layouthoffset=\dimen266
-\Gm@layoutvoffset=\dimen267
+\Gm@cnth=\count177
+\Gm@cntv=\count178
+\c@Gm@tempcnt=\count179
+\Gm@bindingoffset=\dimen277
+\Gm@wd@mp=\dimen278
+\Gm@odd@mp=\dimen279
+\Gm@even@mp=\dimen280
+\Gm@layoutwidth=\dimen281
+\Gm@layoutheight=\dimen282
+\Gm@layouthoffset=\dimen283
+\Gm@layoutvoffset=\dimen284
 \Gm@dimlist=\toks37
 )
 *geometry* verbose mode - [ newgeometry ] result:
@@ -868,30 +924,30 @@ LaTeX Warning: Label `tab:strconf' multiply defined.
 )
 \openout1 = `Application_Holmbacka.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count177
-\scratchdimen=\dimen268
-\scratchbox=\box60
-\nofMPsegments=\count178
-\nofMParguments=\count179
+\scratchcounter=\count180
+\scratchdimen=\dimen285
+\scratchbox=\box62
+\nofMPsegments=\count181
+\nofMParguments=\count182
 \everyMPshowfont=\toks38
-\MPscratchCnt=\count180
-\MPscratchDim=\dimen269
-\MPnumerator=\count181
-\makeMPintoPDFobject=\count182
+\MPscratchCnt=\count183
+\MPscratchDim=\dimen286
+\MPnumerator=\count184
+\makeMPintoPDFobject=\count185
 \everyMPtoPDFconversion=\toks39
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -932,6 +988,9 @@ Dictionary: translator-basic-dictionary, Language: English
 fg
 File: siunitx-abbreviations.cfg 2013/07/31 v2.5s siunitx: Abbreviated units
 ) ABD: EveryShipout initializing macros
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -966,68 +1025,68 @@ File: siunitx-abbreviations.cfg 2013/07/31 v2.5s siunitx: Abbreviated units
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c__siunitx_mathsf_int=\count183
-\c__siunitx_mathtt_int=\count184
+\c__siunitx_mathsf_int=\count186
+\c__siunitx_mathtt_int=\count187
 Missing character: There is no Â in font cmr10!
 Missing character: There is no   in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--58
+Underfull \hbox (badness 10000) in paragraph at lines 51--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--58
+Underfull \hbox (badness 10000) in paragraph at lines 51--60
 
  []
 
 <fig/fra.png, id=4, 100.375pt x 67.25125pt>
 File: fig/fra.png Graphic file (type png)
  <use fig/fra.png>
-Package pdftex.def Info: fig/fra.png used on input line 63.
+Package pdftex.def Info: fig/fra.png used on input line 65.
 (pdftex.def)             Requested size: 11.38092pt x 7.62444pt.
 File: fig/fra.png Graphic file (type png)
 
 <use fig/fra.png>
-Package pdftex.def Info: fig/fra.png used on input line 63.
+Package pdftex.def Info: fig/fra.png used on input line 65.
 (pdftex.def)             Requested size: 11.38092pt x 7.62444pt.
  <fig/aus.png, id=5, 100.375pt x 67.25125pt>
 File: fig/aus.png Graphic file (type png)
 
 <use fig/aus.png>
-Package pdftex.def Info: fig/aus.png used on input line 64.
+Package pdftex.def Info: fig/aus.png used on input line 66.
 (pdftex.def)             Requested size: 11.38092pt x 7.62444pt.
 File: fig/aus.png Graphic file (type png)
  <use fig/aus.png>
-Package pdftex.def Info: fig/aus.png used on input line 64.
+Package pdftex.def Info: fig/aus.png used on input line 66.
 (pdftex.def)             Requested size: 11.38092pt x 7.62444pt.
  <fig/ger.png, id=6, 100.375pt x 62.2325pt>
 File: fig/ger.png Graphic file (type png)
 
 <use fig/ger.png>
-Package pdftex.def Info: fig/ger.png used on input line 65.
+Package pdftex.def Info: fig/ger.png used on input line 67.
 (pdftex.def)             Requested size: 11.38092pt x 7.05545pt.
 File: fig/ger.png Graphic file (type png)
  <use fig/ger.png>
-Package pdftex.def Info: fig/ger.png used on input line 65.
+Package pdftex.def Info: fig/ger.png used on input line 67.
 (pdftex.def)             Requested size: 11.38092pt x 7.05545pt.
 
 <fig/swe.png, id=7, 100.375pt x 63.23625pt>
 File: fig/swe.png Graphic file (type png)
  <use fig/swe.png>
-Package pdftex.def Info: fig/swe.png used on input line 66.
+Package pdftex.def Info: fig/swe.png used on input line 68.
 (pdftex.def)             Requested size: 11.38092pt x 7.16925pt.
 File: fig/swe.png Graphic file (type png)
 
 <use fig/swe.png>
-Package pdftex.def Info: fig/swe.png used on input line 66.
+Package pdftex.def Info: fig/swe.png used on input line 68.
 (pdftex.def)             Requested size: 11.38092pt x 7.16925pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--87
+Underfull \hbox (badness 10000) in paragraph at lines 80--89
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--95
+Underfull \hbox (badness 10000) in paragraph at lines 90--97
 
  []
 
@@ -1035,7 +1094,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--95
 File: fig/WorkloadMonitor.png Graphic file (type png)
 
 <use fig/WorkloadMonitor.png>
-Package pdftex.def Info: fig/WorkloadMonitor.png used on input line 113.
+Package pdftex.def Info: fig/WorkloadMonitor.png used on input line 115.
 (pdftex.def)             Requested size: 256.0748pt x 196.26471pt.
  [1
 
@@ -1043,124 +1102,77 @@ Package pdftex.def Info: fig/WorkloadMonitor.png used on input line 113.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fig/fra.png> <./fig/aus.
 png> <./fig/ger.png (PNG copy)> <./fig/swe.png (PNG copy)>] [2 <./fig/WorkloadM
 onitor.png>] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--197
+Underfull \hbox (badness 10000) in paragraph at lines 194--199
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--201
+Underfull \hbox (badness 10000) in paragraph at lines 200--203
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--208
+Underfull \hbox (badness 10000) in paragraph at lines 204--210
 
  []
 
 <fig/netflix.png, id=30, 178.047pt x 316.674pt>
 File: fig/netflix.png Graphic file (type png)
  <use fig/netflix.png>
-Package pdftex.def Info: fig/netflix.png used on input line 231.
+Package pdftex.def Info: fig/netflix.png used on input line 223.
 (pdftex.def)             Requested size: 130.12308pt x 231.45517pt.
  [4]
-
-Package wrapfig Warning: Collision between wrapping environments on input line 
-238.
-
 <fig/slider.png, id=34, 521.69907pt x 174.6525pt>
 File: fig/slider.png Graphic file (type png)
  <use fig/slider.png>
-Package pdftex.def Info: fig/slider.png used on input line 241.
-(pdftex.def)             Requested size: 200.19054pt x 67.01889pt.
-
-Overfull \hbox (1.02126pt too wide) in paragraph at lines 241--242
- [] 
- []
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 24
-8.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 24
-9.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 25
-1.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 25
-2.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 25
-3.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 25
-4.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 25
-8.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 25
-9.
-
+Package pdftex.def Info: fig/slider.png used on input line 244.
+(pdftex.def)             Requested size: 234.7624pt x 78.5929pt.
+ [5 <./fig/netflix.png> <./fig/slider.png>]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
-[5 <./fig/netflix.png> <./fig/slider.png>]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 317.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 331.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 317.
- [6] [7] [8]
-<fig/schedule.png, id=50, 1087.06125pt x 417.56pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 331.
+ [6] [7] [8] [9]
+<fig/schedule.png, id=53, 1087.06125pt x 417.56pt>
 File: fig/schedule.png Graphic file (type png)
  <use fig/schedule.png>
-Package pdftex.def Info: fig/schedule.png used on input line 460.
+Package pdftex.def Info: fig/schedule.png used on input line 474.
 (pdftex.def)             Requested size: 489.17303pt x 187.90025pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 496--501
-
- []
-
 [10 <./fig/schedule.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 543--544
+Underfull \hbox (badness 10000) in paragraph at lines 510--515
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 557--558
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 545--546
+Underfull \hbox (badness 10000) in paragraph at lines 559--560
 
  []
 
-[11] (./Application_Holmbacka.bbl
+(./Application_Holmbacka.bbl
 Missing character: There is no Ã in font cmr8!
 Missing character: There is no © in font cmr8!
 Missing character: There is no â in font cmr8!
@@ -1177,13 +1189,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20180 strings out of 494167
- 413827 string characters out of 6159783
- 433131 words of memory out of 5000000
- 23182 multiletter control sequences out of 15000+600000
+ 21739 strings out of 494167
+ 441320 string characters out of 6159783
+ 456861 words of memory out of 5000000
+ 24710 multiletter control sequences out of 15000+600000
  11580 words of font info for 43 fonts, out of 8000000 for 9000
  438 hyphenation exceptions out of 8191
- 63i,20n,80p,10449b,575s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,20n,92p,10449b,599s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
@@ -1195,7 +1207,7 @@ c/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 8.pfb>
-Output written on Application_Holmbacka.pdf (12 pages, 426475 bytes).
+Output written on Application_Holmbacka.pdf (12 pages, 426449 bytes).
 PDF statistics:
  102 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream

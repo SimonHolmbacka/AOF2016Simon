@@ -28,6 +28,8 @@
 \usepackage{amsmath} % Required for some math elements 
 \usepackage{todonotes}
 \usepackage{wrapfig}
+\usepackage{caption}
+\usepackage[export]{adjustbox}
 \usepackage{pbox}
 \usepackage{geometry}
 \newgeometry{left=2cm, right=2cm, bottom=2cm}
@@ -215,6 +217,16 @@ When adding more complex criteria with multiple variables such as energy efficie
 \section{Objectives and expected results}
 
 \subsection{Objectives}
+\begin{wrapfigure}{r}{5cm}
+  \begin{center}
+  \vspace{-0.8cm}
+    \includegraphics[width=0.26\textwidth]{fig/netflix.png}
+  \end{center}
+  \caption{Quality-of-Service as a left click option in the Netflix app on Android}
+  \label{fig:netflix}
+  \vspace{-2.5cm}
+\end{wrapfigure}
+
 Our current design recommendations for energy aware programming described in the thesis of the PI extends the application to signal resource requirements to the runtime system which allocates the hardware resources.
 \textbf{The objectives of this research is to develop a framework for programming energy aware software.}
 By using the framework, the programmer can specify resource requirement or ``Quality-of-Service'' requirements directly in the source code.
@@ -225,34 +237,36 @@ Figure \ref{fig:netflix} illustrates for example the ability to add a Quality-of
 The user can use this option to select the trade-off between energy savings and performance in terms of decoding framerate or other parameters. 
 Options can set based on a defined value like ``decoding framerate'' or as a more abstract option as illustrated in Figure \ref{fig:slider}. 
 The intension of the energy aware framework is to expose the link between the application and the runtime system, while the design of using its abilities is up to the programmer.
-\begin{wrapfigure}{tr}{5cm}
-  \begin{center}
-  \vspace{-0.8cm}
-    \includegraphics[width=0.26\textwidth]{fig/netflix.png}
-  \end{center}
-  \caption{Quality-of-Service as a left click option in the Netflix app on Android}
-  \label{fig:netflix}
-  \vspace{-1.5cm}
-\end{wrapfigure}
+\begin{figure}[h]
+\captionsetup{justification=raggedright,
+singlelinecheck=false
+}
+	\includegraphics[scale=0.45,left]{fig/slider.png}
+	\caption{Slider option for QoS in Android app}
+	\label{fig:slider}
 
-\begin{wrapfigure}{rt}{7cm}
-  \begin{center}
-  \vspace{-0.8cm}
-    \includegraphics[width=0.4\textwidth]{fig/slider.png}
-  \end{center}
-  \caption{Slider option for QoS in Android app}
-  \label{fig:slider}
-  \vspace{-0.2cm}
-\end{wrapfigure}
+\end{figure}
+
+% \begin{wrapfigure}{r}{7cm}
+%   \begin{center}
+% %   \vspace{-0.8cm}
+%     \includegraphics[width=0.4\textwidth]{fig/slider.png}
+%   \end{center}
+%   \caption{Slider option for QoS in Android app}
+%   \label{fig:slider}
+% %   \vspace{-0.2cm}
+% \end{wrapfigure}
 
 \subsection{Hypothesis}
 The project states the following Hypotheses:
+
 \begin{enumerate}
  \item Performance requirements in computer systems will continue to increase significantly faster than battery technology development, software must thus utilize the resources more efficiently.
  \item Energy aware software can utilize the hardware resources more efficiently because hardware resources are allocated based on actual performance requirements.
  \item Software can be made energy aware with minimal performance overhead and minimal programmer efforts.
  \item 50\% of energy can be saved using energy awareness in software.
 \end{enumerate}
+
 
 
 \subsubsection{Previous work on energy aware software}
