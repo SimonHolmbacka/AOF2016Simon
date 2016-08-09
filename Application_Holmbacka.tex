@@ -28,6 +28,7 @@
 \usepackage{amsmath} % Required for some math elements 
 \usepackage{todonotes}
 \usepackage{wrapfig}
+\usepackage{pbox}
 \usepackage{geometry}
 \newgeometry{left=2cm, right=2cm, bottom=2cm}
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
@@ -56,17 +57,24 @@
 \textit{Vattenborgsv\"{a}gen 5 20500 Turku, Finland}\\
 
 \textbf{Sites for research cooperation:}\\
-\textit{IETR - INSA Rennes\\
-Institut d'Electroniques et de T\'{e}l\'{e}communications\\
-35708 Rennes Cedex 7, France\\}
 
-\textit{FernUniversit\"{a}t in Hagen\\
-Fakult\"{a}t f\"{u}r Mathematik und Informatik\\
-58084, Universit\"{a}tstrasse 11, Hagen, Germany\\}
 
-\textit{TU Wien\\
-Institute for Software Technology and Interactive Systems\\
-1040 Favoritenstrasse 9-11 Vienna, Austria}
+
+
+
+\begin{table}[h]
+\begin{center}
+
+\begin{tabular}{  l  l  }
+\pbox{10cm}{\textit {IETR - INSA Rennes}\\\textit {Institut d'Electroniques et de T\'{e}l\'{e}communications}\\\textit{35708 Rennes Cedex 7, France}} & 
+\pbox{10cm}{\textit {TU Wien}\\ \textit{Institute for Software Technology and Interactive Systems}\\\textit{1040 Favoritenstrasse 9-11 Vienna, Austria}}   \\ \\
+\pbox{10cm}{\textit{FernUniversit\"{a}t in Hagen}\\ \textit{Fakult\"{a}t f\"{u}r Mathematik und Informatik}\\ \textit{58084, Universit\"{a}tstrasse 11, Hagen, Germany}} & 
+\pbox{10cm}{\textit{Uppsala University}\\\textit{Department of Information Technology}\\\textit{75105, ITC, L\"{a}gerhyddsv\"{a}gen 2, Uppsala, Sweden}} \\ 
+\end{tabular}
+\label{tab:strconf}
+\end{center}
+
+\end{table}
 
 \date{\today} % Date for the report
 
@@ -83,7 +91,7 @@ In recent hardware, this scaling no longer applies since the voltage range used 
 The end of Dennard scaling brings consequences such as an disproportional increase in thermal dissipation leading to dark silicon, 
 which means that all processing power on a chip cannot be used simultaneously because of the limited power envelope.\\
 
-\begin{wrapfigure}{r}{6cm}
+\begin{wrapfigure}{br}{6cm}
   \begin{center}
     \vspace{-1cm}
     \includegraphics[width=0.4\textwidth]{fig/workload.png}
@@ -203,19 +211,18 @@ The system builds a performance model of the implemented CUDA or OpenCL kernels 
 The \textbf{PEPPHER}\footnote{http://www.peppher.eu/} project has used StarPU as a backend and the outcome of the project is a tool capable of generating multi-variant tasks for StarPU (OpenMP, OpenCL etc.). 
 However, StarPU only consider the optimizations in form of performance. 
 When adding more complex criteria with multiple variables such as energy efficiency or monetary cost, StarPU lacks the insight to such resource allocation.
-\clearpage
-
 
 \section{Objectives and expected results}
 
 \subsection{Objectives}
-\begin{wrapfigure}{tr}{0.25\textwidth}
+\begin{wrapfigure}{tr}{5cm}
   \begin{center}
-    \includegraphics[width=0.22\textwidth]{fig/netflix.png}
+  \vspace{-0.8cm}
+    \includegraphics[width=0.26\textwidth]{fig/netflix.png}
   \end{center}
   \caption{Quality-of-Service as a left click option in the Netflix app on Android}
   \label{fig:netflix}
-  \vspace{0.5cm}
+  \vspace{1.5cm}
 \end{wrapfigure}
 Our current design recommendations for energy aware programming described in the thesis of the PI extends the application to signal resource requirements to the runtime system which allocates the hardware resources.
 \textbf{The objectives of this research is to develop a framework for programming energy aware software.}
@@ -227,8 +234,9 @@ Figure \ref{fig:netflix} illustrates for example the ability to add a Quality-of
 The user can use this option to select the trade-off between energy savings and performance in terms of decoding framerate or other parameters. 
 Options can set based on a defined value like ``decoding framerate'' or as a more abstract option as illustrated in Figure \ref{fig:slider}. 
 The intension of the energy aware framework is to expose the link between the application and the runtime system, while the design of using its abilities is up to the programmer.
-\begin{wrapfigure}{hr}{0.4\textwidth}
+\begin{wrapfigure}{rt}{7cm}
   \begin{center}
+  \vspace{-0.8cm}
     \includegraphics[width=0.4\textwidth]{fig/slider.png}
   \end{center}
   \caption{Slider option for QoS in Android app}
@@ -243,7 +251,14 @@ g
 dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgs
 
 \subsection{Hypothesis}
-\todo[inline,color=orange]{Points here}
+The project states the following Hypotheses:
+\begin{enumerate}
+ \item Performance requirements in computer systems will continue to increase significantly faster than battery technology development, software must thus utilize the resources more efficiently.
+ \item Energy aware software can utilize the hardware resources more efficiently because hardware resources are allocated based on actual performance requirements.
+ \item Software can be made energy aware with minimal performance overhead and minimal programmer efforts.
+ \item 50\% of energy can be saved using energy awareness in software.
+\end{enumerate}
+
 
 \subsubsection{Previous work on energy aware software}
 In previous work, Eyerman et al. \cite{Eyerman:09} claim that no single throughput metric is fundamentally generic for multiprogram workloads. 
@@ -324,10 +339,11 @@ Access to hardware platforms is therefore crucial for this project.
 As the framework for energy aware programming is applicable in an interdiciplinary domain, we intend to apply for accesability to large scale cloud platforms like Amazon and to Android based platforms.
 However, our team has previously obtained the Amazon EC2 grant\footnote{https://aws.amazon.com/grants/} twice enabling access to large scale servers.
 The PI also has connections to the energy efficient middleware group in ARM Cambride, the leader of which was invited to one of our project workshops in the PARALLAX project.
+\todo[inline]{Alternative approaches}
 
 \subsection{Publication plan}
 We intend to publish at the top journals and conferences based on the JuFo listings, and we will select publication venues that use some form of open access model, most likely green open access. 
-To this end I have included a lump yearly sum to cover the publication fees. 
+To this end a lump yearly sum is included to cover the publication fees. 
 Further, we plan to also be visible in industrial event and fares to both demonstrate and get feedback on our reseach work.
 The publication rate with regard to the project is approximately 3--4 high-quality peer-reviewed publications per year.
 
@@ -353,7 +369,7 @@ We subscribe to the idea of open reproducible science.
 The computer architecture area has suffered from problems with reproducibility in that often neither the software nor the full measurement data are available. 
 We intend to be as open as possible about our research. 
 All software will be released under an open-source license. 
-Zenodo\footnote{http://zenodo.org/} has been selected as the platform where we plan to publish measurement results and each submission in Zenodo can get a citable DOI
+Zenodo\footnote{http://zenodo.org/} has been selected as the platform where we plan to publish measurement results and each submission in Zenodo can get a citable DOI.
 
 \subsection{Support form research environment}
 The research team will be well supported by infrastructure available at through the Centre for Computer Science (TUCS), 
@@ -371,7 +387,7 @@ The PI is an active member of the COST action IC1305 Network for Sustainable Ult
 Joint articles have been published in the COST action between the PI in \AA{}bo Akademi University and the group in TU Wien led by Ivona Brandi\'{c} and one between the PI and the group in University of Tirana led by Neki Frasheri, once of which to appear in IEEE Transactions.
 
 The ESLab is leading the energy efficient computing module of the EIT ICT Labs Master School in Embedded Systems and is actively participating in the activities of the thematic action line Smart Energy Systems of EIT ICT Labs.
-The PI together with EIT Digital recently released an online Coursera course on the subject in ``Development of Real-Time Systems''\footnote{https://www.coursera.org/learn/real-time-systems/} currently followed by over 2300 student world-wide.
+The PI together with EIT Digital recently released an online Coursera course on the subject in ``Development of Real-Time Systems''\footnote{https://www.coursera.org/learn/real-time-systems/} currently followed by over 2500 students world-wide.
 
 Our team has a full time lab technician constructing specialized equipment needed in our experimental work. 
 The team therefore has strong knowledge in manufacturing measurement tools for externally probing and measuring running systems. 
@@ -389,46 +405,67 @@ This research project has no ethical issues.
 
 \section{Implementation: schedule, budget, distribution of work}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.45]{fig/schedule.pdf}
-	\caption{Time schedule for the project}
-	\label{fig:schedule}
-\end{figure}
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[scale=0.45]{fig/schedule.pdf}
+% 	\caption{Time schedule for the project}
+% 	\label{fig:schedule}
+% \end{figure}
 
 \subsection{Work packages}
-\subsubsection{WP1 -- Exposing the meta-data}
+\subsubsection{WP1 -- State of the art and exposing the meta-data}
 The initial part of the project is to determine how to expose the meta-data to the progammer.
-The WP is intended to firstly define what exactly should be included in the meta-data and how it should be used.
-What must be determined is guideline for how, where, and when the meta-data should be injected in software.
-Secondly, the integration of the monitoring sub system is part of WP1.
+Therefore the project begins with a state-of-the-art review of currently proposed solutions for defining performance requirements.
+The WP is intended to firstly define what exactly should be included in the meta-data to get a proper description of performance in applications. 
+Further, what must be determined is guidelines for how, where, and when the meta-data should be injected in software to ensure stability and minimal performance overhead.
+Included in this WP is tool support for automatic meta-data injection based on the findings earlier in the WP.
+\begin{itemize}
+ \item Tasl 1.1 State-of-the-art review \vspace{-0.3cm}
+ \item Task 1.2 Defining the meta-data \vspace{-0.3cm}
+ \item Task 1.3 Injecting the meta-data in software \vspace{-0.3cm}
+ \item Task 1.4 Tools for introducing meta-data in software \vspace{-0.3cm}
+\end{itemize}
+
+\subsubsection{WP2 -- Feedback monitor}
+WP2 covers the monitoring of the application software.
 This includes how to interconnect the monitor with the application, determine the information flow between the application and the monitor and also how to forward this information to the resource allocation controller.
-Included in this WP is tool support for automatic meta-data injection and tool support for monitoring.
+The main problems to tackle here is how the application software can be monitored without affecting the functionality or the performance of the system.
+State-of-the-art monitoring systems such as the MIT heartbeats \cite{Hoffmann:10} will be evaluated as complementary research to the proposed energy awareness monitor.
+A monitoring interface will be developed and its crossdomain applicability will be evaluated on Android, PC and server systems.
+
 \begin{itemize}
- \item Task 1.1 Defining and injecting meta-data \vspace{-0.3cm}
- \item Task 1.2 Constructing monitoring framework \vspace{-0.3cm}
- \item Task 1.3 Tools for introducing meta-data in software \vspace{-0.3cm}
- \item Task 1.4 Tools for monitoring
+\item Task 2.1 Evaluate complementary work and possible integration \vspace{-0.3cm}
+\item Task 2.2 Construction of the monitoring interface and framework \vspace{-0.3cm}
+\item Task 2.3 Crossdomain evaluation of monitoring system
 \end{itemize}
 
-\subsubsection{WP2 -- Energy aware controller}
-WP2 is about using the meta-data definitions in WP1 and use them for energy optimizations by a runtime system controller.
-The main challenge in WP2 is to define energy efficient schdules and how the resources should be allocated to achieve energy efficiency.
+\subsubsection{WP3 -- Energy aware controller}
+WP3 is about using the meta-data definitions in WP1 and the monitoring data from WP2 and use it for energy optimizations by a runtime system controller.
+The main challenge in WP3 is to define the resource allocation to achieve maximal energy efficiency.
+Several well established optimization methods based on system models will be evaluated.
 This means firstly modeling the underlying system and secondly applying mathematical optimization methods on the model.
-The work was initiated in the thesis of the PI, and WP2 is intended to refine the optimization methods for a larger selection of platforms and improve on existing optimization methods.
-WP2 also include the implementation of tools for automatic model generation for increasing the portability of the framework and finally the implementation of the runtime system controller itself.
-
+The work was initiated in the thesis of the PI, and WP3 is intended to refine the optimization methods for a larger selection of platforms and improve on existing optimization methods.
+WP3 also include the implementation of tools for automatic model generation for increasing the portability of the framework and finally the implementation of the runtime system controller itself.
 \begin{itemize}
- \item Scheduling and optimization of energy consumption \vspace{-0.3cm}
- \item Modeling energy consumption \vspace{-0.3cm}
- \item Tools for generating energy models \vspace{-0.3cm}
- \item Implementation of controller
+ \item Task 3.1: Modeling energy consumption \vspace{-0.3cm}
+ \item Task 3.2: Tools for generating energy models \vspace{-0.3cm}
+ \item Task 3.3: Adopting optimization methods for energy efficiency \vspace{-0.3cm}
+ \item Task 3.4: Implementation of runtime controller
 \end{itemize}
 
-\subsubsection{WP3 -- A framework for energy aware programming}
+\subsubsection{WP4 -- A framework for energy aware programming and demonstrator}
+The final stage of the research is to bind the previously created methods into a package usable for the programmer.
+Construction of the API framework used for energy aware programming is defined as the first item in WP4.
+The API is a result from the meta-data declaration in WP1, the monitor interface in WP3 and the runtime system in WP3.
+Additional efforts in this WP is especially put on supporting interdiciplinary domains of platforms.
+A software library, pragma or other interface is the final deliverable and is the link between the application software and the runtime system.
+Additionally, we demonstrate its usability with single small scale use-cases, which also function as evaluation of the API.
+Lastly a large scale demonstrator is created running a complete version of the energy aware software on an off-the-shelf consumer device such as an Android phone or tablet.
+
 \begin{itemize}
- \item Construction of API (Library / pragma)
- \item Use-cases
+ \item Task 4.1: Construction of API for energy aware programming \vspace{-0.3cm}
+ \item Task 4.2: Single use-cases \vspace{-0.3cm}
+ \item Task 4.3: Demonstrator
 \end{itemize}
 
 
