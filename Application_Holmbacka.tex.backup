@@ -49,27 +49,21 @@
 \huge{Energy Aware Software}\\\\
 \normalsize\textbf{Principal investigator}: Dr. Simon Holmbacka\\ 
 \textbf{Project starting time}: xxx\\
-\textbf{Duration of the project}: xxx\\\\
+\textbf{Duration of the project}: 48 months\\
 \textbf{Site of research}:\\
 \textit{\AA{}bo Akademi University} \\
 \textit{Faculty of Science and Engineering}\\
 \textit{Embedded Systems Laboratory}\\
 \textit{Vattenborgsv\"{a}gen 5 20500 Turku, Finland}\\
 
-\textbf{Sites for research cooperation:}\\
-
-
-
-
-
+\textbf{Sites for research cooperation:}
 \begin{table}[h]
 \begin{center}
-
 \begin{tabular}{  l  l  }
-\pbox{10cm}{\textit {IETR - INSA Rennes}\\\textit {Institut d'Electroniques et de T\'{e}l\'{e}communications}\\\textit{35708 Rennes Cedex 7, France}} & 
-\pbox{10cm}{\textit {TU Wien}\\ \textit{Institute for Software Technology and Interactive Systems}\\\textit{1040 Favoritenstrasse 9-11 Vienna, Austria}}   \\ \\
-\pbox{10cm}{\textit{FernUniversit\"{a}t in Hagen}\\ \textit{Fakult\"{a}t f\"{u}r Mathematik und Informatik}\\ \textit{58084, Universit\"{a}tstrasse 11, Hagen, Germany}} & 
-\pbox{10cm}{\textit{Uppsala University}\\\textit{Department of Information Technology}\\\textit{75105, ITC, L\"{a}gerhyddsv\"{a}gen 2, Uppsala, Sweden}} \\ 
+\pbox{10cm}{\textit {IETR - INSA Rennes }\includegraphics[width=0.4cm]{fig/fra.png} \\\textit {Institut d'Electroniques et de T\'{e}l\'{e}communications}\\\textit{35708 Rennes Cedex 7, France}} & 
+\pbox{10cm}{\textit {TU Wien }\includegraphics[width=0.4cm]{fig/aus.png} \\ \textit{Institute for Software Technology and Interactive Systems}\\\textit{1040 Favoritenstrasse 9-11 Vienna, Austria}}   \\ \\
+\pbox{10cm}{\textit{FernUniversit\"{a}t in Hagen }\includegraphics[width=0.4cm]{fig/ger.png} \\ \textit{Fakult\"{a}t f\"{u}r Mathematik und Informatik}\\ \textit{58084, Universit\"{a}tstrasse 11, Hagen, Germany}} & 
+\pbox{10cm}{\textit{Uppsala University }\includegraphics[width=0.4cm]{fig/swe.png} \\\textit{Department of Information Technology}\\\textit{75105, ITC, L\"{a}gerhyddsv\"{a}gen 2, Uppsala, Sweden}} \\ 
 \end{tabular}
 \label{tab:strconf}
 \end{center}
@@ -91,37 +85,44 @@ In recent hardware, this scaling no longer applies since the voltage range used 
 The end of Dennard scaling brings consequences such as an disproportional increase in thermal dissipation leading to dark silicon, 
 which means that all processing power on a chip cannot be used simultaneously because of the limited power envelope.\\
 
-\begin{wrapfigure}{br}{6cm}
-  \begin{center}
-    \vspace{-1cm}
-    \includegraphics[width=0.4\textwidth]{fig/workload.png}
-  \end{center}
-  \caption{Load calculated as a ratio between active and idle for a defined window (Gray rectangles represent an active CPU).}
-  \label{fig:workload}
-%   \vspace{-2cm}
-\end{wrapfigure}
-
 To tackle these problems, power management systems are implemented to scale the performance of the system according to the current resource demand. 
 The resouce demand is measued as the utilization caused by the workload of the CPU. 
 Workload in operating systems is measured as a sliding window average over an active and idle CPU as illustrated in Figure~\ref{fig:workload}. 
 A high workload indicates that the system needs more resources, and the clock frequency is scaled up to decrease the workload on the CPU.
+Setting the frequency can be based on different policies, and the most common policy is called ``ondemand''\cite{ondemand}.
+This frequency governor scales the clock frequency to the maximum value as soon as a workload threshold is reached.
+After this it step-wise decreases the clock frequency to the lowest frequency not exceeding the threshold.\\
+
 The problem with this approach is that the workload does not describe the performance of the applications.
 High workload does not necessary mean that an application requires more performance, it simply describes how much the application is using the CPU.
+It is merely an indirect effect of executing an application as illustrated in Figure \ref{fig:workload}.
 For example, in case the CPU is set to decode a video, the workload will increase to 100\% as soon as the video frames are being decoded.  
 This means that the CPU is clocked to the maximum frequency as long as the frames are being decoded and the decoded frame rate is only limited by the speed of the CPU; 
 even if the required decoding rate is only 25 frames per second, which the human eye is capable of observing.
 In other words, the application will be executed unnecessarily fast. 
 As results from \cite{HolmbackaHipeac, HolmbackaDasip} show, executing the application unnecessarily fast wastes significantly more energy than executing the application on a moderate, 
 but still at a sufficiently fast, performance level. 
-The currently unsolved problem is to manage to execute an application on a moderate, yet sufficiently high, performance level. 
-This means that applications are not involved in the power management decisions, nor does any interface between the applications and the runtime system to provide such facilities exist. 
-
-
-
-What we propose is to \textbf{make the application software itself energy aware}.
-This means that the applications can set performance requirement in their own metric, e.g. frames per second.
+An attempt to refine the functionality of the frequency governors was presented in \cite{Spiliopoulos:11}.
+Their frequency governor the ``Green Governor'' scales the clock frequency not only based on the workload, but also in the memory intensity.
+The assumption made was that higher memory intensity stalls the CPU enough to not benefit from high clock frequency.
+The fundamental problem was still unsolved because the governor attempted to model the performance requirement of the application indirectly,
+and in case the model does not fit the application, either exessive or insufficient resources are allocated to the application.
+\begin{wrapfigure}{br}{9cm}
+  \begin{center}
+%     \vspace{-1cm}
+    \includegraphics[width=9cm]{fig/WorkloadMonitor.png}
+  \end{center}
+  \caption{Current approach for power management: The application causes a workload (illustrated by the gray rectangles), and the frequency governor scales the clock frequency according to the load level.}
+  \label{fig:workload}
+  \vspace{-2cm}
+\end{wrapfigure}
+What we propose is to make the application software itself \textbf{energy aware}.
+This means that the applications are involved in resource allocation directly.
+An energy aware application can set performance requirement in the own metric, e.g. frames per second.
 The runtime system monitoring the performance of the application then allocates the hardware resources to meet the demands of the applications.
-In order for applications to communicate with the runtime system, three main parts are needed:
+Such a power management system requires an interface between application and runtime system, which is current non-existing.
+This research is aimed to provide such an interface, and the necessary tools needed to use it.
+Three main parts are planned for this research:
 \begin{enumerate}
  \item A framework for expressing performance requirements in the applications
  \item A system monitoring the runtime performance of the applications
@@ -131,37 +132,35 @@ The three parts will be covered in this research project and described as follow
 
 \subsection{Application meta-data}
 The main challenge in creating energy aware software is to enable the expression of resource requirements in applications.
-As previously mentioned, the traditional way of solely monitoring the workload is a very innacurate and often counter productive both in terms of performance and energy.
+As previously mentioned, the traditional way of solely monitoring the workload is a very innacurate and often counter-productive both in terms of performance and energy.
 We tackle this challenge by allowing the applications to express the resource requirements internally.
 This means that the application should include a small part of code -- the meta-data -- which expresses the intensions of the application.
-For example, the previously mentioned video decoder can demand a framerate of 25 frames per seconds instead of decoding as fast as possible.
-\todo{More about meta-data}
-\todo{Code example}
+For example, the previously mentioned video decoder can demand a framerate of 25 frames per seconds instead of decoding as \textit{fast as possible}.
 In theis research, we will investigate the types on meta-data needed to describe and appliction sufficiently in terms of performance requirements.
-On of the challenges is to obtain a sufficiently descriptive form of meta-data that can be generalized to any application.
-We will aim this research initially in pinpointing the required meta-data for generalizing resource requirements in software.
-Once the meta-data descriptions have been established, the injection of the data into both new- and legacy applications must be achieved effort-less in order for the programmers to make the additional effort.
+On of the challenges is to obtain a sufficiently descriptive form of meta-data that can be generalized to any new- or legacy application.
+Once the meta-data descriptions have been established, the injection of the data into both new- and legacy applications must be achieved fairly effortless in order for the programmers to make the additional effort.
 A trade-off between desriptiveness and programmer effort is to be expected.
 
 \subsection{Feedback monitor}
 Since applications in general are dynamic, the performance of the application depends on a wide set of factors such as memory intensity, use of caches, user interrupts, the data sizes and data types used, interaction with other applications etc. 
 This means that the performance of an application cannot be guaranteed with fixed resources.
-For example a completely black video frame requires much less resources for decoding than a video frame with many details and motions.
-In order to adapt the resources allocated to the needs of the application, the application must be monitored at runtime.
+For example a completely black video frame requires much less resources for decoding than a video frame with many details and motion vectors.
+In order to adapt the resources allocated to the application, the performance of the application must be monitored at runtime.
 Such a monitoring facility can determine the \textit{current} performance of the application to the \textit{required} performance annotated in the meta-data.
-In case the currently allocated performance is either too high or too low, the monitoring framework allocates or deallocates resources to accommodate to the real resource requirement.
+In case the currently allocated performance is either too high or too low, the monitoring reports this issue to the controller which allocates or deallocates resources to accommodate to the real resource requirement.
 A main part of this research is therefore to create a proper monitoring framework.
-Such a framework must be detailed enough to provide sufficient tools for measuring performance, but simple enough to reduce programmer effort.
+Such a framework must be detailed enough and provide sufficient tools for measuring performance, but simple enough to reduce programmer effort for using it.
 Since the monitoring framework is a runtime system, significantly low overhead must be guaranteed to not interfere with the energy consumption and performance of the host system.
 
 \subsection{Resource controller}
-
+The third part of the system is the resource controller which allocates and deallocates hardware resources.
+Such resources are usually in form of clock frequencies and numbers of cores active, but is not necessarily restricted to these resources.
+Allocating resources efficiently means having a knowledge of how resources of one form affects the performance of the application requesting the resources.
+This means that a complete system model is required together with rigorous optimization methods implemented with a very low performance overhead on the host system.
+A prototype controller was developed by the PI in his thesis, and this research project will build upon this idea of multi-criteria optimization.
+Further efforts will also be put on interdiciplinary platforms with different possible hardware resources, allocation methods and performance requirements.
 
 \subsection{Previous work}
-% \begin{figure}[b]
-% 	\centering
-% 	\includegraphics[scale=0.1]{fig/featureimage.png}
-% \end{figure}
 The embedded systems lab in the \AA{}bo Akademi University has for the last six years focused on low power and energy aware software. 
 During these years a special interest had been put in mobile phone processors and their significance for energy awareness in general. 
 This is because it has been noted that the trend of performance requirements by far exceeds the battery capacity of a mobile device, especially since the mobile multi-core revolution \cite{BatteryCapacity,CPUCapacity}. 
@@ -171,7 +170,8 @@ In the thesis of the PI ``\textit{Energy Aware Software for Many-Core Systems}''
 Implementing the recommendations in software has proven to reduce the energy consumption up to 50\% without degrading the performance \cite{HolmbackaHipeac}, especially on mobile multi-core hardware. 
 The recommendations called ``Energy aware mapping'' and ``Energy aware resource allocation'' are used to tailor the resource allocation to the software executing, 
 and a prototype runtime system was implemented as a phase of the PhD thesis. 
-Using this software, practical state-of-the-art demonstrator were created, for example the Android app ``Low Energy Player'' available on Google store\footnote{https://play.google.com/store/apps/details?id=org.videolan.vlc.LEL.lite.green}
+Using this software, practical state-of-the-art demonstrators were created, for example a low power video transcoding cloud system\footnote{Picture of the ESLab demonstator available at https://dl.dropboxusercontent.com/u/5260559/ClusterDemo.jpg} demonstrated in the Millennium Pavilion SHOK Summit in Helsinki, and in the DIGILE Workshop ``Rolling up the Sleeves''.
+Also, the Android app ``Low Energy Player'' was implemented as a state-of-the-art demonstrator and is available on Google store\footnote{https://play.google.com/store/apps/details?id=org.videolan.vlc.LEL.lite.green}
 This research is intended to go beyond the state-of-the-art by the development of a programming framework for energy aware software and practical demonstrators.
 
 \subsection{Related work}
@@ -184,7 +184,7 @@ and the underlying hardware architecture must be known.
 In the thesis ``Developing Energy-Aware Software'' by Brinke \cite{Brinke:15} the author describes programming languages for modularity and modeling resource consumption for software.
 The \textit{awareness} of energy, is tightly bound to the application code and the programmer is expected to follow certain programming patterns to make the software energy aware.
 On the contrary, the planned framework for energy efficient software requires only the insertion of meta-data in the software.
-This means minimal effort of the programmer and the application algorithms can be implemented without influence over the energy awareness.
+This means minimal effort of the programmer and the application algorithms can be implemented without interference from the energy awareness framework.
 The resource requirements are specified using a simple library, where after the runtime environment allocates the required resources.
 
 The \textbf{Carbon Research Group}\footnote{http://groups.csail.mit.edu/carbon/} at MIT has developed a heartbeat framework to evaluate performance as a generic parameter in software construction. The framework is capable of measuring performance of any application as a generic parameter by user inserted API calls to the heartbeat library. Measuring performance is the necessary first step when constructing a feedback-based control system. For example it enables the possibility to measure the framerate in a video decoder, but a controller is then needed to allocate the resources in order to keep the performance on a given setpoint. We consider using the heartbeat framework for measuring generic performance in our energy awareness framework, but we plan to extend the framework considerably in order to add the controller for allocating resources.\\
@@ -215,15 +215,6 @@ When adding more complex criteria with multiple variables such as energy efficie
 \section{Objectives and expected results}
 
 \subsection{Objectives}
-\begin{wrapfigure}{tr}{5cm}
-  \begin{center}
-  \vspace{-0.8cm}
-    \includegraphics[width=0.26\textwidth]{fig/netflix.png}
-  \end{center}
-  \caption{Quality-of-Service as a left click option in the Netflix app on Android}
-  \label{fig:netflix}
-  \vspace{1.5cm}
-\end{wrapfigure}
 Our current design recommendations for energy aware programming described in the thesis of the PI extends the application to signal resource requirements to the runtime system which allocates the hardware resources.
 \textbf{The objectives of this research is to develop a framework for programming energy aware software.}
 By using the framework, the programmer can specify resource requirement or ``Quality-of-Service'' requirements directly in the souce code.
@@ -234,6 +225,16 @@ Figure \ref{fig:netflix} illustrates for example the ability to add a Quality-of
 The user can use this option to select the trade-off between energy savings and performance in terms of decoding framerate or other parameters. 
 Options can set based on a defined value like ``decoding framerate'' or as a more abstract option as illustrated in Figure \ref{fig:slider}. 
 The intension of the energy aware framework is to expose the link between the application and the runtime system, while the design of using its abilities is up to the programmer.
+\begin{wrapfigure}{tr}{5cm}
+  \begin{center}
+  \vspace{-0.8cm}
+    \includegraphics[width=0.26\textwidth]{fig/netflix.png}
+  \end{center}
+  \caption{Quality-of-Service as a left click option in the Netflix app on Android}
+  \label{fig:netflix}
+  \vspace{-1.5cm}
+\end{wrapfigure}
+
 \begin{wrapfigure}{rt}{7cm}
   \begin{center}
   \vspace{-0.8cm}
@@ -241,14 +242,8 @@ The intension of the energy aware framework is to expose the link between the ap
   \end{center}
   \caption{Slider option for QoS in Android app}
   \label{fig:slider}
-%   \vspace{-2cm}
+  \vspace{-0.2cm}
 \end{wrapfigure}
-
-dsgfdsf sdfg dsfg dsfgsdgfsdgs
-dsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgs
-g
-
-dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgsdsgfdsf sdfg dsfg dsfgsdgfsdgs
 
 \subsection{Hypothesis}
 The project states the following Hypotheses:
@@ -404,14 +399,6 @@ This competence will be put to good use in creating the energy aware programming
 This research project has no ethical issues.
 
 \section{Implementation: schedule, budget, distribution of work}
-
-% \begin{figure}[h]
-% 	\centering
-% 	\includegraphics[scale=0.45]{fig/schedule.pdf}
-% 	\caption{Time schedule for the project}
-% 	\label{fig:schedule}
-% \end{figure}
-
 \subsection{Work packages}
 \subsubsection{WP1 -- State of the art and exposing the meta-data}
 The initial part of the project is to determine how to expose the meta-data to the progammer.
@@ -420,10 +407,9 @@ The WP is intended to firstly define what exactly should be included in the meta
 Further, what must be determined is guidelines for how, where, and when the meta-data should be injected in software to ensure stability and minimal performance overhead.
 Included in this WP is tool support for automatic meta-data injection based on the findings earlier in the WP.
 \begin{itemize}
- \item Tasl 1.1 State-of-the-art review \vspace{-0.3cm}
- \item Task 1.2 Defining the meta-data \vspace{-0.3cm}
- \item Task 1.3 Injecting the meta-data in software \vspace{-0.3cm}
- \item Task 1.4 Tools for introducing meta-data in software \vspace{-0.3cm}
+ \item Task 1.1 State-of-the-art review and efining the meta-data \vspace{-0.3cm}
+ \item Task 1.2 Injecting the meta-data in software \vspace{-0.3cm}
+ \item Task 1.3 Tools for introducing meta-data in software \vspace{-0.3cm}
 \end{itemize}
 
 \subsubsection{WP2 -- Feedback monitor}
@@ -434,9 +420,9 @@ State-of-the-art monitoring systems such as the MIT heartbeats \cite{Hoffmann:10
 A monitoring interface will be developed and its crossdomain applicability will be evaluated on Android, PC and server systems.
 
 \begin{itemize}
-\item Task 1.1 Evaluate complementary work and possible integration \vspace{-0.3cm}
-\item Task 1.2 Construction of the monitoring interface and framework \vspace{-0.3cm}
-\item Task 1.3 Crossdomain evaluation of monitoring system
+\item Task 2.1 Evaluate complementary work and possible integration \vspace{-0.3cm}
+\item Task 2.2 Construction of the monitoring interface and framework \vspace{-0.3cm}
+\item Task 2.3 Crossdomain evaluation of monitoring system
 \end{itemize}
 
 \subsubsection{WP3 -- Energy aware controller}
@@ -447,22 +433,36 @@ This means firstly modeling the underlying system and secondly applying mathemat
 The work was initiated in the thesis of the PI, and WP3 is intended to refine the optimization methods for a larger selection of platforms and improve on existing optimization methods.
 WP3 also include the implementation of tools for automatic model generation for increasing the portability of the framework and finally the implementation of the runtime system controller itself.
 \begin{itemize}
- \item Modeling energy consumption \vspace{-0.3cm}
- \item Tools for generating energy models \vspace{-0.3cm}
- \item Adopting optimization methods for energy efficiency \vspace{-0.3cm}
- \item Implementation of runtime controller
+ \item Task 3.1: Modeling energy consumption \vspace{-0.3cm}
+ \item Task 3.2: Tools for generating energy models \vspace{-0.3cm}
+ \item Task 3.3: Adopting optimization methods for energy efficiency \vspace{-0.3cm}
+ \item Task 3.4: Implementation of runtime controller
 \end{itemize}
 
 \subsubsection{WP4 -- A framework for energy aware programming and demonstrator}
+The final stage of the research is to bind the previously created methods into a package usable for the programmer.
+Construction of the API framework used for energy aware programming is defined as the first item in WP4.
+The API is a result from the meta-data declaration in WP1, the monitor interface in WP3 and the runtime system in WP3.
+Additional efforts in this WP is especially put on supporting interdiciplinary domains of platforms.
+A software library, pragma or other interface is the final deliverable and is the link between the application software and the runtime system.
+Additionally, we demonstrate its usability with single small scale use-cases, which also function as evaluation of the API.
+Lastly a large scale demonstrator is created running a complete version of the energy aware software on an off-the-shelf consumer device such as an Android phone or tablet.
+
 \begin{itemize}
- \item Construction of API (Library / pragma)
- \item Single use-cases
- \item Demonstrator
+ \item Task 4.1: Construction of API for energy aware programming \vspace{-0.3cm}
+ \item Task 4.2: Single use-cases \vspace{-0.3cm}
+ \item Task 4.3: Demonstrator
 \end{itemize}
 
+The timeline of the research work is summarized in Figure \ref{fig:schedule}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.45]{fig/schedule.png}
+	\caption{Time schedule for the project}
+	\label{fig:schedule}
+\end{figure}
 
 \subsection{Budget}
-We expect the project to proceed according to the schedule in the figure.
 The budget of the project is defined in the following table:
 \begin{table}[h]
 \begin{center}
@@ -482,15 +482,15 @@ The budget of the project is defined in the following table:
 \end{table}
 
 \section{Research team and collaboration}
+The team is internationally well connected and has established cooperation with several teams abroad and nationally. 
+Our lab and the PI has worked within several international and national reseach projects such as RECOMP, ParallaX and INTERSYS with close ties to Finnish industry like Nokia, abb, Kone, Ericsson etc.
+The cooperations listed here are the ones relevant to this application and that are documented through the most important joint publications.
 \subsection{Collaboration}
-The team is internationally well connected and has established cooperation with several teams abroad. 
-The cooperations listed here are the ones relevant to this application and that are documented through joint publications.
-
 The cooperation between Prof. Jean-Francois Nezan, INSA, Rennes, and the embedded systems lab has concentrated on the run-time management of dataflow networks, 
 and has been executed through exchange of PhD students.
 INSA de Rennes has a strong background in tool support. 
-The previously developed PREESM tool which was used to determine parallelism in data-flow programs to be used in a power optimizer developed by \AA{}bo Akademi University.
-This work resulted in the best paper award at the 2014 DASIP conference and is of great importance in WP1 and the demonstrators in WP3.
+The previously developed PREESM tool which was used to determine parallelism in data-flow programs to be used in a power optimizer developed by the PI in \AA{}bo Akademi University.
+This work resulted in the best paper award at the 2014 DASIP conference and is of great importance especially for the meta-data injection in WP1 and the demonstrators in WP4.
 The PI visited INSA de Rennes for 4 months in 2013-2014, which resulted in two journal publications and two proceedings publications.
 
 Previous exchanges between \AA{}bo Akademi and INSA de Rennes:\\
@@ -499,20 +499,48 @@ Previous exchanges between \AA{}bo Akademi and INSA de Rennes:\\
 * Julien Heulot (INSA $\longrightarrow$ \AA{}bo) Autumn 2013\\
 * Simon Holmbacka (PI) (\AA{}bo $\longrightarrow$ INSA) Winter 2013-2014\\
 
-A cooperation between Holmbacka and Prof. J\"{o}rg Keller at the Fernuniversit\"{a}t in Hagen started in 2014, since which we have worked on energy efficient scheduling for multi-core systems. 
+A cooperation between Holmbacka and Prof. J\"{o}rg Keller at the FernUniversit\"{a}t in Hagen started in 2014, since which we have worked on energy efficient scheduling for multi-core systems. 
 The lab group in Hagen has previously worked on performance models for very parallel systems such as the Intel SCC.
 One scientific journal and one proceedings publication about energy efficient scheduling has been published during this cooperation,
-and this connection is therefore important mainly for the energy optimization in WP2 and the construction of the controller in WP2.
+and this connection is therefore important mainly for the energy optimization in WP3 and the construction of the controller in WP3.
 The PI is currently working in Hagen as a Post-doc exchange, and the cooperation with FernUni is currently very active.
 
-The PI has been cooperating with the Electronic Commerce Group in TU Wien led by Prof. Ivona Brandi\'{c} since spring 2015. 
-Work on cost and energy efficient cloud scheduling was done by extending the Philharmonic cloud simulator\footnote{http://philharmonic.github.io/} created at TU Wien with a multi-core model developed at \AA{}bo Akademi University. 
+The PI has been cooperating with the Electronic Commerce Group in TU Wien led by Prof. Ivona Brandi\'{c} since spring 2015 inside the COST action IC1305 framework. 
+Work on cost and energy efficient cloud scheduling was done by extending the Philharmonic cloud simulator\footnote{http://philharmonic.github.io/} created at TU Wien with a multi-core model developed by the PI at \AA{}bo Akademi University. 
 A journal has been accepted in the IEEE Transactions journal as a result of this cooperation.
+Their expertice is complementary for constructing the runtime system in WP3, especially valuable are their expertice on cloud environments. 
 
-The most recent of my collaboration network is Alexandra Jimborean from Uppsala University in Sweden.
-Their lab group is working on compile-time and runtime code analysis and transformation for performance and energy efficiency.
-Complementary to our lab, she is working on low level optimizations in memory and caches, which is useful when realizing the final framework in WP3.
-We are currently planning cooperation work on meta-data based energy efficient scheduling in big.LITTLE systems.\\
+The most recent of my collaboration network is Dr. Alexandra Jimborean from Uppsala University in Sweden.
+Their lab group is working on compile-time and runtime code analysis and transformation for performance and energy efficiency using LLVM.
+Her group has developed a monitoring and feedback system for re-organizing instruction calls based on their memory intensity.
+With this knowledge, their input is essential in WP2 when constructing the monitor system.
+
+
+\subsection{Relation to strategic centers of research}
+Since the Strategic Centres for Science, Technology and Innovation are being shut down, there is no concrete cooperation planned. 
+However many of the SHOKs are planning new ways to continue their activities and since Prof. Lilius of the Embedded Systems Lab in \AA{}bo Akademi is a member of the FIMECC SG, 
+he will have the opportunity to connect up the work in this project with the work done within FIMECC.
+
+
+\section{Researcher training and research careers}
+\textbf{Researcher training and supervision}: The supervision of PhD students are carried out as teamwork within participating senior researchers, 
+but every student has also official supervisors with whom the student makes a study and research plans according to the university regulations. 
+Each laboratory consists of researchers at various levels of their research career. 
+It is paramount for all of them (including professors, researchers and staff) to periodically participate in the researcher training programs and renew their education/training.\\ 
+\textbf{Promotion of Research Career}: With the current application, we seek funding for a post-doc researcher to work full-time within the project. 
+Combined with the international co-operation, exchange period and close interaction between participating institutes, the project gives to the involved post-doc good basis to proceed in the academic career after the project.
+
+\section{Mobility plan}
+The mobilities are planned as follows:
+\begin{itemize}
+ \item Simon Holmbacka (PI) will visit Prof. Maxime Pelcat for 3 months in the end of WP1 \vspace{-0.3cm}
+ \item Simon Holmbacka (PI) will visit Prof. J\"{o}rg Keller for 6 months for constructing the controller in WP3 \vspace{-0.3cm}
+ \item Simon Holmbacka (PI) will visit Prof. Ivona Brandi\'{c} for 3 months in the beginning of WP4 to collaborate on the use-case and demonstator in a cloud environment
+
+\end{itemize}
+
+
+The exact details of the mobilities 2017$\longrightarrow$ will be defined later in the project based on the availability of the collaborators and their time schedule.\\
 
 \textbf{Summary of past mobilities by the PI}\\
 
@@ -536,38 +564,9 @@ We are currently planning cooperation work on meta-data based energy efficient s
 \textsl{Partners: Jos\'{e} Luis Guti\'{e}rrez, University of Granada, Spain \\ Miguel M\'{e}ndez, Seven Solutions Inc., Spain} 
 \hfill November 5 -- November 17 2012
 
-\subsection{Relation to strategic centers of research}
-Since the Strategic Centres for Science, Technology and Innovation are being shut down, there is no concrete cooperation planned. 
-However many of the SHOKs are planning new ways to continue their activities and since Prof. Lilius of the Embedded Systems Lab in \AA{}bo Akademi is a member of the FIMECC SG, 
-he will have the opportunity to connect up the work in this project with the work done within FIMECC.
-
-
-\section{Researcher training and research careers}
-\textbf{Researcher training and supervision}: The supervision of PhD students are carried out as teamwork within participating senior researchers, 
-but every student has also official supervisors with whom the student makes a study and research plans according to the university regulations. 
-Each laboratory consists of researchers at various levels of their research career. 
-It is paramount for all of them (including professors, researchers and staff) to periodically participate in the researcher training programs and renew their education/training.\\ 
-\textbf{Promotion of Research Career}: With the current application, we seek funding for a post-doc researcher to work full-time within the project. 
-Combined with the international co-operation, exchange period and close interaction between participating institutes, the project gives to the involved post-doc good basis to proceed in the academic career after the project.
-
-\section{Mobility plan}
-We plan a 6 months of mobility per year. The first mobilities are as follows:
-\begin{itemize}
- \item Simon Holmbacka will visit Prof. Jörg Keller for 6 months in the middle
-of the project (visit to start XXX) to work on energy efficient scheduling issues in WP2
-\item ????
-\item ????
-
-\end{itemize}
-
-
-The exact details of the mobilities 2018$\longrightarrow$ will be defined later in the project
-schedule.
-
-
 \bibliographystyle{alpha}
-
-\bibliography{sample}
+{\footnotesize
+\bibliography{sample}}
 
 %----------------------------------------------------------------------------------------
 
