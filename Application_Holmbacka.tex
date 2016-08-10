@@ -31,6 +31,32 @@
 \usepackage{caption}
 \usepackage[export]{adjustbox}
 \usepackage{pbox}
+\usepackage{listings}
+\lstset{
+captionpos=b,
+language=c,
+stepnumber=2,
+tabsize=2,
+frame=single,
+label=DescriptiveLabel,
+% upquote=true,
+aboveskip={1.5\baselineskip},
+columns=fullflexible,
+showstringspaces=false,
+extendedchars=true,
+breaklines=true,
+showtabs=false,
+showspaces=false,
+showstringspaces=false,
+% identifierstyle=\ttfamily,
+% keywordstyle=\footnotesize,
+% keywordstyle=\font\ttfamily,
+% keywordstyle=\color[rgb]{0,0,1},
+% commentstyle=\color[rgb]{0.133,0.545,0.133},
+% stringstyle=\color[rgb]{0.627,0.126,0.941},
+% basicstyle=\color[rgb]{0,0,0},
+basicstyle=\footnotesize,
+}
 \usepackage{geometry}
 \newgeometry{left=2cm, right=2cm, bottom=2cm}
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
@@ -50,7 +76,7 @@
 \begin{document}
 \huge{Energy Aware Software}\\\\
 \normalsize\textbf{Principal investigator}: Dr. Simon Holmbacka\\ 
-\textbf{Project starting time}: xxx\\
+\textbf{Project starting time}: 01.09.2017\\
 \textbf{Duration of the project}: 48 months\\
 \textbf{Site of research}:\\
 \textit{\AA{}bo Akademi University} \\
@@ -100,7 +126,7 @@ High workload does not necessary mean that an application requires more performa
 It is merely an indirect effect of executing an application as illustrated in Figure \ref{fig:workload}.
 For example, in case the CPU is set to decode a video, the workload will increase to 100\% as soon as the video frames are being decoded.  
 This means that the CPU is clocked to the maximum frequency as long as the frames are being decoded and the decoded frame rate is only limited by the speed of the CPU; 
-even if the required decoding rate is only 25 frames per second, which the human eye is capable of observing.
+even if the required decoding rate is only 25 frames per second (fps), which the human eye is capable of observing.
 In other words, the application will be executed unnecessarily fast. 
 As results from \cite{HolmbackaHipeac, HolmbackaDasip} show, executing the application unnecessarily fast wastes significantly more energy than executing the application on a moderate, 
 but still at a sufficiently fast, performance level. 
@@ -111,7 +137,7 @@ The fundamental problem was still unsolved because the governor attempted to mod
 and in case the model does not fit the application, either excessive or insufficient resources are allocated to the application.
 \begin{wrapfigure}{br}{9cm}
   \begin{center}
-%     \vspace{-1cm}
+    \vspace{-0.5cm}
     \includegraphics[width=9cm]{fig/WorkloadMonitor.png}
   \end{center}
   \caption{Current approach for power management: The application causes a workload (illustrated by the gray rectangles), and the frequency governor scales the clock frequency according to the load level.}
@@ -120,7 +146,7 @@ and in case the model does not fit the application, either excessive or insuffic
 \end{wrapfigure}
 What we propose is to make the application software itself \textbf{energy aware}.
 This means that the applications are involved in resource allocation directly.
-An energy aware application can set performance requirement in the own metric, e.g. frames per second.
+An energy aware application can set performance requirement in the own metric, e.g. fps.
 The runtime system monitoring the performance of the application then allocates the hardware resources to meet the demands of the applications.
 Such a power management system requires an interface between application and runtime system, which is current non-existing.
 This research is aimed to provide such an interface, and the necessary tools needed to use it.
@@ -137,7 +163,7 @@ The main challenge in creating energy aware software is to enable the expression
 As previously mentioned, the traditional way of solely monitoring the workload is a very inaccurate and often counter-productive both in terms of performance and energy.
 We tackle this challenge by allowing the applications to express the resource requirements internally.
 This means that the application should include a small part of code -- the meta-data -- which expresses the intension of the application.
-For example, the previously mentioned video decoder can demand a framerate of 25 frames per seconds instead of decoding as \textit{fast as possible}.
+For example, the previously mentioned video decoder can demand a framerate of 25 fps instead of decoding as \textit{fast as possible}.
 In this research, we will investigate the types on meta-data needed to describe and application sufficiently in terms of performance requirements.
 On of the challenges is to obtain a sufficiently descriptive form of meta-data that can be generalized to any new- or legacy application.
 Once the meta-data descriptions have been established, the injection of the data into both new- and legacy applications must be achieved fairly effortless in order for the programmers to make the additional effort.
@@ -187,9 +213,14 @@ In the thesis ``Developing Energy-Aware Software'' by Brinke \cite{Brinke:15} th
 The \textit{awareness} of energy, is tightly bound to the application code and the programmer is expected to follow certain programming patterns to make the software energy aware.
 On the contrary, the planned framework for energy efficient software requires only the insertion of meta-data in the software.
 This means minimal effort of the programmer and the application algorithms can be implemented without interference from the energy awareness framework.
-The resource requirements are specified using a simple library, where after the runtime environment allocates the required resources.
+The resource requirements are specified using a simple library, where after the runtime environment allocates the required resources.\\
 
-The \textbf{Carbon Research Group}\footnote{http://groups.csail.mit.edu/carbon/} at MIT has developed a heartbeat framework to evaluate performance as a generic parameter in software construction. The framework is capable of measuring performance of any application as a generic parameter by user inserted API calls to the heartbeat library. Measuring performance is the necessary first step when constructing a feedback-based control system. For example it enables the possibility to measure the framerate in a video decoder, but a controller is then needed to allocate the resources in order to keep the performance on a given setpoint. We consider using the heartbeat framework for measuring generic performance in our energy awareness framework, but we plan to extend the framework considerably in order to add the controller for allocating resources.\\
+The \textbf{Carbon Research Group}\footnote{http://groups.csail.mit.edu/carbon/} at MIT has developed a heartbeat framework to evaluate performance as a generic parameter in software construction.
+The framework is capable of measuring performance of any application as a generic parameter by user inserted API calls to the heartbeat library. 
+Measuring performance is the necessary first step when constructing a feedback-based control system. 
+For example it enables the possibility to measure the framerate in a video decoder, but a controller is then needed to allocate the resources in order to keep the performance on a given setpoint. 
+We consider using the heartbeat framework for measuring generic performance in our energy awareness framework, 
+but we plan to extend the framework considerably in order to add the controller for allocating resources.\\
 
 The \textbf{Hardkernel} project\footnote{http://www.hardkernel.com/main/main.php} creating the Odroid family boards recently released the Global Task Scheduling (GTS) support for the ARM big.LITTLE devices. ``High performance threads'' are scheduled to the big high performance cores and ``Low performance threads'' are scheduled to LITTLE energy efficient cores based on the workload activity of the threads in order to save energy. 
 Even though the activity level of a thread is an early attempt introduce energy awareness in the system, the practical results are poor. 
@@ -215,7 +246,6 @@ However, StarPU only consider the optimizations in form of performance.
 When adding more complex criteria with multiple variables such as energy efficiency or monetary cost, StarPU lacks the insight to such resource allocation.
 
 \section{Objectives and expected results}
-
 \subsection{Objectives}
 \begin{wrapfigure}{r}{5cm}
   \begin{center}
@@ -227,35 +257,63 @@ When adding more complex criteria with multiple variables such as energy efficie
   \vspace{-2.5cm}
 \end{wrapfigure}
 
-Our current design recommendations for energy aware programming described in the thesis of the PI extends the application to signal resource requirements to the runtime system which allocates the hardware resources.
-\textbf{The objectives of this research is to develop a framework for programming energy aware software.}
-By using the framework, the programmer can specify resource requirement or ``Quality-of-Service'' requirements directly in the source code.
-Furthermore, the end-user of the software might- or might not be able to influence these requirements at runtime.
-For example, a video decoder might occasionally experience buffer underruns in case the decoding framerate is too low.
-By safe guarding, by using a slightly higher setpoint, the video playback becomes more smooth at the cost of slightly higher energy consumption.
-Figure \ref{fig:netflix} illustrates for example the ability to add a Quality-of-Service option to the Netflix app running on Android.
-The user can use this option to select the trade-off between energy savings and performance in terms of decoding framerate or other parameters. 
-Options can set based on a defined value like ``decoding framerate'' or as a more abstract option as illustrated in Figure \ref{fig:slider}. 
-The intension of the energy aware framework is to expose the link between the application and the runtime system, while the design of using its abilities is up to the programmer.
-\begin{figure}[h]
-\captionsetup{justification=raggedright,
-singlelinecheck=false
+Our current design recommendations for energy aware programming described in the thesis of the PI extends the application to signal resource requirements to the runtime system, which allocates the hardware resources.\\
+\textbf{The objectives of this research} is to develop a complete framework for programming energy aware software.
+By using the framework, the programmer can specify resource requirements or ``Quality-of-Service'' (QoS) requirements directly in the source code.
+This allows a much more accurate metric of resource requirements than measuring the workload, and the resources can be allocated more efficiently leading to lower energy consumption.
+Figure \ref{fig:netflix} illustrates the planned ability to add a QoS option to the Netflix app running on Android.
+The planned framework is intended to be part of the programming environment in form of a library or \#pragma available to the programmer, in which the programmer can easily declare QoS requirements.
+The following code listing illustrates a code snippet of \texttt{mplayer} where QoS requirements are injected in the routine for decoding a video frame.
+In this example, the QoS requirements are defined by the \textit{decoder framerate} as a floating point value.
+Since the human eye requires 25 fps to interpret a moving picture, a slightly higher value is selected in order for the system to react in case a more computationally heavy frame is decoded. 
+\begin{lstlisting}
+#include <QoSlib.h>
+...
+static int generate_video_frame(...){
+  setQoSRequirement(27.5,<more options>);						//declare QoS requirements
+  monitor monitorQoS = generateQoSmonitor();	//create a QoS monitor
+    while (1) {
+       float tick = monitor.get();																					//measure time
+	     ...
+       void *decoded_frame;																											//legacy code
+       decoded_frame = decode_video();												//legacy code
+       ...
+	     float toc = monitor.get();																					//measure time
+    }
+    return 1;
 }
-	\includegraphics[scale=0.45,left]{fig/slider.png}
-	\caption{Slider option for QoS in Android app}
-	\label{fig:slider}
+\end{lstlisting}
+In order to track the runtime performance of the routine, a monitor interface is generated and called before and after the frame is decoded.\\
+\todo{Is this section too short?}
 
-\end{figure}
+\begin{wrapfigure}{r}{7cm}
+  \begin{center}
+  \vspace{-0.8cm}
+    \includegraphics[width=0.4\textwidth]{fig/slider.png}
+  \end{center}
+  \caption{Slider option for QoS in Android}
+  \label{fig:slider}
+  \vspace{-0.2cm}
+\end{wrapfigure}
 
-% \begin{wrapfigure}{r}{7cm}
-%   \begin{center}
-% %   \vspace{-0.8cm}
-%     \includegraphics[width=0.4\textwidth]{fig/slider.png}
-%   \end{center}
-%   \caption{Slider option for QoS in Android app}
-%   \label{fig:slider}
-% %   \vspace{-0.2cm}
-% \end{wrapfigure}
+The end-user is also allowed to influence the QoS requirements at runtime.
+This allows the system to prioritize certain aspects and trade-offs based on the environment the device is used in.
+For example, the user can change the frame rate setpoint based on whether the device in used is plugged into a power supply or whether it is operating on battery.
+Using this example, a video decoder might occasionally experience buffer underruns in case the setpoint for the decoding framerate is too low.
+By using a slightly higher setpoint for the framerate, the video playback suffers from less frame drops at the cost of slightly higher energy consumption.
+Options for the trade-off are either set based on a defined value like ``decoding framerate'' or as a more abstract option as illustrated in Figure \ref{fig:slider}; simply using a slider option between ``Energy'' or ``Performance''. 
+The objectives of this research is to expose the link between the application and the runtime system in form of a framework for energy aware programming, 
+while using the abilities of the framework is up to the programmer.
+% \begin{figure}[h]
+% \captionsetup{justification=raggedright,
+% singlelinecheck=false
+% }
+% 	\includegraphics[scale=0.45,left]{fig/slider.png}
+% 	\caption{Slider option for QoS in Android app}
+% 	\label{fig:slider}
+% 
+% \end{figure}
+
 
 \subsection{Hypothesis}
 The project states the following Hypotheses:
@@ -313,6 +371,7 @@ which means that there is both a focus on planning the long term usage of the fr
 Our expected impact is on the research community is to address the energy awareness in software. 
 In other words, the need for communication between the application layer and the runtime environment. 
 We expect to determine the information flow needed to create energy aware software especially for heterogeneous architectures. 
+\todo{How with the heterogeneous issue? Is it part of this plan?}
 Our potential breakthrough is to introduce \textbf{energy awareness as natural part of programming}.\\ 
 For decades it has been a natural step to introduce meta-data in the software for creating parallel programs. 
 The programmer has been willing to add \#pragmas in OpenMP, Keywords in Cilk or Initializations in OpenCL to create parallel software because of the minimal programming effort and significant performance gain. 
@@ -348,7 +407,7 @@ Access to hardware platforms is therefore crucial for this project.
 As the framework for energy aware programming is applicable in an interdisciplinary domain, we intend to apply for accessibility to large scale cloud platforms like Amazon and to Android based platforms.
 However, our team has previously obtained the Amazon EC2 grant\footnote{https://aws.amazon.com/grants/} twice enabling access to large scale servers.
 The PI also has connections to the energy efficient middleware group in ARM Cambridge, the leader of which was invited to one of our project workshops in the PARALLAX project.
-\todo[inline]{Alternative approaches}
+\todo[inline]{Alternative approaches, comments on this?}
 
 \subsection{Publication plan}
 We intend to publish at the top journals and conferences based on the JuFo listings, and we will select publication venues that use some form of open access model, most likely green open access. 
@@ -407,7 +466,7 @@ Some of the previous programming tools created by \AA{}bo Akademi University is 
 This competence will be put to good use in creating the energy aware programming framework.
 
 \subsection{Utilization of research infrastructure}
-\todo[inline,color=orange]{Points here}
+\todo[inline,color=orange]{What is this?}
 
 \section{Ethical issues}
 This research project has no ethical issues.
@@ -475,30 +534,16 @@ The timeline of the research work is summarized in Figure \ref{fig:schedule}.
 	\caption{Time schedule for the project}
 	\label{fig:schedule}
 \end{figure}
+\pagebreak
 
 \subsection{Budget}
-The budget of the project is defined in the following table:
-\begin{table}[h]
-\begin{center}
-% \caption{}
-\begin{tabular}{ | l | c | c |c |c |}
-\hline
-{Cost} & {2017} & {2018} & {2019} & {2020} \\ \hline
-{Salary Post-doc} & xxx & xxx & xxx & xxx \\ \hline
-{Travel} & xxx & xxx & xxx & xxx  \\ \hline
-{Open access fees} & xxx & xxx & xxx & xxx  \\ \hline
-{Mobility} & xxx & xxx & xxx & xxx  \\ \hline
-{Total} & xxx & xxx & xxx & xxx  \\ \hline
-\end{tabular}
-\label{tab:strconf}
-\end{center}
-
-\end{table}
+The budget of the project is defined in Table 1.
 
 \section{Research team and collaboration}
 The team is internationally well connected and has established cooperation with several teams abroad and nationally. 
 Our lab and the PI has worked within several international and national research projects such as RECOMP, ParallaX and INTERSYS with close ties to Finnish industry like Nokia, abb, Kone, Ericsson etc.
-The cooperations listed here are the ones relevant to this application and that are documented through the most important joint publications.
+
+% The cooperations listed here are the ones relevant to this application and that are documented through the most important joint publications.
 \subsection{Collaboration}
 The cooperation between Prof. Jean-Francois Nezan, INSA, Rennes, and the embedded systems lab has concentrated on the run-time management of dataflow networks, 
 and has been executed through exchange of PhD students.
@@ -507,11 +552,34 @@ The previously developed PREESM tool which was used to determine parallelism in 
 This work resulted in the best paper award at the 2014 DASIP conference and is of great importance especially for the meta-data injection in WP1 and the demonstrators in WP4.
 The PI visited INSA de Rennes for 4 months in 2013-2014, which resulted in two journal publications and two proceedings publications.
 
-Previous exchanges between \AA{}bo Akademi and INSA de Rennes:\\
-* Jerome Gorin (INSA $\longrightarrow$ \AA{}bo) Spring 2010\\
-* Andreas Dahlin (\AA{}bo $\longrightarrow$ INSA) Spring 2010\\
-* Julien Heulot (INSA $\longrightarrow$ \AA{}bo) Autumn 2013\\
-* Simon Holmbacka (PI) (\AA{}bo $\longrightarrow$ INSA) Winter 2013-2014\\
+% \begin{table}[h]
+\begin{wraptable}{r}{7cm}
+\vspace{-0.3cm}
+\small
+% \begin{center}
+% \caption{The buget of the project \vspace{-0.3cm}}
+\begin{tabular}{ | l | c | c |c |c |}
+\hline
+& {2017} & {2018} & {2019} & {2020} \\ \hline
+{Salary Post-doc} & xxx & xxx & xxx & xxx \\ \hline
+{Travel} & xxx & xxx & xxx & xxx  \\ \hline
+{Open access fees} & xxx & xxx & xxx & xxx  \\ \hline
+{Mobility} & xxx & xxx & xxx & xxx  \\ \hline
+{\textbf{Total}} & xxx & xxx & xxx & xxx  \\ \hline
+\end{tabular}
+\caption*{Table 1: The buget of the project}
+\label{tab:budget}
+% \end{center}
+% \vspace{-2cm}
+% \end{table}
+\end{wraptable}
+Previous exchanges between \AA{}bo Akademi and INSA:\\
+% \small
+* Jerome Gorin (INSA $>$ \AA{}bo) Spring 2010\\
+* Andreas Dahlin (\AA{}bo $>$ INSA) Spring 2010\\
+* Julien Heulot (INSA $>$ \AA{}bo) Autumn 2013\\
+* Simon Holmbacka (\AA{}bo $>$ INSA) Winter 2013-2014\\
+% \normalsize
 
 A cooperation between Holmbacka and Prof. J\"{o}rg Keller at the FernUniversit\"{a}t in Hagen started in 2014, since which we have worked on energy efficient scheduling for multi-core systems. 
 The lab group in Hagen has previously worked on performance models for very parallel systems such as the Intel SCC.
@@ -545,38 +613,36 @@ It is paramount for all of them (including professors, researchers and staff) to
 Combined with the international co-operation, exchange period and close interaction between participating institutes, the project gives to the involved post-doc good basis to proceed in the academic career after the project.
 
 \section{Mobility plan}
-The mobilities are planned as follows and illustrated in Figure \ref{fig:schedule}:
+The mobilities are planned as follows and illustrated in Figure \ref{fig:schedule}, but the exact details will be defined later in the project based on the availability of the collaborators and their time schedule.
 \begin{itemize}
- \item Simon Holmbacka (PI) will visit Prof. Maxime Pelcat for 3 months in the end of WP1 \vspace{-0.3cm}
- \item Simon Holmbacka (PI) will visit Prof. J\"{o}rg Keller for 6 months for constructing the controller in WP3 \vspace{-0.3cm}
- \item Simon Holmbacka (PI) will visit Prof. Ivona Brandi\'{c} for 3 months in the beginning of WP4 to collaborate on the use-case and demonstrator in a cloud environment
-
+ \item Simon Holmbacka (PI) will visit Prof. Maxime Pelcat for 3 months in the end of WP1. \vspace{-0.3cm}
+ \item Simon Holmbacka (PI) will visit Prof. J\"{o}rg Keller for 6 months for constructing the controller in WP3. \vspace{-0.3cm}
+ \item Simon Holmbacka (PI) will visit Prof. Ivona Brandi\'{c} for 3 months in the beginning of WP4 to collaborate on \vspace{-0.1cm}
+ the use-case and demonstrator in a cloud environment.
 \end{itemize}
 
 
-The exact details of the mobilities 2017$\longrightarrow$ will be defined later in the project based on the availability of the collaborators and their time schedule.\\
-
-\textbf{Summary of past mobilities by the PI}\\
-
-\textbf{Project: Post-Doc research}\\
-\textsl{Partners: J\"{o}rg Keller, FernUniversit\"{a}t in Hagen, Germany}
-\hfill September 2015 -- ongoing
-
-\textbf{Project: Energy Efficient Cloud Simulation}\\
-\textsl{Partners: Dra\v{z}en Lu\v{c}anin, Ilia Pietri, Ivona Brandi\'{c}, TU Vienna, Vienna, Austria}
-\hfill May 15 -- May 30 2015
-
-\textbf{Project: Power-Aware HEVC Decoding with Tunable Image Quality}\\
-\textsl{Partners: Erwan Nogues, Maxime Pelcat, INSA de Rennes, France}
-\hfill October 2013 -- March 2014
-
-\textbf{Project: Innovation and Creativity for Complex Engineering Systems}\\
-\textsl{Partners: Jo\~{a}o Fernandes, Universidade do Minho, EFACEC Inc., Portugal}
-\hfill January 31 -- 17 February 2012
-
-\textbf{Project: Safe Motor Controller in Mixed-Critical Environment}\\
-\textsl{Partners: Jos\'{e} Luis Guti\'{e}rrez, University of Granada, Spain \\ Miguel M\'{e}ndez, Seven Solutions Inc., Spain} 
-\hfill November 5 -- November 17 2012
+% \textbf{Summary of past mobilities by the PI}\\
+% 
+% \textbf{Project: Post-Doc research}\\
+% \textsl{Partners: J\"{o}rg Keller, FernUniversit\"{a}t in Hagen, Germany}
+% \hfill September 2015 -- ongoing
+% 
+% \textbf{Project: Energy Efficient Cloud Simulation}\\
+% \textsl{Partners: Dra\v{z}en Lu\v{c}anin, Ilia Pietri, Ivona Brandi\'{c}, TU Vienna, Vienna, Austria}
+% \hfill May 15 -- May 30 2015
+% 
+% \textbf{Project: Power-Aware HEVC Decoding with Tunable Image Quality}\\
+% \textsl{Partners: Erwan Nogues, Maxime Pelcat, INSA de Rennes, France}
+% \hfill October 2013 -- March 2014
+% 
+% \textbf{Project: Innovation and Creativity for Complex Engineering Systems}\\
+% \textsl{Partners: Jo\~{a}o Fernandes, Universidade do Minho, EFACEC Inc., Portugal}
+% \hfill January 31 -- 17 February 2012
+% 
+% \textbf{Project: Safe Motor Controller in Mixed-Critical Environment}\\
+% \textsl{Partners: Jos\'{e} Luis Guti\'{e}rrez, University of Granada, Spain \\ Miguel M\'{e}ndez, Seven Solutions Inc., Spain} 
+% \hfill November 5 -- November 17 2012
 
 \bibliographystyle{alpha}
 {\footnotesize
