@@ -1,48 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Application_Holmbacka.aux
 The style file: alpha.bst
 Database file #1: sample.bib
 Warning--empty institution in HolmbackaTechrep
-You've used 15 entries,
+You've used 17 entries,
             2543 wiz_defined-function locations,
-            666 strings with 7453 characters,
-and the built_in function-call counts, 6304 in all, are:
-= -- 611
-> -- 344
-< -- 11
-+ -- 121
-- -- 119
-* -- 458
-:= -- 1050
-add.period$ -- 45
-call.type$ -- 15
-change.case$ -- 102
-chr.to.int$ -- 15
-cite$ -- 16
-duplicate$ -- 253
-empty$ -- 424
-format.name$ -- 134
-if$ -- 1288
+            681 strings with 7754 characters,
+and the built_in function-call counts, 6954 in all, are:
+= -- 677
+> -- 371
+< -- 12
++ -- 130
+- -- 127
+* -- 506
+:= -- 1164
+add.period$ -- 51
+call.type$ -- 17
+change.case$ -- 112
+chr.to.int$ -- 17
+cite$ -- 18
+duplicate$ -- 280
+empty$ -- 469
+format.name$ -- 145
+if$ -- 1416
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 8
-newline$ -- 76
-num.names$ -- 49
-pop$ -- 112
+missing$ -- 9
+newline$ -- 86
+num.names$ -- 55
+pop$ -- 119
 preamble$ -- 1
-purify$ -- 119
+purify$ -- 132
 quote$ -- 0
-skip$ -- 221
+skip$ -- 243
 stack$ -- 0
-substring$ -- 245
-swap$ -- 61
-text.length$ -- 11
-text.prefix$ -- 5
+substring$ -- 275
+swap$ -- 63
+text.length$ -- 12
+text.prefix$ -- 6
 top$ -- 0
-type$ -- 120
+type$ -- 136
 warning$ -- 1
-while$ -- 53
-width$ -- 21
-write$ -- 194
+while$ -- 59
+width$ -- 24
+write$ -- 220
 (There was 1 warning)
