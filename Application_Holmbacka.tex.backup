@@ -116,7 +116,7 @@ IoT, cyber physical systems and other mobile systems demand solutions to lower t
 and high end systems, servers and exa-scale computing demand more computations for the same energy.
 These problems were traditionally solved by the hardware evolution, but since we now witness the end of the Dennard scaling \cite{Dennard:74} it is no longer a viable option.
 As the improvement in semi-conductors no longer keep the required phase, evolution in energy efficiency must be shifted to the software.
-Our vision in this research is to improve energy efficiency of computer systems by involving the application software in the resouce allocation decision -- this branch of self-awareness is called making the software energy aware.
+Our vision in this research is to improve energy efficiency of computer systems by involving the application software in the resource allocation decision -- this branch of self-awareness is called making the software energy aware.
 Energy aware software form a stronger link between applications and the runtime system in form of an information flow used to steer the resource allocation.
 This increases the self awareness of software and is required for the research community to take the next step into energy efficient computing.
 
@@ -161,7 +161,7 @@ Part B) in Figure \ref{fig:EAS} illustrates the addition of energy awareness, th
 
 The research area in energy efficient computing is a broad domain spanning several levels of hardware from IoT to Exascale.
 The commonality is, however, the ability to propagate information from the highest software layer to the runtime system, and to the hardware.
-Throughout all computing domains in the area of energy efficient computing, we have identified three critical challenges to address in our reserach further specified in sections \ref{sec:self},\ref{sec:inter} and \ref{sec:smart}.
+Throughout all computing domains in the area of energy efficient computing, we have identified three critical challenges to address in our research further specified in sections \ref{sec:self},\ref{sec:inter} and \ref{sec:smart}.
 
 \subsection{Self awareness}
 \label{sec:self}
@@ -584,9 +584,11 @@ The budget of the project is defined in Table 1.
 {Mobility} & xxx & xxx & xxx & xxx  \\ \hline
 {\textbf{Total}} & xxx & xxx & xxx & xxx  \\ \hline
 \end{tabular}
-\caption*{Table 1: The buget of the project}
+\caption*{Table 1: The budget of the project}
 \label{tab:budget}
+\vspace{-0.5cm}
 \end{wraptable}
+
 \section{Research team and collaboration}
 The team is internationally well connected and has established cooperation with several teams abroad and nationally. 
 Our lab and the PI has worked within several international and national research projects such as RECOMP, ParallaX and INTERSYS with close ties to Finnish industry like Nokia, ABB, Kone, Ericsson etc.
