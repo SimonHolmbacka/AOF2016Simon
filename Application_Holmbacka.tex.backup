@@ -71,11 +71,11 @@ basicstyle=\footnotesize,
 
 % \title{Energy Aware Software} % Title
 
-% \author{\textbf{Principal investigator}: Simon Holmbacka\\ \AA{}bo Akademi University, Embedded Systems Laboratory} % Author name
+% \author{\textbf{Principal investigator}: Simon Holmbacka\\ \AA{}bo Akademi University, Embedded Systems Laboratory} % Author name
 
 \begin{document}
 \huge{Energy Aware Software}
-% \normalsize\textbf{Principal investigator}: Dr. Simon Holmbacka\\ 
+% \normalsize\textbf{Principal investigator}: Dr. Simon Holmbacka\\ 
 % \textbf{Project starting time}: 01.09.2017\\
 % \textbf{Duration of the project}: 48 months\\
 % \textbf{Site of research}:\\
@@ -115,50 +115,71 @@ Energy consumption is currently a challenge in all domains of computer systems.
 IoT, cyber physical systems and other mobile systems demand solutions to lower the energy consumption while keeping the same amount of computations,
 and high end systems, servers and exa-scale computing demand more computations for the same energy.
 These problems were traditionally solved by the hardware evolution, but since we now witness the end of the Dennard scaling \cite{Dennard:74} it is no longer a viable option.
-As the improvement in semi-conductors no longer keep the required phase, evolution must be shifted to the software.
-Our vision in this research is to extend the energy efficiency of computer systems by involving the application software in the decision making -- this is called making the software energy aware.
+As the improvement in semi-conductors no longer keep the required phase, evolution in energy efficiency must be shifted to the software.
+Our vision in this research is to improve energy efficiency of computer systems by involving the application software in the resouce allocation decision -- this branch of self-awareness is called making the software energy aware.
 Energy aware software form a stronger link between applications and the runtime system in form of an information flow used to steer the resource allocation.
 This increases the self awareness of software and is required for the research community to take the next step into energy efficient computing.
 
 \section{Rationale}
-From tiny embedded systems to large scale server farms and tightly coupled IoT systems, energy efficiency is becomming the main struggle for system expansion, reliability and scalability.
+From tiny embedded systems to large scale server farms and tightly coupled IoT systems, energy efficiency is becoming the main struggle for system expansion, reliability and scalability.
 The very usability of battery powered devices depends on its ability to provide the user with the satisfactory experience while consuming the minimal amount of energy.
 Desktop and laptop systems require high levels of energy efficiency to lower noise levels from active cooling, increase the reliability and minimize the electric bill.
 And the rapid expansion of large scale servers is not in line with ecological development, and now contribute over to 2\% of the total energy consumption in the US\footnote{Statistics according to the U.S. Office of Energy Efficiency \& Renewable Energy: http://energy.gov/eere/femp/resources-data-center-energy-efficiency}, with Facebook alone releasing 650k tonnes of carbon annually\footnote{https://sustainability.fb.com/en/our-footprint/}. \smallskip
 
 Since more complex applications with even stricter performance demand is to expect in the future, energy efficient efforts must be increased.
 Hardware has historically been the solution to these problems, but current hardware development is not anymore proportional to the performance demand by the ever growing amount of end users and complexity of the applications.
-This means that as transistors become smaller, energy efficiency is not anymore improved by transistor technology alone such that the power remains in proportion to the area as predicted by the Dennard scaling  \cite{Dennard:74}. 
-Furthermore, the progress in battery development in mobile phones is far slower than the progress in processor capacity \cite{CPUCapacity,BatteryCapacity},
-and our limited power envelope for a processor chip on roughly 250W prohibits a processor from utilizing all of its hardware simultaneously; a phenomenon called ``dark silicon''.
+This means that as transistors become smaller, energy efficiency is not anymore improved by transistor technology alone, such that the power remains in proportion to the area as predicted by the Dennard scaling  \cite{Dennard:74}. 
+Furthermore, the progress in battery development in mobile phones is far slower than the progress in processor capacity \cite{CPUCapacity,BatteryCapacity}.
+In desktop and server systems, our limited power envelope for a processor chip on roughly 250W prohibits a processor from utilizing all of its hardware simultaneously; a phenomenon called ``dark silicon''.
 The challenges in energy efficiency is therefore not anymore strictly related to monetary and ecological reasons but also directly to performance.
 A popular example is the capacity of the supercomputing centers needed to reach Exascale performance.
 With the current infrastructure in use, the energy efficiency of the computing systems would require a power feed of roughly 20 MW which is not realistic for a single facility \cite{Tolentino:12}. \smallskip
 
-In order to solve the mentioned problems in this interdisciplinary domain, the right amount of hardware resources must be allocated based on the software requesting access to the hardware.
-Since general purpose applications have a very dynamic behavior, a runtime environment must contineously adjust the usage of the resources based on the execution of the applications.
+In order to solve the mentioned problems in this interdisciplinary domain, the right amount of hardware resources must be dynamically allocated and minimal resources should be wasted.
+Since general purpose applications have a very dynamic behavior, a runtime environment must continuously adjust the usage of the resources based on the execution of the applications.
 In Linux based systems, attempts have been made to incorporate this behavior by using clock frequency scaling and deep sleep states to scale the hardware resources according to the demand. 
+The problem with the existing approaches is that none of the existing frameworks consider the interoperability issue between applications and the runtime system.
+Resource is often allocated based on the system \textit{workload}, which does not represent the resource demand of the applications, leaving the systems highly inefficient \cite{HolmbackaDasip, HolmbackaHipeac}.\smallskip
 
+\begin{wrapfigure}{br}{8.5cm}
+%   \begin{center}
+%     \vspace{-0.8cm}
+    \includegraphics[width=8.5cm]{fig/EAS_Overview.png}
+%   \end{center}
+  \caption{A: No connection between the application and the resources B: Resource allocation based on self-aware metric}
+  \label{fig:EAS}
+%   \vspace{-2cm}
+\end{wrapfigure}
 
 In this research we will extend the application software with the notion of energy awareness.
-This is a property needed to involve applications in the allocation of resources.
+This is a property needed to involve applications in decisions for resource allocation.
+In our previous work \cite{Holmbacka:15}, we have showed that adding energy awareness in general purpose software can reduce the energy consumption as much as 50-60\% without loosing any performance.
+When allowing the application to influence the resource allocation, a much more detailed performance metric is used than for example monitoring the workload.
+Figure~\ref{fig:EAS} illustrates the efforts of the research: part A) shows the current approach without any interoperability between applications and the resources.
+Using this approach, resources are allocated based on the level of workload or other indirect means of metric.
+Part B) in Figure \ref{fig:EAS} illustrates the addition of energy awareness, the application can directly communicate with the runtime system, resulting in better accuracy of resource allocation, increase self awareness and lower energy consumption.\smallskip
 
+The research area in energy efficient computing is a broad domain spanning several levels of hardware from IoT to Exascale.
+The commonality is, however, the ability to propagate information from the highest software layer to the runtime system, and to the hardware.
+Throughout all computing domains in the area of energy efficient computing, we have identified three critical challenges to address in our reserach further specified in sections \ref{sec:self},\ref{sec:inter} and \ref{sec:smart}.
 
-\subsection{Expressing performance requirments}
-Applications must be able to properly express their intensions in terms of requirements during an execution. 
+\subsection{Self awareness}
+\label{sec:self}
+Applications must be able to properly express their intentions in terms of requirements during an execution. 
 The requirements are added to the application software in form of performance meta-data -- a performance goal the application is due to achieve. 
 The challenge is therefore to provide a framework with the capability of handling and expressing performance meta-data in an interdisciplinary domain.
 As previously mentioned, the traditional way of solely monitoring the workload is a very inaccurate and often counter-productive both in terms of performance and energy.
 We tackle this challenge by allowing the applications to express the resource requirements internally.
 This means that the application should include a small part of code -- the meta-data -- which expresses the intension of the application in its own understanding of performance.
 For example, if a video decoder demands a framerate of 25 fps, the user of the application is satisfied with the performance of the application.
-Therefore, we will investigate the types on meta-data needed to describe the intensions of an application sufficiently accurate.
+Therefore, we will investigate the types on meta-data needed to describe the intentions of an application sufficiently accurate.
 One of the challenges is to obtain a sufficiently descriptive form of meta-data that can be generalized to any new- or legacy application.
 Once the meta-data descriptions have been established, the injection of the data into both new- and legacy applications must be achieved fairly effortless in order for the programmers to make the additional effort.
 A trade-off between descriptiveness and programmer effort is to be expected.
 
 \subsection{Interoperability for energy efficiency}
-The interoperability challenge in the domain of energy awareness in application software is the create an ecosystem capable of exchanging information about the intensions of an application to the runtime software layer. Secondly, the exchanged information must be interpreted by the runtime layer to make sensible decisions regarding the resource allocation.
+\label{sec:inter}
+The interoperability challenge in the domain of energy awareness in application software is the create an ecosystem capable of exchanging information about the intentions of an application to the runtime software layer. Secondly, the exchanged information must be interpreted by the runtime layer to make sensible decisions regarding the resource allocation.
 Since applications in general are dynamic, the performance of the application depends on a wide set of factors such as memory intensity, use of caches, user interrupts, the data sizes and data types used, interaction with other applications etc. 
 This means that the performance of an application cannot be guaranteed with fixed resources.
 In order to adapt the resources allocated to the application, the performance of the application must be monitored at runtime.
@@ -167,10 +188,11 @@ We recognize therefore the need for a proper monitoring framework to insure the 
 Such a framework must be detailed enough and provide sufficient tools for measuring performance, but simple enough to reduce programmer effort for using it.
 Since the monitoring framework is a runtime system, significantly low overhead must be guaranteed to not interfere with the energy consumption and performance of the host system.
 
-\subsection{Self awareness}
+\subsection{Smart adaptivity}
+\label{sec:smart}
 Given a proper dataflow from applications to the runtime system, the final challenge is the allocation of resources. 
 Allocating resources efficiently means having a knowledge of how resources of one form affects the performance of the application requesting the resources.
-Even though feedback control loops is a mature area of research, the methods must be adapted and applied to the general purpose computing domain. Together with machine learning, big data and pattern recognition, self awareness in the control loop helps to bring the framework of energy aware software to a broader domain of computing systems from IoT to exa-scale systems.
+Even though feedback control loops is a mature area of research, the methods must be adapted and applied to the general purpose computing domain. Together with machine learning, big data and pattern recognition, smart adaptivity in the control loop helps to bring the framework of energy aware software to a broader domain of computing systems from IoT to exa-scale systems.
 
 \subsection{Previous work}
 The embedded systems lab in the \AA{}bo Akademi University has for the last six years focused on low power and energy aware software. 
@@ -336,7 +358,7 @@ With this framework, resources can be allocated more efficiently leading to a lo
 The project states the following Hypotheses:
 
 \begin{enumerate}
- \item Performance requirements in computer systems will continue to increase significantly faster than battery technology development, software must thus utilize the resources more efficiently. \vspace{-0.2cm}
+ \item Performance requirements in computer systems will continue to increase significantly faster than transistor technology and battery technology development, software must thus utilize the resources more efficiently. \vspace{-0.2cm}
  \item Energy aware software can utilize the hardware resources more efficiently because hardware resources are allocated based on actual performance requirements.\vspace{-0.2cm}
  \item Software can be made energy aware with minimal performance overhead and minimal programmer efforts.\vspace{-0.2cm}
  \item 50\% of energy can be saved using energy awareness in software.
@@ -424,7 +446,6 @@ Access to hardware platforms is therefore crucial for this project.
 As the framework for energy aware programming is applicable in an interdisciplinary domain, we intend to apply for accessibility to large scale cloud platforms like Amazon and to Android based platforms.
 However, our team has previously obtained the Amazon EC2 grant\footnote{https://aws.amazon.com/grants/} twice enabling access to large scale servers.
 The PI also has connections to the energy efficient middleware group in ARM Cambridge, the leader of which was invited to one of our project workshops in the PARALLAX project.
-\todo[inline]{Alternative approaches, comments on this?}
 
 \subsection{Publication plan}
 We intend to publish at the top journals and conferences based on the JuFo listings, and we will select publication venues that use some form of open access model, most likely green open access. 
@@ -490,7 +511,7 @@ This research project has no ethical issues.
 \subsection{Work packages}
 \subsubsection{WP1 -- State of the art and exposing the meta-data}
 The initial part of the project is to determine how to expose the meta-data to the programmer.
-Therefore the project begins with a state-of-the-art review of currently proposed solutions for defining performance requirements.
+Therefore the project begins with a state-of-the-art review of currently proposed solutions for defining performance requirements and self-awareness.
 The WP is intended to firstly define what exactly should be included in the meta-data to get a proper description of performance in applications. 
 Further, what must be determined is guidelines for how, where, and when the meta-data should be injected in software to ensure stability and minimal performance overhead.
 Included in this WP is tool support for automatic meta-data injection based on the findings earlier in the WP.
@@ -503,7 +524,7 @@ Included in this WP is tool support for automatic meta-data injection based on t
 \subsubsection{WP2 -- Feedback monitor}
 WP2 covers the monitoring of the application software.
 This includes how to interconnect the monitor with the application, determine the information flow between the application and the monitor and also how to forward this information to the resource allocation controller.
-The main problems to tackle here is how the application software can be monitored without affecting the functionality or the performance of the system.
+The main challenge to tackle is how the application software can be monitored without affecting the functionality or the performance of the system.
 State-of-the-art monitoring systems such as the MIT heartbeats \cite{Hoffmann:10} will be evaluated as complementary research to the proposed energy awareness monitor.
 A monitoring interface will be developed and its cross-domain applicability will be evaluated on Android, PC and server systems.
 \begin{itemize}
@@ -513,8 +534,8 @@ A monitoring interface will be developed and its cross-domain applicability will
 \end{itemize}
 
 \subsubsection{WP3 -- Energy aware controller}
-WP3 is about using the meta-data definitions in WP1 and the monitoring data from WP2 and use it for energy optimizations by a runtime system controller.
-The main challenge in WP3 is to define the resource allocation to achieve maximal energy efficiency.
+WP3 is about using the self-awareness provided by WP1 and the monitoring data from WP2 and use it for smart optimizations by a runtime system controller.
+The main challenge in WP3 is to define the resource allocation to achieve maximal energy efficiency without performance loss.
 Several well established optimization methods based on system models will be evaluated.
 This means firstly modeling the underlying system and secondly applying mathematical optimization methods on the model.
 The work was initiated in the thesis of the PI, and WP3 is intended to refine the optimization methods for a larger selection of platforms and improve on existing optimization methods.
@@ -551,25 +572,9 @@ The timeline of the research work is summarized in Figure \ref{fig:schedule}.
 \subsection{Budget}
 The budget of the project is defined in Table 1.
 
-\section{Research team and collaboration}
-The team is internationally well connected and has established cooperation with several teams abroad and nationally. 
-Our lab and the PI has worked within several international and national research projects such as RECOMP, ParallaX and INTERSYS with close ties to Finnish industry like Nokia, abb, Kone, Ericsson etc.
-
-% The cooperations listed here are the ones relevant to this application and that are documented through the most important joint publications.
-\subsection{Collaboration}
-The cooperation between Prof. Jean-Francois Nezan, INSA, Rennes, and the embedded systems lab has concentrated on the run-time management of dataflow networks, 
-and has been executed through exchange of PhD students.
-INSA de Rennes has a strong background in tool support. 
-The previously developed PREESM tool which was used to determine parallelism in data-flow programs to be used in a power optimizer developed by the PI in \AA{}bo Akademi University.
-This work resulted in the best paper award at the 2014 DASIP conference and is of great importance especially for the meta-data injection in WP1 and the demonstrators in WP4.
-The PI visited INSA de Rennes for 4 months in 2013-2014, which resulted in two journal publications and two proceedings publications.\smallskip
-
-% \begin{table}[h]
 \begin{wraptable}{r}{7cm}
 \vspace{-0.3cm}
 \small
-% \begin{center}
-% \caption{The buget of the project \vspace{-0.3cm}}
 \begin{tabular}{ | l | c | c |c |c |}
 \hline
 & {2017} & {2018} & {2019} & {2020} \\ \hline
@@ -581,33 +586,43 @@ The PI visited INSA de Rennes for 4 months in 2013-2014, which resulted in two j
 \end{tabular}
 \caption*{Table 1: The buget of the project}
 \label{tab:budget}
-% \end{center}
-% \vspace{-2cm}
-% \end{table}
 \end{wraptable}
-% Previous exchanges between \AA{}bo Akademi and INSA:\\
-% % \small
-% * Jerome Gorin (INSA $>$ \AA{}bo) Spring 2010\\
-% * Andreas Dahlin (\AA{}bo $>$ INSA) Spring 2010\\
-% * Julien Heulot (INSA $>$ \AA{}bo) Autumn 2013\\
-% * Simon Holmbacka (\AA{}bo $>$ INSA) Winter 2013-2014\\
-% % \normalsize
+\section{Research team and collaboration}
+The team is internationally well connected and has established cooperation with several teams abroad and nationally. 
+Our lab and the PI has worked within several international and national research projects such as RECOMP, ParallaX and INTERSYS with close ties to Finnish industry like Nokia, ABB, Kone, Ericsson etc.
 
-A cooperation between Holmbacka and Prof. J\"{o}rg Keller at the FernUniversit\"{a}t in Hagen started in 2014, since which we have worked on energy efficient scheduling for multi-core systems. 
+% The cooperations listed here are the ones relevant to this application and that are documented through the most important joint publications.
+\subsection{Collaboration}
+The cooperation between Prof. Jean-Francois Nezan, INSA, Rennes, and \AA{}bo Akademi University has concentrated on the run-time management of dataflow networks, 
+and has been executed through exchange of PhD students.
+The PI visited INSA de Rennes for 4 months in 2013-2014, which resulted in two journal publications and two proceedings publications.\smallskip
+INSA de Rennes has a strong background in tool support. 
+The previously developed PREESM\footnote{http://preesm.sourceforge.net/website/} tool which was used to determine parallelism in data-flow programs to be used in a power optimizer developed by the PI in \AA{}bo Akademi University, and this work resulted in the best paper award at the 2014 DASIP conference.
+A 3 month research mobility is planned early in the project to bring early tool integration of meta-data injection in WP1, and to determine the meta-data model needed for such tool integration.
+In the later stages of the project, the utilization of PREESM is expected in form of a demonstration environment for WP4.
+
+
+A cooperation between Holmbacka and Prof. J\"{o}rg Keller at the FernUniversit\"{a}t in Hagen started in 2014, since when we have worked on energy efficient scheduling for multi-core systems. 
 The lab group in Hagen has previously worked on performance models for very parallel systems such as the Intel SCC.
+The PI is currently working in Hagen as a Post-doc exchange, and the cooperation with FernUni is currently very active.
 One scientific journal and one proceedings publication about energy efficient scheduling has been published during this cooperation,
 and this connection is therefore important mainly for the energy optimization in WP3 and the construction of the controller in WP3.
-The PI is currently working in Hagen as a Post-doc exchange, and the cooperation with FernUni is currently very active.\smallskip
+A 6 month visit is planned in the middle of WP3 during which the most critical part of the smart controller is to be constructed.
+\smallskip
 
 The PI has been cooperating with the Electronic Commerce Group in TU Wien led by Prof. Ivona Brandi\'{c} since spring 2015 inside the COST action IC1305 framework. 
 Work on cost and energy efficient cloud scheduling was done by extending the Philharmonic cloud simulator\footnote{http://philharmonic.github.io/} created at TU Wien with a multi-core model developed by the PI at \AA{}bo Akademi University. 
 A journal has been accepted in the IEEE Transactions journal as a result of this cooperation.
-Their expertise is complementary for constructing the runtime system in WP3, especially valuable are their expertise on cloud environments.\smallskip 
+A 3 month research mobility is planned in the early WP2 firstly to evaluate complementary work and its suitability in our project.
+Secondly, their expertise is of highest value early in WP2 after the meta-data framework has been established in WP1 in order to adapt and evaluate our framework in cloud environments.
+\smallskip 
 
 The most recent of my collaboration network is Dr. Alexandra Jimborean from Uppsala University in Sweden.
 Their lab group is working on compile-time and runtime code analysis and transformation for performance and energy efficiency using LLVM.
 Her group has developed a monitoring and feedback system for re-organizing instruction calls based on their memory intensity.
 With this knowledge, their input is essential in WP2 when constructing the monitor system.
+Also, our collaboration with overlapping expertise is needed in WP4 constructing the demonstrator.
+No mobility is planned together with this team, but since Uppsala is located very close to Turku ad-hoc visits can be arranged without extensive pre-planning.
 
 
 \subsection{Relation to strategic centers of research}
@@ -628,10 +643,9 @@ Combined with the international co-operation, exchange period and close interact
 \section{Mobility plan}
 The mobilities are planned as follows and illustrated in Figure \ref{fig:schedule}, but the exact details will be defined later in the project based on the availability of the collaborators and their time schedule.
 \begin{itemize}
- \item Simon Holmbacka (PI) will visit Prof. Maxime Pelcat for 3 months in the end of WP1. \vspace{-0.3cm}
- \item Simon Holmbacka (PI) will visit Prof. J\"{o}rg Keller for 6 months for constructing the controller in WP3. \vspace{-0.3cm}
- \item Simon Holmbacka (PI) will visit Prof. Ivona Brandi\'{c} for 3 months in the beginning of WP4 to collaborate on \vspace{-0.1cm}
- the use-case and demonstrator in a cloud environment.
+ \item Simon Holmbacka (PI) will visit Prof. Maxime Pelcat for 3 months in the beginning of WP1. \vspace{-0.3cm}
+ \item Simon Holmbacka (PI) will visit Prof. Ivona Brandi\'{c} for 3 months in the beginning of WP2 \vspace{-0.3cm}
+ \item Simon Holmbacka (PI) will visit Prof. J\"{o}rg Keller for 6 months in the middle of WP3. \vspace{-0.3cm}
 \end{itemize}
 
 
