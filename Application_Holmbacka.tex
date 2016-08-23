@@ -123,6 +123,7 @@ This increases the self awareness of software and is required for the research c
 \section{Rationale}
 From tiny embedded systems to large scale server farms and diverse IoT systems, energy efficiency is becoming the main struggle for system usability, expansion, reliability and scalability.
 The drivers for solving the issues differ depending on the area of focus;
+\todo[inline,color=green]{Here comes the current problems with high energy consumption:}
 %embedded
 the very usability of battery powered devices depends on its ability to provide the user with the satisfactory experience while consuming the minimal amount of energy.
 %Desktop
@@ -131,25 +132,24 @@ Desktop and laptop systems require high levels of energy efficiency to lower noi
 Also, the rapid expansion of large scale servers is not in line with ecological development, and now contribute over to 2\% of the total energy consumption in the US\footnote{Statistics according to the U.S. Office of Energy Efficiency \& Renewable Energy: http://energy.gov/eere/femp/resources-data-center-energy-efficiency}, with Facebook alone releasing 650k tonnes of carbon annually\footnote{https://sustainability.fb.com/en/our-footprint/}.
 %exascale
 Lastly, without increased energy efficiency, high performance computing centers cannot reach exa-scale performance.
-The US Department of Energy define a maximum power envelope of 20 MW\footnote{http://ascr-discovery.science.doe.gov/2014/11/exascale-road-bumps/} for a single data center, but with current technology, an exa-scale computing center would require over 7000 MW.\smallskip
+The US Department of Energy\footnote{http://ascr-discovery.science.doe.gov/2014/11/exascale-road-bumps/} have defined a maximum power envelope of 20 MW for a single data center, but with current technology, an exa-scale computing center would require over 7000 MW.\smallskip
 
+\todo[inline,color=green]{Here comes that HW was the solution yesterday but not anymore:}
 % Since more complex applications with even stricter performance demand is to expect in the future, energy efficient efforts must be increased.
 Hardware has historically been the solution to these problems, but the energy evolution in hardware is not anymore proportional to the performance due the end the Dennard scaling  \cite{Dennard:74}.
-This means that as transistors become smaller, energy efficiency is not anymore improved by transistor technology alone, such that the power remains in proportion to the chip area. 
+This means that as transistors become smaller, energy efficiency is not anymore improved by transistor technology alone, such that the power remains in proportion to the chip density. 
 A typical processor chip has a limited power envelope of roughly 250W before the heat dissipation damages the silicon,
-which means that all chip area cannot be utilized simultaneously; a phenomenon called ``dark silicon''. 
-Hardware alone in form of battery development in mobile phones cannot keep phase with the progress in processor capacity \cite{CPUCapacity,BatteryCapacity},
-and the problem to reach millivolt switch voltage in transistors prohibits chip manufacturers from operating on lower voltages than about 1v. \smallskip
+which means that all chip area cannot be utilized simultaneously; a phenomenon called ``dark silicon''.
+Traditionally, chip manufacturers have continuously lowered the chip voltage to solve the energy density problem,
+but physical limitations to reach millivolt switch voltage in transistors prohibits chip manufacturers from operating on lower voltages than about 1V. 
+Furthermore, hardware development, alone, in form of battery development in mobile phones also lacks the ability to keep up with the progress in processor capacity \cite{CPUCapacity,BatteryCapacity}.
+This means that the increased performance capabilities of the processor is evolving far quicker than the battery capacity.
+Thus, hardware evolution in terms of energy efficiency cannot keep up with the phase of the increased performance demand.\smallskip
 
-In order to solve the mentioned problems in this interdisciplinary domain, software must be more involved in making the computer systems energy efficient again.
+\todo[inline,color=green]{Here comes what is needed to solve the problem:}
+In order to solve the mentioned problems in this interdisciplinary domain, software must be involved in making computer systems energy efficient again!
 The key challenge is to utilize the available hardware resources as efficiently as possible based on demands from the applications.
 Since general purpose applications have a very dynamic behavior, a runtime environment must continuously adjust the usage of the resources based on the execution of the applications.
-In Linux based systems, attempts have been made to incorporate this behavior by using clock frequency scaling and deep sleep states to scale the hardware resources according to the demand. 
-The problem with the existing approaches is that the resources are allocated based on poor metrics.
-There is no interoperability between applications and the runtime system, and resources are usually allocated based on indirect metrics such as the system \textit{workload}.
-Such a metric does not describe performance demands in applications, and therefore often causes incorrect resource allocation and thus energy waste \cite{HolmbackaDasip, HolmbackaHipeac}.
-\smallskip
-
 \begin{wrapfigure}{br}{8.5cm}
 %   \begin{center}
 %     \vspace{-0.8cm}
@@ -159,15 +159,21 @@ Such a metric does not describe performance demands in applications, and therefo
   \label{fig:EAS}
 %   \vspace{-2cm}
 \end{wrapfigure}
+In Linux based systems, attempts have been made to incorporate this behavior by using clock frequency scaling and deep sleep states to scale the hardware resources according to the demand. 
+The problem with the existing approaches is that the resources are allocated based on poor metrics.
+There is no interoperability between applications and the runtime system, and resources are usually allocated based on indirect metrics such as the system \textit{workload}.
+Such a metric does not describe performance demands in applications, and therefore often causes incorrect resource allocation and thus energy waste \cite{HolmbackaDasip, HolmbackaHipeac}.
+\smallskip
 
+\todo[inline,color=green]{Here comes what we do in this research:}
 In this research we will extend the application software with the notion of \textit{energy awareness}.
-This is a property needed to involve applications in decisions for resource allocation.
-Energy savings as much as 50-60\% was obtained in our previous work \cite{Holmbacka:15} using real-world Linux platforms without loosing any performance.
+This is a property needed to involve applications in the resource allocation.
+Energy savings as much as 50-60\% was obtained by using energy awareness in software in our previous work \cite{Holmbacka:15} on real-world Linux platforms without loosing any performance.
 We are therefore confident that adding energy awareness in general purpose software can reduce the energy consumption significantly.
 When allowing the application to influence the resource allocation, a much more detailed performance metric is used than for example monitoring the workload.
 Figure~\ref{fig:EAS} illustrates the efforts of the research: part A) shows the current approach without any interoperability between applications and the resources.
 Using this approach, resources are allocated based on the level of workload or other indirect means of metric.
-Part B) in Figure \ref{fig:EAS} illustrates the addition of energy awareness, the application can directly communicate with the runtime system, resulting in better accuracy of resource allocation, increase self awareness and lower energy consumption.\smallskip
+Part B) Figure \ref{fig:EAS} illustrates the addition of energy awareness. The application can directly communicate with the runtime system, resulting in better accuracy of resource allocation, increase self awareness and lower energy consumption.\smallskip
 
 The research area in energy efficient computing is a broad domain spanning several levels of hardware from IoT to Exascale.
 The commonality is, however, the ability to propagate information from the highest software layer to the runtime system, and to the hardware.
