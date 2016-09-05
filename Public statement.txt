@@ -1,0 +1,8 @@
+The present energy problems in modern computer systems from Iot, desktop systems and exascale systems can no longer be solved only by improvement of the hardware, since the Dennard scaling no longer holds.
+This project shifts the focus of energy efficiency to the software, and we investigate how to make applications participating in the power management and resource scaling.
+Our vision is to raise the level of self-awareness in software by making applications energy aware. This implies a new interface between applications and the runtime system used to propagate information about resource requirements, which is used in the resource scaling.
+With a more precise metric describing resource requirements and more intelligent resource scaling, the energy problem can be once more avoided due to smarter and more interoperable software.
+
+Det nutida energiproblemet i moderna datorsystem, allt från IoT, PC system och exascale system, kan inte längre lösas endast med hjälp av förbättrad hårdvara, eftersom Dennard skalningen ej längre håller.
+Detta projekt skiftar fokuset till energieffektivitet i mjukvara, och vi undersöker hur applikationerna mer omfattande kan delta i strömhanteringen och resursallokeringen. Vår vision är att höja nivån av självmedvetandet mjukvaran genom att göra applikationerna energimedvetna. Detta implicerar ett nytt gränssnitt  mellan applikationerna och operativsystemet, som används för att propagera information gällande resursbehov, som används för resursallokering.
+Med en mer exakt mätenhet som beskriver resursbehovet och med utökad intelligens i resursallokeringen kan energiproblemet än en gång lösas genom smartare och mer samspelt mjukvara.
