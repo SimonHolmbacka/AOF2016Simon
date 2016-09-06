@@ -137,13 +137,13 @@ The US Department of Energy\footnote{http://ascr-discovery.science.doe.gov/2014/
 
 %\todo[inline,color=green]{Here comes that HW was the solution yesterday but not anymore:}
 To provide continuous performance increase in computing systems, the clock frequency wall was avoid in the beginning of the 2000s by the introduction of multi-core based systems. 
-This led to a new challenge in mid-2000s: the CPU power wall [1], [2]. 
+This led to a new challenge in mid-2000s: the CPU power wall \cite{Danowitz:12,Wang:13}. 
 Indeed, due to physical limitations of semiconductor materials, the power dissipation of a fixed chip area is limited. 
-With the evolution of semiconductor device fabrication, from 10$\micro$ m manufacturing process in the 70s until the commercialization of 14nm based technology CPU in 2015, more transistors are squeezed into a smaller silicon area introducing an increase of the power density [3]. 
+With the evolution of semiconductor device fabrication, from 10$\mu$ m manufacturing process in the 70s until the commercialization of 14nm based technology CPU in 2015, more transistors are squeezed into a smaller silicon area which increases power density \cite{5514312}. 
 This eventually leads to dark silicon, when all the components of a chip can not be operated at the same time due to its power dissipation and generated heat. 
 The effects of the power wall was until now limited by the design of more energy efficient transistors with for example lower voltage levels.
 This had the advantage to increase the transistor efficiency in proportion to the increase of transistor density, a phenomenon called the Dennard scaling \cite{Dennard:74}. 
-However the current increase of the transistor efficiency is not any more proportional to the increase of transistor density [2], 
+However the current increase of the transistor efficiency is not any more proportional to the increase of transistor density \cite{Wang:13}, 
 and the semiconductor device fabrication is currently in a post-Dennard scaling area, where a substantial increase of the performance of computing
 systems can not be obtained before solving the current power dissipation and related energy consumption issues.
 %Hardware has historically been the solution to these problems, but the energy evolution in hardware is not anymore proportional to the performance due the end the Dennard scaling  \cite{Dennard:74}.
@@ -152,28 +152,29 @@ systems can not be obtained before solving the current power dissipation and rel
 %which means that all chip area cannot be utilized simultaneously, a phenomenon called ``dark silicon''.
 %Traditionally, chip manufacturers have continuously lowered the chip voltage to solve the energy density problem,
 %but physical limitations to reach millivolt switch voltage in transistors prohibits chip manufacturers from operating on lower voltages than about 1V. 
-Furthermore on the other front, hardware development, alone, in form of battery development in mobile phones also lacks the ability to keep up with the progress in processor capacity \cite{CPUCapacity,BatteryCapacity}.
-This means that the increased performance capabilities of the mobile processor is evolving far quicker than the battery capacity.
-Thus, hardware evolution in terms of energy efficiency cannot keep up with the phase of the increased performance demand.\smallskip
+%Furthermore on the other front, hardware development, alone, in form of battery development in mobile phones also lacks the ability to keep up with the progress in processor capacity \cite{CPUCapacity,BatteryCapacity}.
+%This means that the increased performance capabilities of the mobile processor is evolving far quicker than the battery capacity.
+% Thus, hardware evolution in terms of energy efficiency cannot keep up with the phase of the increased performance demand.\smallskip
 
 %\todo[inline,color=green]{Here comes what is needed to solve the problem:}
 In order to solve the mentioned problems in this interdisciplinary domain, software must be involved to make computer systems energy efficient again!
-The key challenge is to utilize the available hardware resources as efficiently as possible based on demands from the applications.
+The key challenge is to utilize the available hardware resources as efficiently as possible.
 Since general purpose applications have a very dynamic behavior, a runtime environment must continuously adjust the usage of the resources based on the execution of the applications.
-\begin{wrapfigure}{br}{8.5cm}
-%   \begin{center}
-%     \vspace{-0.8cm}
-    \includegraphics[width=8.5cm]{fig/EAS_Overview.png}
-%   \end{center}
-  \caption{A: No connection between the application and the resources B: Resource allocation based on self-aware metric}
-  \label{fig:EAS}
-%   \vspace{-2cm}
-\end{wrapfigure}
 In Linux based systems, attempts have been made to incorporate this behavior by using clock frequency scaling and deep sleep states to scale the hardware resources according to the demand. 
 The problem with the existing approaches is that the resources are allocated based on poor metrics.
 There is no interoperability between applications and the runtime system, and resources are usually allocated based on indirect metrics such as the system \textit{workload}.
 Such a metric does not describe performance demands in applications, and therefore often causes incorrect resource allocation and thus energy waste \cite{HolmbackaDasip, HolmbackaHipeac}.
 \smallskip
+
+\begin{wrapfigure}{br}{8.5cm}
+%   \begin{center}
+%     \vspace{-0.8cm}
+    \includegraphics[width=8.0cm]{fig/EAS_Overview.png}
+%   \end{center}
+  \caption{A: No connection between the application and the resources B: Resource allocation based on self-awareness}
+  \label{fig:EAS}
+%   \vspace{-2cm}
+\end{wrapfigure}
 
 %\todo[inline,color=green]{Here comes what we do in this research:}
 In this research we will extend the application software with the notion of \textit{energy awareness}.
@@ -190,7 +191,7 @@ It results in better accuracy of resource allocation, increase self awareness an
 
 The research area in energy efficient computing is a broad domain spanning several levels of hardware from IoT to Exascale.
 The commonality is, however, the ability to propagate information from the highest software layer to the runtime system, and to the hardware.
-Throughout all computing domains in the area of energy efficient computing, we have identified three critical challenges to address in our research further specified in sections \ref{sec:self},\ref{sec:inter} and \ref{sec:smart}.
+Throughout all computing domains in the area of energy efficient computing, we have identified three critical challenges to address in our research further specified in sections \ref{sec:self}, \ref{sec:inter} and \ref{sec:smart}.
 
 \subsection{Self awareness}
 \label{sec:self}
@@ -292,10 +293,10 @@ A high workload indicates that the system needs more resources, and the clock fr
 Setting the frequency can be based on different policies, and the most common policy is called ``ondemand''\cite{ondemand}.
 This frequency governor scales the clock frequency to the maximum value as soon as a workload threshold is reached.
 After this it step-wise decreases the clock frequency to the lowest frequency not exceeding the threshold.\smallskip 
-\begin{wrapfigure}{br}{9cm}
+\begin{wrapfigure}{br}{8cm}
   \begin{center}
     \vspace{-0.8cm}
-    \includegraphics[width=8.5cm]{fig/WorkloadMonitor.png}
+    \includegraphics[width=7.5cm]{fig/WorkloadMonitor.png}
   \end{center}
   \caption{Current power management systems: The application causes a workload (illustrated by the gray rectangles), and the frequency governor scales the clock frequency according to the load level.}
   \label{fig:workload}
@@ -324,65 +325,6 @@ This research is aimed to provide such an interface, and the necessary tools nee
 Our current design recommendations for energy aware programming extends the application to signal resource requirements to the runtime system, which allocates the hardware resources based directly on the requirements rather than indirect metrics like the workload.
 With this framework, resources can be allocated more efficiently leading to a lower energy consumption.
 
-
-
- 
-% \begin{wrapfigure}{r}{5cm} 
-%   \begin{center}
-%   \vspace{-0.8cm}
-%     \includegraphics[width=0.26\textwidth]{fig/netflix.png}
-%   \end{center}
-%   \caption{Quality-of-Service as a left click option in the Netflix app on Android}
-%   \label{fig:netflix}
-%   \vspace{-2.5cm}
-% \end{wrapfigure}
-% 
- 
-% Figure \ref{fig:netflix} illustrates the planned ability to add a QoS option to the Netflix app running on Android.
-% The planned framework is intended to be part of the programming environment in form of a library or \#pragma available to the programmer, in which the programmer can easily declare QoS requirements.
-% The following code listing illustrates a code snippet of \texttt{mplayer} where QoS requirements are injected in the routine for decoding a video frame.
-% In this example, the QoS requirements are defined by the \textit{decoder framerate} as a floating point value.
-% Since the human eye requires 25 fps to interpret a moving picture, a slightly higher value is selected in order for the system to react in case a more computationally heavy frame is decoded. 
-% \begin{lstlisting}
-% #include <QoSlib.h>
-% ...
-% static int generate_video_frame(...){
-%   setQoSRequirement(27.5,<more options>);						//declare QoS requirements
-%   monitor monitorQoS = generateQoSmonitor();	//create a QoS monitor
-%     while (1) {
-%        float tick = monitor.get();																					//measure time
-% 	     ...
-%        void *decoded_frame;																											//legacy code
-%        decoded_frame = decode_video();												//legacy code
-%        ...
-% 	     float toc = monitor.get();																					//measure time
-%     }
-%     return 1;
-% }
-% \end{lstlisting}
-% In order to track the runtime performance of the routine, a monitor interface is generated and called before and after the frame is decoded.\\
-% \todo{Is this section too short?}
-% 
-% \begin{wrapfigure}{r}{7cm}
-%   \begin{center}
-%   \vspace{-0.8cm}
-%     \includegraphics[width=0.4\textwidth]{fig/slider.png}
-%   \end{center}
-%   \caption{Slider option for QoS in Android}
-%   \label{fig:slider}
-%   \vspace{-0.2cm}
-% \end{wrapfigure}
-% 
-% The end-user is also allowed to influence the QoS requirements at runtime.
-% This allows the system to prioritize certain aspects and trade-offs based on the environment the device is used in.
-% For example, the user can change the frame rate setpoint based on whether the device in used is plugged into a power supply or whether it is operating on battery.
-% Using this example, a video decoder might occasionally experience buffer underruns in case the setpoint for the decoding framerate is too low.
-% By using a slightly higher setpoint for the framerate, the video playback suffers from less frame drops at the cost of slightly higher energy consumption.
-% Options for the trade-off are either set based on a defined value like ``decoding framerate'' or as a more abstract option as illustrated in Figure \ref{fig:slider}; simply using a slider option between ``Energy'' or ``Performance''. 
-% The objectives of this research is to expose the link between the application and the runtime system in form of a framework for energy aware programming, 
-% while using the abilities of the framework is up to the programmer.
-
-
 \subsection{Hypothesis}
 The project states the following Hypotheses:
 
@@ -398,7 +340,7 @@ The project states the following Hypotheses:
 \subsubsection{Previous work on energy aware software}
 In previous work, Eyerman et al. \cite{Eyerman:09} claim that no single throughput metric is fundamentally generic for multiprogram workloads. 
 Performance should instead be expressed as related to the internal single case-study; a direction adopted in this research. 
-We plan to integrate this direction of thinking into user defined meta-data that expresses resource requirements in software.
+We plan to integrate this direction of thinking into user defined meta-data that expresses resource requirements in software.\smallskip
 
 In early research, a high-level language CQML \cite{Aagedal:01} was suggested for describing QoS requirements integrated in UML. 
 CQML links a high level QoS description to system performance, and can describe system actions based on the result. 
@@ -406,7 +348,7 @@ Applications specify a performance setpoint and a lower bound acceptable perform
 Applications then monitor own performance and signal this value to the QoS manager periodically. 
 Similar notations as this the language will be considered in this research to describe QoS in applications, 
 but more focus will put on the link between applications and hardware resources in a single computer system.
-Our methods for energy aware programming will not be strongly tied to a certain programming language and the framework itself will have the flexibility to be integrated from various programming environments such as servers and PC Linux and Android.
+Our methods for energy aware programming will not be strongly tied to a certain programming language and the framework itself will have the flexibility to be integrated from various environments such as servers and PCs and Android.\smallskip
 
 % Hoffmann et. al propose heartbeats \cite{Hoffmann:10} as a generic performance parameter. 
 % The heartbeats are setup by including a set of heartbeat API calls in applications, which are used to monitor the application performance. 
@@ -426,14 +368,14 @@ A heartbeat feedback monitors the execution and reports on the updated performan
 Also, the work by Segovia \cite{Segovia:11} suggests graceful degradation of the application QoS by monitoring a happiness value from the application. 
 Based on this value, the runtime system can degrade quality points in the application in order to achieve the requested QoS. 
 Our planned runtime system is inspired by the same approach to treat input signals from applications: the performance is transformed into a generic parameter – QoS – upon which the controller acts.
-In contrast, our controller uses no graceful degradation in the applications, but the actual hardware actuators to allocate resources.
+In contrast, our controller uses no graceful degradation in the applications, but the actual hardware actuators to allocate resources.\smallskip
 
 In previous research, there have been a strong separation between monitor and control.
 Several research projects offer the opportunity to monitor an executing application, but supports no control of the hardware.
 On the other hand, many controller-based research project do not support any proper framework for declaring meta-data requirements and monitoring of the execution.
 This research project will tie both parts together with the main focus on reducing the energy consumption with minimal programmer effort -- an effort not previously done.
 Our research project will also make the proper balance between academic research and practical usability,
-which means that there is both a focus on planning the long term usage of the framework in terms of capabilities and scalability, but also practical efforts to enable a programmer to pick up the tools and start developing energy aware software in the industry.
+which means that there is both a focus on planning the long term usage of the framework in terms of capabilities and scalability, but also practical efforts to enable a programmer to pick up the tools and start developing energy aware software in the industry.\smallskip
 
 \section{Expected scientific and societal impacts and potential breakthrough of the research}
 Our expected impact is on the research community is to address the energy awareness in software. 
@@ -535,50 +477,95 @@ Since our research is mainly based on theoretical computer engineering and imple
 We utilize mainly opensource tools or other free software from our own research community.
 For the evaluation and demonstration efforts we require the latest hardware technology especially in the embedded domain and eventually access to larger cloud systems.
 
-\section{Ethical issues}
-This research project has no ethical issues.
+\section{Ethical issues \small -- This research project has no ethical issues. }
 
 \section{Implementation: schedule, budget, distribution of work}
 \subsection{Work packages}
 \subsubsection{WP1 -- State of the art and exposing the meta-data}
+\begin{wraptable}{r}{9cm}
+\vspace{-0.5cm}
+\small
+\begin{tabular}{ | l |}
+\hline
+{Task 1.1 State-of-the-art review and defining the meta-data}  \\ \hline
+{Task 1.1 State-of-the-art review and defining the meta-data}  \\ \hline
+{Task 1.3 Tools for introducing meta-data in software}		\\ \hline
+\end{tabular}
+\vspace{-0.3cm}
+\end{wraptable}
 The initial part of the project is to determine how to expose the meta-data to the programmer.
 Therefore the project begins with a state-of-the-art review of currently proposed solutions for defining performance requirements and self-awareness.
 The WP is intended to firstly define what exactly should be included in the meta-data to get a proper description of performance in applications. 
 Further, what must be determined is guidelines for how, where, and when the meta-data should be injected in software to ensure stability and minimal performance overhead.
 Included in this WP is tool support for automatic meta-data injection based on the findings earlier in the WP.
-\begin{itemize}
- \item Task 1.1 State-of-the-art review and defining the meta-data \vspace{-0.3cm}
- \item Task 1.2 Injecting the meta-data in software \vspace{-0.3cm}
- \item Task 1.3 Tools for introducing meta-data in software \vspace{-0.3cm}
-\end{itemize}
+
+% \begin{itemize}
+%  \item Task 1.1 State-of-the-art review and defining the meta-data \vspace{-0.3cm}
+%  \item Task 1.2 Injecting the meta-data in software \vspace{-0.3cm}
+%  \item Task 1.3 Tools for introducing meta-data in software \vspace{-0.3cm}
+% \end{itemize}
 
 \subsubsection{WP2 -- Feedback monitor}
+\begin{wraptable}{r}{9.7cm}
+\vspace{-0.5cm}
+\small
+\begin{tabular}{ | l |}
+\hline
+Task 2.1 Evaluate complementary work and possible integration  \\ \hline
+Task 2.2 Construction of the monitoring interface and framework   \\ \hline
+Task 2.3 Cross-domain evaluation of monitoring system	\\ \hline
+\end{tabular}
+\vspace{-0.3cm}
+\end{wraptable}
 WP2 covers the monitoring of the application software.
 This includes how to interconnect the monitor with the application, determine the information flow between the application and the monitor and also how to forward this information to the resource allocation controller.
 The main challenge to tackle is how the application software can be monitored without affecting the functionality or the performance of the system.
 State-of-the-art monitoring systems such as the MIT heartbeats \cite{Hoffmann:10} will be evaluated as complementary research to the proposed energy awareness monitor.
 A monitoring interface will be developed and its cross-domain applicability will be evaluated on Android, PC and server systems.
-\begin{itemize}
-\item Task 2.1 Evaluate complementary work and possible integration \vspace{-0.3cm}
-\item Task 2.2 Construction of the monitoring interface and framework \vspace{-0.3cm}
-\item Task 2.3 Cross-domain evaluation of monitoring system
-\end{itemize}
+% \begin{itemize}
+% \item Task 2.1 Evaluate complementary work and possible integration \vspace{-0.3cm}
+% \item Task 2.2 Construction of the monitoring interface and framework \vspace{-0.3cm}
+% \item Task 2.3 Cross-domain evaluation of monitoring system
+% \end{itemize}
 
 \subsubsection{WP3 -- Energy aware controller}
+\begin{wraptable}{r}{9.4cm}
+\vspace{-0.5cm}
+\small
+\begin{tabular}{ | l |}
+\hline
+Task 3.1: Modeling energy consumption\\ \hline
+Task 3.2: Tools for generating energy models \\ \hline
+Task 3.3: Adopting optimization methods for energy efficiency \\ \hline
+Task 3.4: Implementation of runtime controller \\ \hline
+\end{tabular}
+\vspace{-0.3cm}
+\end{wraptable}
 WP3 is about using the self-awareness provided by WP1 and the monitoring data from WP2 and use it for smart optimizations by a runtime system controller.
 The main challenge in WP3 is to define the resource allocation to achieve maximal energy efficiency without performance loss.
 Several well established optimization methods based on system models will be evaluated.
 This means firstly modeling the underlying system and secondly applying mathematical optimization methods on the model.
 The work was initiated in the thesis of the PI, and WP3 is intended to refine the optimization methods for a larger selection of platforms and improve on existing optimization methods.
 WP3 also include the implementation of tools for automatic model generation for increasing the portability of the framework and finally the implementation of the runtime system controller itself.
-\begin{itemize}
- \item Task 3.1: Modeling energy consumption \vspace{-0.3cm}
- \item Task 3.2: Tools for generating energy models \vspace{-0.3cm}
- \item Task 3.3: Adopting optimization methods for energy efficiency \vspace{-0.3cm}
- \item Task 3.4: Implementation of runtime controller
-\end{itemize}
+% \begin{itemize}
+%  \item Task 3.1: Modeling energy consumption \vspace{-0.3cm}
+%  \item Task 3.2: Tools for generating energy models \vspace{-0.3cm}
+%  \item Task 3.3: Adopting optimization methods for energy efficiency \vspace{-0.3cm}
+%  \item Task 3.4: Implementation of runtime controller
+% \end{itemize}
 
 \subsubsection{WP4 -- A framework for energy aware programming and demonstrator}
+\begin{wraptable}{r}{9.2cm}
+\vspace{-0.5cm}
+\small
+\begin{tabular}{ | l |}
+\hline
+Task 4.1: Construction of API for energy aware programming\\ \hline
+Task 4.2: Single use-cases \\ \hline
+Task 4.3: Demonstrator\\ \hline
+\end{tabular}
+\vspace{-0.3cm}
+\end{wraptable}
 The final stage of the research is to bind the previously created methods into a package usable for the programmer.
 Construction of the API framework used for energy aware programming is defined as the first item in WP4.
 The API is a result from the meta-data declaration in WP1, the monitor interface in WP3 and the runtime system in WP3.
@@ -586,11 +573,11 @@ Additional efforts in this WP is especially put on supporting interdisciplinary 
 A software library, pragma or other interface is the final deliverable and is the link between the application software and the runtime system.
 Additionally, we demonstrate its usability with single small scale use-cases, which also function as evaluation of the API.
 Lastly a large scale demonstrator is created running a complete version of the energy aware software on an off-the-shelf consumer device such as an Android phone or tablet.
-\begin{itemize}
- \item Task 4.1: Construction of API for energy aware programming \vspace{-0.3cm}
- \item Task 4.2: Single use-cases \vspace{-0.3cm}
- \item Task 4.3: Demonstrator
-\end{itemize}
+% \begin{itemize}
+%  \item Task 4.1: Construction of API for energy aware programming \vspace{-0.3cm}
+%  \item Task 4.2: Single use-cases \vspace{-0.3cm}
+%  \item Task 4.3: Demonstrator
+% \end{itemize}
 
 The timeline of the research work is summarized in Figure \ref{fig:schedule}.
 \begin{figure}[h]
@@ -621,7 +608,7 @@ The budget of the project is defined in Table 1.
 \label{tab:budget}
 \vspace{-0.5cm}
 \end{wraptable}
-\pagebreak
+
 
 \section{Research team and collaboration}
 The team is internationally well connected and has established cooperation with several teams abroad and nationally. 

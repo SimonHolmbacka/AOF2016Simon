@@ -1,5 +1,5 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{DGR{\etalchar{+}}74}
+\begin{thebibliography}{DKM{\etalchar{+}}12}
 
 \bibitem[Aag01]{Aagedal:01}
 Jan Aagedal.
@@ -15,6 +15,11 @@ Teigerwald Bob~S and Agrawal Abhisek.
 R.H. Dennard, F.H. Gaensslen, V.L. Rideout, E.~Bassous, and A.R. LeBlanc.
 \newblock Design of ion-implanted mosfet's with very small physical dimensions.
 \newblock {\em Solid-State Circuits, IEEE Journal of}, 9(5):256--268, Oct 1974.
+
+\bibitem[DKM{\etalchar{+}}12]{Danowitz:12}
+Andrew Danowitz, Kyle Kelley, James Mao, John~P. Stevenson, and Mark Horowitz.
+\newblock Cpu db: Recording microprocessor history.
+\newblock {\em Queue}, 10(4):10:10--10:27, April 2012.
 
 \bibitem[EEKS09]{Eyerman:09}
 Stijn Eyerman, Lieven Eeckhout, Tejas Karkhanis, and James~E. Smith.
@@ -68,6 +73,12 @@ Henry Hoffmann, Stelios Sidiroglou, Michael Carbin, Sasa Misailovic, Anant
 \newblock Dynamic knobs for responsive power-aware computing.
 \newblock {\em SIGPLAN Not.}, 46(3):199--212, March 2011.
 
+\bibitem[PV07]{5514312}
+M.~D. Powell and T.~N. Vijaykumar.
+\newblock Resource area dilation to reduce power density in throughput servers.
+\newblock In {\em Low Power Electronics and Design (ISLPED), 2007 ACM/IEEE
+  International Symposium on}, pages 268--273, {Aug} 2007.
+
 \bibitem[Seg11]{Segovia:11}
 Vanessa Segovia.
 \newblock {\em Adaptive CPU resource management for multicore platforms}.
@@ -93,5 +104,10 @@ Steven te~Brinke.
 Rob Triggs.
 \newblock How far we've come: a look at smartphone performance over the past 7
   years, July 2015.
+
+\bibitem[WS13]{Wang:13}
+L.~Wang and K.~Skadron.
+\newblock Implications of the power wall: Dim cores and reconfigurable logic.
+\newblock {\em IEEE Micro}, 33(5):40--48, 2013.
 
 \end{thebibliography}
