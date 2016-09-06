@@ -29,7 +29,7 @@
 \usepackage{todonotes}
 \usepackage{wrapfig}
 \usepackage{caption}
-\usepackage{chemmacros}
+%\usepackage{chemmacros}
 \usepackage[export]{adjustbox}
 \usepackage{pbox}
 \usepackage{listings}
@@ -136,14 +136,23 @@ Lastly, without increased energy efficiency, high performance computing centers 
 The US Department of Energy\footnote{http://ascr-discovery.science.doe.gov/2014/11/exascale-road-bumps/} have defined a maximum power envelope of 20 MW for a single data center, but with current technology, an exa-scale computing center would require over 7000 MW.\smallskip
 
 %\todo[inline,color=green]{Here comes that HW was the solution yesterday but not anymore:}
-% Since more complex applications with even stricter performance demand is to expect in the future, energy efficient efforts must be increased.
-Hardware has historically been the solution to these problems, but the energy evolution in hardware is not anymore proportional to the performance due the end the Dennard scaling  \cite{Dennard:74}.
-This means that as transistors become smaller, energy efficiency is not any more improved by transistor technology alone, such that the power remains in proportion to the chip density. 
-A typical processor chip has a limited power envelope of roughly 250W before the heat dissipation damages the silicon,
-which means that all chip area cannot be utilized simultaneously, a phenomenon called ``dark silicon''.
-Traditionally, chip manufacturers have continuously lowered the chip voltage to solve the energy density problem,
-but physical limitations to reach millivolt switch voltage in transistors prohibits chip manufacturers from operating on lower voltages than about 1V. 
-Furthermore, hardware development, alone, in form of battery development in mobile phones also lacks the ability to keep up with the progress in processor capacity \cite{CPUCapacity,BatteryCapacity}.
+To provide continuous performance increase in computing systems, the clock frequency wall was avoid in the beginning of the 2000s by the introduction of multi-core based systems. 
+This led to a new challenge in mid-2000s: the CPU power wall [1], [2]. 
+Indeed, due to physical limitations of semiconductor materials, the power dissipation of a fixed chip area is limited. 
+With the evolution of semiconductor device fabrication, from 10$\micro$ m manufacturing process in the 70s until the commercialization of 14nm based technology CPU in 2015, more transistors are squeezed into a smaller silicon area introducing an increase of the power density [3]. 
+This eventually leads to dark silicon, when all the components of a chip can not be operated at the same time due to its power dissipation and generated heat. 
+The effects of the power wall was until now limited by the design of more energy efficient transistors with for example lower voltage levels.
+This had the advantage to increase the transistor efficiency in proportion to the increase of transistor density, a phenomenon called the Dennard scaling \cite{Dennard:74}. 
+However the current increase of the transistor efficiency is not any more proportional to the increase of transistor density [2], 
+and the semiconductor device fabrication is currently in a post-Dennard scaling area, where a substantial increase of the performance of computing
+systems can not be obtained before solving the current power dissipation and related energy consumption issues.
+%Hardware has historically been the solution to these problems, but the energy evolution in hardware is not anymore proportional to the performance due the end the Dennard scaling  \cite{Dennard:74}.
+%This means that as transistors become smaller, energy efficiency is not any more improved by transistor technology alone, such that the power remains in proportion to the chip density. 
+%A typical processor chip has a limited power envelope of roughly 250W before the heat dissipation damages the silicon.
+%which means that all chip area cannot be utilized simultaneously, a phenomenon called ``dark silicon''.
+%Traditionally, chip manufacturers have continuously lowered the chip voltage to solve the energy density problem,
+%but physical limitations to reach millivolt switch voltage in transistors prohibits chip manufacturers from operating on lower voltages than about 1V. 
+Furthermore on the other front, hardware development, alone, in form of battery development in mobile phones also lacks the ability to keep up with the progress in processor capacity \cite{CPUCapacity,BatteryCapacity}.
 This means that the increased performance capabilities of the mobile processor is evolving far quicker than the battery capacity.
 Thus, hardware evolution in terms of energy efficiency cannot keep up with the phase of the increased performance demand.\smallskip
 

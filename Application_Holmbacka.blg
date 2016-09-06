@@ -1,48 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: Application_Holmbacka.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: Application_Holmbacka.aux
 The style file: alpha.bst
 Database file #1: sample.bib
 Warning--empty institution in HolmbackaTechrep
-You've used 16 entries,
-            2543 wiz_defined-function locations,
-            672 strings with 7601 characters,
-and the built_in function-call counts, 6562 in all, are:
-= -- 638
-> -- 352
-< -- 12
-+ -- 123
-- -- 121
-* -- 474
-:= -- 1097
-add.period$ -- 48
-call.type$ -- 16
-change.case$ -- 106
-chr.to.int$ -- 16
-cite$ -- 17
-duplicate$ -- 266
-empty$ -- 441
-format.name$ -- 138
-if$ -- 1337
-int.to.chr$ -- 1
-int.to.str$ -- 0
-missing$ -- 8
-newline$ -- 81
-num.names$ -- 52
-pop$ -- 116
-preamble$ -- 1
-purify$ -- 125
-quote$ -- 0
-skip$ -- 231
-stack$ -- 0
-substring$ -- 252
-swap$ -- 62
-text.length$ -- 12
-text.prefix$ -- 6
-top$ -- 0
-type$ -- 128
-warning$ -- 1
-while$ -- 55
-width$ -- 22
-write$ -- 207
 (There was 1 warning)
