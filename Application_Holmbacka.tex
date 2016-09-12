@@ -130,7 +130,7 @@ the very usability of battery powered devices depends on its ability to provide 
 %Desktop
 Desktop and laptop systems require high levels of energy efficiency to lower noise levels from active cooling, increase the reliability by reducing the heat and minimize the electric bill.
 %server
-On the larger scale, the rapid expansion of large scale servers is not in line with ecological development, and now contribute over to 2\% of the total energy consumption in the US\footnote{Statistics according to the U.S. Office of Energy Efficiency \& Renewable Energy: http://energy.gov/eere/femp/resources-data-center-energy-efficiency}, with Facebook alone releasing 650k tonnes of carbon annually\footnote{https://sustainability.fb.com/en/our-footprint/}.
+On the larger scale, the rapid expansion of large scale servers is not in line with ecological development, and now contributes to over 2\% of the total energy consumption in the US\footnote{Statistics according to the U.S. Office of Energy Efficiency \& Renewable Energy: http://energy.gov/eere/femp/resources-data-center-energy-efficiency}, with Facebook alone releasing 650k tonnes of carbon annually\footnote{https://sustainability.fb.com/en/our-footprint/}.
 %exascale
 Lastly, without increased energy efficiency, high performance computing centers cannot reach exa-scale performance.
 The US Department of Energy\footnote{http://ascr-discovery.science.doe.gov/2014/11/exascale-road-bumps/} have defined a maximum power envelope of 20 MW for a single data center, but with current technology, an exa-scale computing center would require over 7000 MW.\smallskip
@@ -139,13 +139,13 @@ The US Department of Energy\footnote{http://ascr-discovery.science.doe.gov/2014/
 To provide continuous performance increase in computing systems, the clock frequency wall was avoid in the beginning of the 2000s by the introduction of multi-core based systems. 
 This led to a new challenge in mid-2000s: the CPU power wall \cite{Danowitz:12,Wang:13}. 
 Indeed, due to physical limitations of semiconductor materials, the power dissipation of a fixed chip area is limited. 
-With the evolution of semiconductor device fabrication, from 10$\mu$ m manufacturing process in the 70s until the commercialization of 14nm based technology CPU in 2015, more transistors are squeezed into a smaller silicon area which increases power density \cite{5514312}. 
+With the evolution of semiconductor device fabrication, from a 10$\mu$m manufacturing process in the 70s until the commercialization of 14nm based technology in 2015, more transistors are squeezed into a smaller silicon area which increases power density \cite{5514312}. 
 This eventually leads to dark silicon, when all the components of a chip can not be operated at the same time due to its power dissipation and generated heat. 
 The effects of the power wall was until now limited by the design of more energy efficient transistors with for example lower voltage levels.
 This had the advantage to increase the transistor efficiency in proportion to the increase of transistor density, a phenomenon called the Dennard scaling \cite{Dennard:74}. 
 However the current increase of the transistor efficiency is not any more proportional to the increase of transistor density \cite{Wang:13}, 
 and the semiconductor device fabrication is currently in a post-Dennard scaling area, where a substantial increase of the performance of computing
-systems can not be obtained before solving the current power dissipation and related energy consumption issues.
+systems can not be obtained before solving the current power dissipation and related energy consumption issues.\smallskip
 %Hardware has historically been the solution to these problems, but the energy evolution in hardware is not anymore proportional to the performance due the end the Dennard scaling  \cite{Dennard:74}.
 %This means that as transistors become smaller, energy efficiency is not any more improved by transistor technology alone, such that the power remains in proportion to the chip density. 
 %A typical processor chip has a limited power envelope of roughly 250W before the heat dissipation damages the silicon.
@@ -157,7 +157,7 @@ systems can not be obtained before solving the current power dissipation and rel
 % Thus, hardware evolution in terms of energy efficiency cannot keep up with the phase of the increased performance demand.\smallskip
 
 %\todo[inline,color=green]{Here comes what is needed to solve the problem:}
-In order to solve the mentioned problems in this interdisciplinary domain, software must be involved to make computer systems energy efficient again!
+In order to solve the mentioned problems in this interdisciplinary domain, software must inevitably be involved to make computer systems energy efficient again!
 The key challenge is to utilize the available hardware resources as efficiently as possible.
 Since general purpose applications have a very dynamic behavior, a runtime environment must continuously adjust the usage of the resources based on the execution of the applications.
 In Linux based systems, attempts have been made to incorporate this behavior by using clock frequency scaling and deep sleep states to scale the hardware resources according to the demand. 
@@ -201,7 +201,8 @@ The challenge is therefore to provide a framework with the capability of handlin
 As previously mentioned, the traditional way of solely monitoring the workload is a very inaccurate and often counter-productive both in terms of performance and energy.
 We tackle this challenge by allowing the applications to express the resource requirements internally.
 This means that the application should include a small part of code -- the meta-data -- which expresses the intention of the application in its own understanding of performance.
-For example, if a video decoder demands a framerate of 25 fps, the user of the application is satisfied with the performance of the application.
+For example, the end user of a video decoder is satisfied in case the decoder produces a framerate of 25 fps because of properties in the human eye and the understanding of moving pictures. 
+A higher framerate is therefore energy waste while not producing any higher satisfaction for the end user.
 Therefore, we will investigate the types on meta-data needed to describe the intentions of an application sufficiently accurate.
 One of the challenges is to obtain a sufficiently descriptive form of meta-data that can be generalized to any new- or legacy application.
 Once the meta-data descriptions have been established, the injection of the data into both new- and legacy applications must be achieved fairly effortless in order for the programmers to make the additional effort.
@@ -209,11 +210,11 @@ A trade-off between descriptiveness and programmer effort is to be expected.
 
 \subsection{Interoperability for energy efficiency}
 \label{sec:inter}
-The interoperability challenge in the domain of energy awareness in application software is the create an ecosystem capable of exchanging information about the intentions of an application to the runtime software layer. Secondly, the exchanged information must be interpreted by the runtime layer to make sensible decisions regarding the resource allocation.
+The interoperability challenge in the domain of energy awareness in application software is to create an ecosystem capable of exchanging information about the intentions of an application to the runtime software layer. Secondly, the exchanged information must be interpreted by the runtime layer to make sensible decisions regarding the resource allocation.
 Since applications in general are dynamic, the performance of the application depends on a wide set of factors such as memory intensity, use of caches, user interrupts, the data sizes and data types used, interaction with other applications etc. 
 This means that the performance of an application cannot be guaranteed with fixed resources.
 In order to adapt the resources allocated to the application, the performance of the application must be monitored at runtime.
-In case the currently allocated performance is either too high or too low, the monitoring reports this issue to the controller which allocates or deallocates resources to accommodate to the real resource requirement.
+In case the currently allocated performance is either too high or too low, the monitor reports this issue to the controller which allocates or deallocates resources to accommodate for the real resource requirement.
 We recognize therefore the need for a proper monitoring framework to insure the interoperability between applications and the runtime system.
 Such a framework must be detailed enough and provide sufficient tools for measuring performance, but simple enough to reduce programmer effort for using it.
 Since the monitoring framework is a runtime system, significantly low overhead must be guaranteed to not interfere with the energy consumption and performance of the host system.
@@ -285,12 +286,12 @@ When adding more complex criteria with multiple variables such as energy efficie
 \subsection{Objectives}
 Our objectives is to address the energy consumption problem in computer systems.
 In most recent systems, power managers have been implemented to scale the performance of the system according to the current resource demand.
-Various implementations might exist depending on the whether the system is a large cloud farm or a small IoT system, 
+Various implementations exist depending on the whether the system is a large cloud farm or a small IoT system, 
 but main problem in current solutions is the inability to accurately express resource demands.
 In mainstream Linux systems, the resource demand is measured as the utilization caused by the workload of the CPU. 
 Workload in operating systems is measured as a sliding window average over an active and idle CPU as illustrated in Figure~\ref{fig:workload}. 
-A high workload indicates that the system needs more resources, and the clock frequency is scaled up to decrease the workload on the CPU.
-Setting the frequency can be based on different policies, and the most common policy is called ``ondemand''\cite{ondemand}.
+A high workload indicates that the system needs more resources, and the clock frequency is scaled up to decrease the workload of the CPU.
+Setting the frequency can be based on different policies implemented in \textit{frequency governors}, and the most common policy is called ``ondemand''\cite{ondemand}.
 This frequency governor scales the clock frequency to the maximum value as soon as a workload threshold is reached.
 After this it step-wise decreases the clock frequency to the lowest frequency not exceeding the threshold.\smallskip 
 \begin{wrapfigure}{br}{8cm}
@@ -302,9 +303,9 @@ After this it step-wise decreases the clock frequency to the lowest frequency no
   \label{fig:workload}
 %   \vspace{-2cm}
 \end{wrapfigure}
-The problem with this approach is that the workload does not describe the performance of the applications.
+The problem with this approach is that the workload does not describe the performance of the applications accurately enough.
 High workload does not necessary mean that an application requires more performance, it simply describes how much the application is using the CPU.
-It is merely an indirect effect of executing an application as illustrated in Figure \ref{fig:workload}.
+It is merely an indirect effect of executing an application as illustrated in Figure~\ref{fig:workload}.
 Incorrect resource allocation result in either poor performance or in energy waste.
 % For example, in case the CPU is set to decode a video, the workload will increase to 100\% as soon as the video frames are being decoded.  
 % This means that the CPU is clocked to the maximum frequency as long as the frames are being decoded and the decoded frame rate is only limited by the speed of the CPU; 
@@ -319,8 +320,8 @@ The fundamental problem was still unsolved because the governor models the perfo
 and in case the model does not fit the application, either excessive or insufficient resources are allocated to the application.\smallskip
 
 What we propose is to make the application software itself energy aware and \textbf{the objectives of this research} is to develop a complete framework for programming energy aware software.
-This means that the applications are involved in resource allocation directly.
-Such a power management system requires an interface between application and runtime system, which is current non-existing.
+Using this software, applications become involved in the resource allocation which is a necessary step for reaching the next level of energy efficiency in computer systems.
+A power management system compatible with energy aware software requires therefore an interface between application and runtime system, which is current non-existing.
 This research is aimed to provide such an interface, and the necessary tools needed to use it.
 Our current design recommendations for energy aware programming extends the application to signal resource requirements to the runtime system, which allocates the hardware resources based directly on the requirements rather than indirect metrics like the workload.
 With this framework, resources can be allocated more efficiently leading to a lower energy consumption.
@@ -378,7 +379,7 @@ Our research project will also make the proper balance between academic research
 which means that there is both a focus on planning the long term usage of the framework in terms of capabilities and scalability, but also practical efforts to enable a programmer to pick up the tools and start developing energy aware software in the industry.\smallskip
 
 \section{Expected scientific and societal impacts and potential breakthrough of the research}
-Our expected impact is on the research community is to address the energy awareness in software. 
+Our expected impact on the research community is to address the energy awareness in software. 
 In other words, the need for communication between the application layer and the runtime environment. 
 % We expect to determine the information flow needed to create energy aware software especially for heterogeneous architectures. 
 % \todo{How with the heterogeneous issue? Is it part of this plan?}
@@ -393,7 +394,7 @@ Even though the implementation of the runtime systems between domains can be dif
 With this common denominator, runtime systems engineers between projects and domains can incorporate shared ideas for implementing new, or improving existing runtime systems. 
 For example the GTS scheduler appearing in most high-end Android phones and tablets is currently highly inefficient due to a poor decision making model. 
 Moreover, its implementation model is completely isolated from any other runtime system – leaving it highly unportable. 
-By introducing the notion of energy aware programming, the development of runtime systems needed in any modern computer system has the potential to shift from an ad-hoc single-purpose environment to a sharing environment where engineers have a better platform to cooperate on.
+By introducing the notion of energy aware programming, the development of runtime systems needed in any modern computer system has the potential to shift from an ad-hoc single-purpose environment to a sharing environment where engineers have a common platform to cooperate on.
 
 \subsection{Applicability}
 \begin{itemize}
@@ -433,7 +434,7 @@ We are working extensively within the \textit{streaming applications} paradigm f
 Firstly, streaming systems are usually implemented in environments in which energy efficiency is of essence like video playback systems, web servers, digital filtering systems, telecommunications systems and other multi-media or IoT systems. 
 Secondly, since the content of the streaming data is to a large extent arbitrary, no compiler based optimization (or other static solution) can solve the energy problem. 
 The software itself must therefore be energy aware, and backed up by a runtime systems making online decisions. 
-Thirdly, streaming systems are extremely common and is thus providing a large market to work on from tiny IoT systems up to large cloud server systems.
+Thirdly, streaming systems are extremely common and is thus providing a large market to work on from tiny IoT systems up to large cloud server systems.\smallskip
 
 The work is highly experimental based, and to validate our approach we need to develop characteristic benchmarks. 
 During the last years our group has gained considerable experience in developing our on benchmarks, as well as our own measurement setups. 
@@ -499,12 +500,6 @@ The WP is intended to firstly define what exactly should be included in the meta
 Further, what must be determined is guidelines for how, where, and when the meta-data should be injected in software to ensure stability and minimal performance overhead.
 Included in this WP is tool support for automatic meta-data injection based on the findings earlier in the WP.
 
-% \begin{itemize}
-%  \item Task 1.1 State-of-the-art review and defining the meta-data \vspace{-0.3cm}
-%  \item Task 1.2 Injecting the meta-data in software \vspace{-0.3cm}
-%  \item Task 1.3 Tools for introducing meta-data in software \vspace{-0.3cm}
-% \end{itemize}
-
 \subsubsection{WP2 -- Feedback monitor}
 \begin{wraptable}{r}{9.7cm}
 \vspace{-0.5cm}
@@ -522,11 +517,6 @@ This includes how to interconnect the monitor with the application, determine th
 The main challenge to tackle is how the application software can be monitored without affecting the functionality or the performance of the system.
 State-of-the-art monitoring systems such as the MIT heartbeats \cite{Hoffmann:10} will be evaluated as complementary research to the proposed energy awareness monitor.
 A monitoring interface will be developed and its cross-domain applicability will be evaluated on Android, PC and server systems.
-% \begin{itemize}
-% \item Task 2.1 Evaluate complementary work and possible integration \vspace{-0.3cm}
-% \item Task 2.2 Construction of the monitoring interface and framework \vspace{-0.3cm}
-% \item Task 2.3 Cross-domain evaluation of monitoring system
-% \end{itemize}
 
 \subsubsection{WP3 -- Energy aware controller}
 \begin{wraptable}{r}{9.4cm}
@@ -547,12 +537,6 @@ Several well established optimization methods based on system models will be eva
 This means firstly modeling the underlying system and secondly applying mathematical optimization methods on the model.
 The work was initiated in the thesis of the PI, and WP3 is intended to refine the optimization methods for a larger selection of platforms and improve on existing optimization methods.
 WP3 also include the implementation of tools for automatic model generation for increasing the portability of the framework and finally the implementation of the runtime system controller itself.
-% \begin{itemize}
-%  \item Task 3.1: Modeling energy consumption \vspace{-0.3cm}
-%  \item Task 3.2: Tools for generating energy models \vspace{-0.3cm}
-%  \item Task 3.3: Adopting optimization methods for energy efficiency \vspace{-0.3cm}
-%  \item Task 3.4: Implementation of runtime controller
-% \end{itemize}
 
 \subsubsection{WP4 -- A framework for energy aware programming and demonstrator}
 \begin{wraptable}{r}{9.2cm}
@@ -573,11 +557,6 @@ Additional efforts in this WP is especially put on supporting interdisciplinary 
 A software library, pragma or other interface is the final deliverable and is the link between the application software and the runtime system.
 Additionally, we demonstrate its usability with single small scale use-cases, which also function as evaluation of the API.
 Lastly a large scale demonstrator is created running a complete version of the energy aware software on an off-the-shelf consumer device such as an Android phone or tablet.
-% \begin{itemize}
-%  \item Task 4.1: Construction of API for energy aware programming \vspace{-0.3cm}
-%  \item Task 4.2: Single use-cases \vspace{-0.3cm}
-%  \item Task 4.3: Demonstrator
-% \end{itemize}
 
 The timeline of the research work is summarized in Figure \ref{fig:schedule}.
 \begin{figure}[h]
@@ -614,7 +593,6 @@ The budget of the project is defined in Table 1.
 The team is internationally well connected and has established cooperation with several teams abroad and nationally. 
 Our lab and the PI has worked within several international and national research projects such as RECOMP, ParallaX and INTERSYS with close ties to Finnish industry like Nokia, ABB, Kone, Ericsson etc.
 
-% The cooperations listed here are the ones relevant to this application and that are documented through the most important joint publications.
 \subsection{Collaboration}
 The cooperation between Prof. Jean-Francois Nezan, INSA, Rennes, and \AA{}bo Akademi University has concentrated on the run-time management of dataflow networks, 
 and has been executed through exchange of PhD students.
@@ -622,7 +600,7 @@ The PI visited INSA de Rennes for 4 months in 2013-2014, which resulted in two j
 INSA de Rennes has a strong background in tool support. 
 The previously developed PREESM\footnote{http://preesm.sourceforge.net/website/} tool which was used to determine parallelism in data-flow programs to be used in a power optimizer developed by the PI in \AA{}bo Akademi University, and this work resulted in the best paper award at the 2014 DASIP conference.
 A 3 month research mobility is planned early in the project to bring early tool integration of meta-data injection in WP1, and to determine the meta-data model needed for such tool integration.
-In the later stages of the project, the utilization of PREESM is expected in form of a demonstration environment for WP4.
+In the later stages of the project, the utilization of PREESM is expected in form of a demonstration environment for WP4.\smallskip
 
 A cooperation between Holmbacka and Prof. J\"{o}rg Keller at the FernUniversit\"{a}t in Hagen started in 2014, since when we have worked on energy efficient scheduling for multi-core systems. 
 The lab group in Hagen has previously worked on performance models for very parallel systems such as the Intel SCC.
@@ -669,29 +647,6 @@ The mobilities are planned as follows and illustrated in Figure \ref{fig:schedul
  \item Simon Holmbacka (PI) will visit Prof. Ivona Brandi\'{c} for 3 months in the beginning of WP2 \vspace{-0.3cm}
  \item Simon Holmbacka (PI) will visit Prof. J\"{o}rg Keller for 6 months in the middle of WP3. \vspace{-0.3cm}
 \end{itemize}
-
-
-% \textbf{Summary of past mobilities by the PI}\\
-% 
-% \textbf{Project: Post-Doc research}\\
-% \textsl{Partners: J\"{o}rg Keller, FernUniversit\"{a}t in Hagen, Germany}
-% \hfill September 2015 -- ongoing
-% 
-% \textbf{Project: Energy Efficient Cloud Simulation}\\
-% \textsl{Partners: Dra\v{z}en Lu\v{c}anin, Ilia Pietri, Ivona Brandi\'{c}, TU Vienna, Vienna, Austria}
-% \hfill May 15 -- May 30 2015
-% 
-% \textbf{Project: Power-Aware HEVC Decoding with Tunable Image Quality}\\
-% \textsl{Partners: Erwan Nogues, Maxime Pelcat, INSA de Rennes, France}
-% \hfill October 2013 -- March 2014
-% 
-% \textbf{Project: Innovation and Creativity for Complex Engineering Systems}\\
-% \textsl{Partners: Jo\~{a}o Fernandes, Universidade do Minho, EFACEC Inc., Portugal}
-% \hfill January 31 -- 17 February 2012
-% 
-% \textbf{Project: Safe Motor Controller in Mixed-Critical Environment}\\
-% \textsl{Partners: Jos\'{e} Luis Guti\'{e}rrez, University of Granada, Spain \\ Miguel M\'{e}ndez, Seven Solutions Inc., Spain} 
-% \hfill November 5 -- November 17 2012
 
 \bibliographystyle{alpha}
 {\footnotesize
