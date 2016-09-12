@@ -405,8 +405,9 @@ By introducing the notion of energy aware programming, the development of runtim
  This allows a more architecture generic programming paradigm while still keeping the performance of dedicated code.
  \item Development of runtime systems: Using the energy awareness framework, the development time of runtime systems is not only decreased but also more standardized. 
  Even potential for automatic runtime system generation emerges as a result of standardizing the foundation.
- \item Fog computing is currently being proposed as an implementation framework for the IoT. 
- In the fog heterogeneous computing nodes are scattered in the network to enable computations neared to the source to guarantee real-time properties. 
+ \item 
+%  Fog computing is currently being proposed as an implementation framework for the IoT. 
+%  In the fog heterogeneous computing nodes are scattered in the network to enable computations neared to the source to guarantee real-time properties. 
  IoT systems are one the most energy-prone fields of computer engineering because many of such systems are designed to run for long intervals without being connected to the power grid. 
 %  Currently there are no standardized mechanism for declaring energy awareness in IoT systems. 
  The framework for energy aware programming is extendable to IoT system as well because the paradigm only requires the ability of inserting resources requirement meta-data into the application software. 
@@ -414,10 +415,19 @@ By introducing the notion of energy aware programming, the development of runtim
 
 \subsection{Critical points for success}
 Our intension is not only to provide theoretical insights into energy aware software, but also the framework needed to enable the programming.
-Access to hardware platforms is therefore crucial for this project.
-As the framework for energy aware programming is applicable in an interdisciplinary domain, we intend to apply for accessibility to large scale cloud platforms like Amazon and to Android based platforms.
-However, our team has previously obtained the Amazon EC2 grant\footnote{https://aws.amazon.com/grants/} twice enabling access to large scale servers.
-The PI also has connections to the energy efficient middleware group in ARM Cambridge, the leader of which was invited to one of our project workshops in the PARALLAX project.
+To ensure success, the critical points and risk factors are listed as follows:
+\begin{itemize}
+  \item \textit{Software design is infeasible}. With an infeasible design, the intended research results cannot be achieved without a major re-design.
+  With our previous experience in energy aware software, and the results gathered we are confident about the main directions in the research. Although we intend to monitor the feasibility early in the project to ensure an eventual re-design in as early stages as possible.\vspace{-0.2cm}
+  \item \textit{Learning curves lead to delays}. Learning new methods and tools is always a challenge. By exceeding the time budget in methods and tools, the project can be delayed.
+  Our lab environment keep up-to-date with tools and methods by weekly discussions internally in the whole lab group. Practical questions about research can be posted in such sessions, and people share their experience.
+  \vspace{-0.2cm}
+ \item \textit{Relocation of research partners}. This project is relying on international cooperation. In the event of relocation of key persons, mobility can be postponed and the research ultimately delayed.
+ By having a large network of contacts, we have a safety net in case of relocation events. Work and timelines can be re-adjusted while keeping the core research intact.\vspace{-0.2cm}
+ \item \textit{Access to hardware platforms}. Without appropriate hardware, the results in evaluation are inadequate and insufficient.
+ For covering this, risk The PI has connections to the energy efficient middleware group in ARM Cambridge, the leader of which was invited to one of our project workshops in the PARALLAX project.
+ On the large scale side, our team has previously obtained the Amazon EC2 grant\footnote{https://aws.amazon.com/grants/} twice enabling access to large scale servers.
+\end{itemize}
 
 \subsection{Publication plan}
 We intend to publish at the top journals and conferences based on the JuFo listings, and we will select publication venues that use some form of open access model, most likely green open access. 
@@ -450,13 +460,13 @@ All software will be released under an open-source license.
 Zenodo\footnote{http://zenodo.org/} has been selected as the platform where we plan to publish measurement results and each submission in Zenodo can get a citable DOI.
 
 \subsection{Support form research environment}
-The research team will be well supported by infrastructure available at through the Centre for Computer Science (TUCS), 
-which is a joint research institute of University of Turku and \AA{}bo Akademi University. 
+The research team will be well supported by infrastructure available at through the Centre for Computer Science (TUCS).
+% which is a joint research institute of University of Turku and \AA{}bo Akademi University. 
 % TUCS conducts basic and applied research in computer science and engineering. 
 TUCS boasts a long history of high-level achievements of its affiliated researchers, in terms of articles in high-level journals and conferences, high number of citations, 
 invitations to speak in the most important conferences in the field, and memberships in editorial boards of many high-level international journals. 
-TUCS has been a Center of Excellence of Research of the Academy of Finland in the very first round of such centers in Finland, 1995-1999. 
-A unit of TUCS, the Centre for Reliable Software Technology (CREST), has also been a Center of Excellence during 2002-2007. 
+TUCS has been a Center of Excellence of Research of the Academy of Finland in the very first round of such centers in Finland, 1995-1999 and in 2002-2007. 
+% A unit of TUCS, the Centre for Reliable Software Technology (CREST), has also been a Center of Excellence during 
 % Two Academy Professors, as well as three FIDIPRO professors have been / are affiliated with TUCS. 
 % TUCS is hosting the research activity of Academician Arto Salomaa.
 
@@ -498,7 +508,7 @@ The initial part of the project is to determine how to expose the meta-data to t
 Therefore the project begins with a state-of-the-art review of currently proposed solutions for defining performance requirements and self-awareness.
 The WP is intended to firstly define what exactly should be included in the meta-data to get a proper description of performance in applications. 
 Further, what must be determined is guidelines for how, where, and when the meta-data should be injected in software to ensure stability and minimal performance overhead.
-Included in this WP is tool support for automatic meta-data injection based on the findings earlier in the WP.
+Included in this WP is tool support for automatic meta-data injection based on earlier findings.
 
 \subsubsection{WP2 -- Feedback monitor}
 \begin{wraptable}{r}{9.7cm}
@@ -554,7 +564,7 @@ The final stage of the research is to bind the previously created methods into a
 Construction of the API framework used for energy aware programming is defined as the first item in WP4.
 The API is a result from the meta-data declaration in WP1, the monitor interface in WP3 and the runtime system in WP3.
 Additional efforts in this WP is especially put on supporting interdisciplinary domains of platforms.
-A software library, pragma or other interface is the final deliverable and is the link between the application software and the runtime system.
+A software library, pragma or other interface is the final deliverable and is the link between the application software and the runtime.
 Additionally, we demonstrate its usability with single small scale use-cases, which also function as evaluation of the API.
 Lastly a large scale demonstrator is created running a complete version of the energy aware software on an off-the-shelf consumer device such as an Android phone or tablet.
 
@@ -570,7 +580,7 @@ The timeline of the research work is summarized in Figure \ref{fig:schedule}.
 The budget of the project is defined in Table 1.
 
 \begin{wraptable}{r}{8cm}
-\vspace{-1.3cm}
+\vspace{-3.2cm}
 \small
 \begin{tabular}{ | l | c | c |c |c |}
 \hline

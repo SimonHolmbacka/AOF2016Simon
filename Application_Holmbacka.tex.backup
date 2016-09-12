@@ -201,7 +201,7 @@ The challenge is therefore to provide a framework with the capability of handlin
 As previously mentioned, the traditional way of solely monitoring the workload is a very inaccurate and often counter-productive both in terms of performance and energy.
 We tackle this challenge by allowing the applications to express the resource requirements internally.
 This means that the application should include a small part of code -- the meta-data -- which expresses the intention of the application in its own understanding of performance.
-For example, the end user of a video decorder is satisfied in case the decoder produces a framerate of 25 fps because of properties in the human eye and the understanding of moving pictures. 
+For example, the end user of a video decoder is satisfied in case the decoder produces a framerate of 25 fps because of properties in the human eye and the understanding of moving pictures. 
 A higher framerate is therefore energy waste while not producing any higher satisfaction for the end user.
 Therefore, we will investigate the types on meta-data needed to describe the intentions of an application sufficiently accurate.
 One of the challenges is to obtain a sufficiently descriptive form of meta-data that can be generalized to any new- or legacy application.
@@ -405,8 +405,9 @@ By introducing the notion of energy aware programming, the development of runtim
  This allows a more architecture generic programming paradigm while still keeping the performance of dedicated code.
  \item Development of runtime systems: Using the energy awareness framework, the development time of runtime systems is not only decreased but also more standardized. 
  Even potential for automatic runtime system generation emerges as a result of standardizing the foundation.
- \item Fog computing is currently being proposed as an implementation framework for the IoT. 
- In the fog heterogeneous computing nodes are scattered in the network to enable computations neared to the source to guarantee real-time properties. 
+ \item 
+%  Fog computing is currently being proposed as an implementation framework for the IoT. 
+%  In the fog heterogeneous computing nodes are scattered in the network to enable computations neared to the source to guarantee real-time properties. 
  IoT systems are one the most energy-prone fields of computer engineering because many of such systems are designed to run for long intervals without being connected to the power grid. 
 %  Currently there are no standardized mechanism for declaring energy awareness in IoT systems. 
  The framework for energy aware programming is extendable to IoT system as well because the paradigm only requires the ability of inserting resources requirement meta-data into the application software. 
@@ -414,10 +415,17 @@ By introducing the notion of energy aware programming, the development of runtim
 
 \subsection{Critical points for success}
 Our intension is not only to provide theoretical insights into energy aware software, but also the framework needed to enable the programming.
-Access to hardware platforms is therefore crucial for this project.
-As the framework for energy aware programming is applicable in an interdisciplinary domain, we intend to apply for accessibility to large scale cloud platforms like Amazon and to Android based platforms.
-However, our team has previously obtained the Amazon EC2 grant\footnote{https://aws.amazon.com/grants/} twice enabling access to large scale servers.
-The PI also has connections to the energy efficient middleware group in ARM Cambridge, the leader of which was invited to one of our project workshops in the PARALLAX project.
+To ensure success, the critical points and risk factors are listed as follows:
+\begin{itemize}
+  \item \textit{Learning curves lead to delays}. Learning new methods and tools is always a challenge. By exceeding the time budget in methods and tools, the project can be delayed.
+  Our lab environment keep up-to-date with tools and methods by weekly discussions internally in the whole lab group. Practical questions about research can be posted in such sessions, and people share their experience.
+  \vspace{-0.2cm}
+ \item \textit{Relocation of research partners}. This project is relying on international cooperation. In the event of relocation of key persons, mobility can be postponed and the research ultimately delayed.
+ By having a larger network of contacts, we have a safety net in case of relocation events. Work and timelines can be re-adjusted while keeping the core research intact.\vspace{-0.2cm}
+ \item \textit{Access to hardware platforms}. Without appropriate hardware, the results in evaluation are inadequate and insufficient.
+ For covering this, risk The PI has connections to the energy efficient middleware group in ARM Cambridge, the leader of which was invited to one of our project workshops in the PARALLAX project.
+ On the large scale side, our team has previously obtained the Amazon EC2 grant\footnote{https://aws.amazon.com/grants/} twice enabling access to large scale servers.
+\end{itemize}
 
 \subsection{Publication plan}
 We intend to publish at the top journals and conferences based on the JuFo listings, and we will select publication venues that use some form of open access model, most likely green open access. 
@@ -500,12 +508,6 @@ The WP is intended to firstly define what exactly should be included in the meta
 Further, what must be determined is guidelines for how, where, and when the meta-data should be injected in software to ensure stability and minimal performance overhead.
 Included in this WP is tool support for automatic meta-data injection based on the findings earlier in the WP.
 
-% \begin{itemize}
-%  \item Task 1.1 State-of-the-art review and defining the meta-data \vspace{-0.3cm}
-%  \item Task 1.2 Injecting the meta-data in software \vspace{-0.3cm}
-%  \item Task 1.3 Tools for introducing meta-data in software \vspace{-0.3cm}
-% \end{itemize}
-
 \subsubsection{WP2 -- Feedback monitor}
 \begin{wraptable}{r}{9.7cm}
 \vspace{-0.5cm}
@@ -523,11 +525,6 @@ This includes how to interconnect the monitor with the application, determine th
 The main challenge to tackle is how the application software can be monitored without affecting the functionality or the performance of the system.
 State-of-the-art monitoring systems such as the MIT heartbeats \cite{Hoffmann:10} will be evaluated as complementary research to the proposed energy awareness monitor.
 A monitoring interface will be developed and its cross-domain applicability will be evaluated on Android, PC and server systems.
-% \begin{itemize}
-% \item Task 2.1 Evaluate complementary work and possible integration \vspace{-0.3cm}
-% \item Task 2.2 Construction of the monitoring interface and framework \vspace{-0.3cm}
-% \item Task 2.3 Cross-domain evaluation of monitoring system
-% \end{itemize}
 
 \subsubsection{WP3 -- Energy aware controller}
 \begin{wraptable}{r}{9.4cm}
@@ -548,12 +545,6 @@ Several well established optimization methods based on system models will be eva
 This means firstly modeling the underlying system and secondly applying mathematical optimization methods on the model.
 The work was initiated in the thesis of the PI, and WP3 is intended to refine the optimization methods for a larger selection of platforms and improve on existing optimization methods.
 WP3 also include the implementation of tools for automatic model generation for increasing the portability of the framework and finally the implementation of the runtime system controller itself.
-% \begin{itemize}
-%  \item Task 3.1: Modeling energy consumption \vspace{-0.3cm}
-%  \item Task 3.2: Tools for generating energy models \vspace{-0.3cm}
-%  \item Task 3.3: Adopting optimization methods for energy efficiency \vspace{-0.3cm}
-%  \item Task 3.4: Implementation of runtime controller
-% \end{itemize}
 
 \subsubsection{WP4 -- A framework for energy aware programming and demonstrator}
 \begin{wraptable}{r}{9.2cm}
@@ -574,11 +565,6 @@ Additional efforts in this WP is especially put on supporting interdisciplinary 
 A software library, pragma or other interface is the final deliverable and is the link between the application software and the runtime system.
 Additionally, we demonstrate its usability with single small scale use-cases, which also function as evaluation of the API.
 Lastly a large scale demonstrator is created running a complete version of the energy aware software on an off-the-shelf consumer device such as an Android phone or tablet.
-% \begin{itemize}
-%  \item Task 4.1: Construction of API for energy aware programming \vspace{-0.3cm}
-%  \item Task 4.2: Single use-cases \vspace{-0.3cm}
-%  \item Task 4.3: Demonstrator
-% \end{itemize}
 
 The timeline of the research work is summarized in Figure \ref{fig:schedule}.
 \begin{figure}[h]
@@ -615,7 +601,6 @@ The budget of the project is defined in Table 1.
 The team is internationally well connected and has established cooperation with several teams abroad and nationally. 
 Our lab and the PI has worked within several international and national research projects such as RECOMP, ParallaX and INTERSYS with close ties to Finnish industry like Nokia, ABB, Kone, Ericsson etc.
 
-% The cooperations listed here are the ones relevant to this application and that are documented through the most important joint publications.
 \subsection{Collaboration}
 The cooperation between Prof. Jean-Francois Nezan, INSA, Rennes, and \AA{}bo Akademi University has concentrated on the run-time management of dataflow networks, 
 and has been executed through exchange of PhD students.
@@ -670,29 +655,6 @@ The mobilities are planned as follows and illustrated in Figure \ref{fig:schedul
  \item Simon Holmbacka (PI) will visit Prof. Ivona Brandi\'{c} for 3 months in the beginning of WP2 \vspace{-0.3cm}
  \item Simon Holmbacka (PI) will visit Prof. J\"{o}rg Keller for 6 months in the middle of WP3. \vspace{-0.3cm}
 \end{itemize}
-
-
-% \textbf{Summary of past mobilities by the PI}\\
-% 
-% \textbf{Project: Post-Doc research}\\
-% \textsl{Partners: J\"{o}rg Keller, FernUniversit\"{a}t in Hagen, Germany}
-% \hfill September 2015 -- ongoing
-% 
-% \textbf{Project: Energy Efficient Cloud Simulation}\\
-% \textsl{Partners: Dra\v{z}en Lu\v{c}anin, Ilia Pietri, Ivona Brandi\'{c}, TU Vienna, Vienna, Austria}
-% \hfill May 15 -- May 30 2015
-% 
-% \textbf{Project: Power-Aware HEVC Decoding with Tunable Image Quality}\\
-% \textsl{Partners: Erwan Nogues, Maxime Pelcat, INSA de Rennes, France}
-% \hfill October 2013 -- March 2014
-% 
-% \textbf{Project: Innovation and Creativity for Complex Engineering Systems}\\
-% \textsl{Partners: Jo\~{a}o Fernandes, Universidade do Minho, EFACEC Inc., Portugal}
-% \hfill January 31 -- 17 February 2012
-% 
-% \textbf{Project: Safe Motor Controller in Mixed-Critical Environment}\\
-% \textsl{Partners: Jos\'{e} Luis Guti\'{e}rrez, University of Granada, Spain \\ Miguel M\'{e}ndez, Seven Solutions Inc., Spain} 
-% \hfill November 5 -- November 17 2012
 
 \bibliographystyle{alpha}
 {\footnotesize
