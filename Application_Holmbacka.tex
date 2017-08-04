@@ -252,6 +252,12 @@ On the contrary, the planned framework for energy efficient software requires on
 This means minimal effort of the programmer and the application algorithms can be implemented without interference from the energy awareness framework.
 The resource requirements are specified using a simple library, where after the runtime environment allocates the required resources.\smallskip
 
+Our newly funded AKA project \textbf{Efficient Stream Computing (ESC)} introduces a formal and practical paradigm of measuring efficiency of software execution through the notion of \textit{Fitness},
+which characterizes how much of the microarchitecture the task is able to exploit.
+This will enable the optimization of Stream Computing systems for energy efficiency, performance or cost with minimal overhead in the development.
+The commonality of this project is energy efficient execution, but while ESC focuses more on \textit{where to map} a task, the primary goal of this project is to optimize resource allocation and how software can influence this decision.
+
+
 The \textbf{Carbon Research Group}\footnote{http://groups.csail.mit.edu/carbon/} at MIT has developed a heartbeat framework to evaluate performance as a generic parameter in software construction.
 The framework is capable of measuring performance of any application as a generic parameter by user inserted API calls to the heartbeat library. 
 Measuring performance is the necessary first step when constructing a feedback-based control system. 
@@ -266,7 +272,7 @@ This results not only in poor energy efficiency, but also in poor performance of
 We intend to use this platform as one of the reference models for our energy awareness framework because its SoC is very popular and is being used in millions of Android devices worldwide.\smallskip
 
 Our research group is currently a partner in the \textbf{INTERSYS} project\footnote{http://iot4health.utu.fi/?p=374} dedicated to standardize and optimize interconnected IoT devices handling streaming data. Since the number of IoT devices are expected to rapidly increase in the near future, the project is extending interoperability notions for handling the massive amount of data streams from small devices to gateways and servers. 
-Still missing in the field of IoT is the notion of energy awareness, which is a crucial point as most devices operate on battery-only power and are expected to operate for long time intervals. 
+Still missing is the notion of energy awareness, which is a crucial point as most devices operate on battery-only power. 
 We intend to work closely with this project and we plan to introduce the notion of energy awareness in IoT systems.\smallskip
 
 \textbf{EMBECOSM}\footnote{http://www.embecosm.com/} focus on providing the GCC compiler with the notion of energy efficiency, in practice this means learning which compiler flags that minimizes the energy consumption for a selected architecture. 
@@ -276,11 +282,8 @@ Runtime optimization is critical in virtually any environment containing multi-n
 This is because the data used in especially streaming applications like multi-media software is arbitrary or very difficult to predict. 
 Compile time optimizations can for example not predict what kind of video format is being used in a video decoder.\smallskip
 
-The \textbf{StarPU}\footnote{http://starpu.gforge.inria.fr/} project at INRIA Bordeaux has presented a runtime system to minimize the performance for heterogeneous architectures. 
-The system builds a performance model of the implemented CUDA or OpenCL kernels based on benchmarking on CPUs and GPUs, after which the system is able to schedule the kernels onto the most performance efficient device. 
-The \textbf{PEPPHER}\footnote{http://www.peppher.eu/} project has used StarPU as a backend and the outcome of the project is a tool capable of generating multi-variant tasks for StarPU (OpenMP, OpenCL etc.). 
-However, StarPU only consider the optimizations in form of performance. 
-When adding more complex criteria with multiple variables such as energy efficiency or monetary cost, StarPU lacks the insight to such resource allocation.
+The \textbf{StarPU}\footnote{http://starpu.gforge.inria.fr/} project at INRIA Bordeaux and the \textbf{PEPPHER}\footnote{http://www.peppher.eu/} project has presented a runtime system to minimize the performance for heterogeneous architectures. 
+The system builds a performance model of the implemented CUDA or OpenCL kernels based on benchmarking on CPUs and GPUs, after which the system is able to schedule the kernels onto the most performance efficient device. However, they only consider the optimizations in form of performance, not energy efficiency.
 
 \section{Objectives and expected results}
 \subsection{Objectives}
@@ -461,20 +464,16 @@ Zenodo\footnote{http://zenodo.org/} has been selected as the platform where we p
 
 \subsection{Support form research environment}
 The research team will be well supported by infrastructure available at through the Centre for Computer Science (TUCS).
-% which is a joint research institute of University of Turku and \AA{}bo Akademi University. 
-% TUCS conducts basic and applied research in computer science and engineering. 
-TUCS boasts a long history of high-level achievements of its affiliated researchers, in terms of articles in high-level journals and conferences, high number of citations, 
-invitations to speak in the most important conferences in the field, and memberships in editorial boards of many high-level international journals. 
+TUCS boasts a long history of high-level achievements of its affiliated researchers, in terms of articles in high-level journals and conferences and a high number of citations.
+%invitations to speak in the most important conferences in the field, and memberships in editorial boards of many high-level international journals. 
 TUCS has been a Center of Excellence of Research of the Academy of Finland in the very first round of such centers in Finland, 1995-1999 and in 2002-2007. 
 % A unit of TUCS, the Centre for Reliable Software Technology (CREST), has also been a Center of Excellence during 
 % Two Academy Professors, as well as three FIDIPRO professors have been / are affiliated with TUCS. 
 % TUCS is hosting the research activity of Academician Arto Salomaa.
-
-
 The PI is an active member of the COST action IC1305 Network for Sustainable Ultrascale Computing and the Energy Efficient High Performance Computing Working Group (EE HPC Working Group). 
-Joint articles have been published in the COST action between the PI in \AA{}bo Akademi University and the group in TU Wien led by Ivona Brandi\'{c} and one between the PI and the group in University of Tirana led by Neki Frasheri, one of which has been published in IEEE Transactions.\smallskip
+Joint articles have been published in the COST action between the PI and the group in TU Wien led by Ivona Brandi\'{c} and one between the PI and the group in University of Tirana led by Neki Frasheri, one of which has been published in IEEE Transactions.\smallskip
 
-The ESLab is leading the energy efficient computing module of the EIT ICT Labs Master School in Embedded Systems and is actively participating in the activities of the thematic action line Smart Energy Systems of EIT ICT Labs.
+%The ESLab is leading the energy efficient computing module of the EIT ICT Labs Master School in Embedded Systems and is actively participating in the activities of the thematic action line Smart Energy Systems of EIT ICT Labs.
 The PI together with EIT Digital recently released an online Coursera course on the subject in ``Development of Real-Time Systems''\footnote{https://www.coursera.org/learn/real-time-systems/} currently followed by over 7000 students world-wide.
 Our team has a full time lab technician constructing specialized equipment needed in our experimental work. 
 The team therefore has strong knowledge in manufacturing measurement tools for externally probing and measuring running systems. 
@@ -600,7 +599,7 @@ The budget of the project is defined in Table 1.
 
 
 \section{Research team and collaboration}
-The PI was awarded the \textit{Reasercher of the Year} for best PhD thesis during the year 2016; this project is a continuation of this thesis.
+The PI was awarded the \textit{Researcher of the Year} for best PhD thesis during the year 2016; this project is a continuation of this thesis.
 The team is internationally well connected and has established cooperation with several teams abroad and nationally. 
 Our lab and the PI has worked within several international and national research projects such as ESC, RECOMP, ParallaX and INTERSYS with close ties to Finnish industry like Nokia, ABB, Kone, Ericsson etc.
 
