@@ -39,13 +39,6 @@ Henry Hoffmann, Jonathan Eastep, Marco~D. Santambrogio, Jason~E. Miller, and
 \newblock In {\em Proceedings of the 7th International Conference on Autonomic
   Computing}, ICAC '10, pages 79--88, New York, NY, USA, 2010. ACM.
 
-\bibitem[HHL{\etalchar{+}}14]{HolmbackaTechrep}
-Simon Holmbacka, Fredric H\"{a}llis, Wictor Lund, S\'{e}bastien Lafond, and
-  Johan Lilius.
-\newblock Energy and power management, measurement and analysis for multi-core
-  processors.
-\newblock Technical Report 1117, 2014.
-
 \bibitem[HLL15]{HolmbackaHipeac}
 Simon Holmbacka, S\'{e}bastien Lafond, and Johan Lilius.
 \newblock Performance monitor based power management for big.little platforms.
