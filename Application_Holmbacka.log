@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.16)  18 AUG 2017 14:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.23)  9 SEP 2017 15:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1038,22 +1038,22 @@ LaTeX Warning: Label `tab:strconf' multiply defined.
 )
 \openout1 = `Application_Holmbacka.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
 .................................................
 . chemgreek info: "mapping-activated"
 . 
-. Activating mapping `default' on line 78.
+. Activating mapping `default' on line 79.
 .................................................
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1162,126 +1162,128 @@ Package caption Info: End \AtBeginDocument code.
 \c__siunitx_mathsf_int=\count307
 \c__siunitx_mathtt_int=\count308
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--91
+Underfull \hbox (badness 10000) in paragraph at lines 92--92
 
  []
 
 <fig/fra.png, id=4, 100.375pt x 67.25125pt>
 File: fig/fra.png Graphic file (type png)
  <use fig/fra.png>
-Package pdftex.def Info: fig/fra.png used on input line 102.
+Package pdftex.def Info: fig/fra.png used on input line 103.
 (pdftex.def)             Requested size: 11.38092pt x 7.62444pt.
 File: fig/fra.png Graphic file (type png)
 
 <use fig/fra.png>
-Package pdftex.def Info: fig/fra.png used on input line 102.
+Package pdftex.def Info: fig/fra.png used on input line 103.
 (pdftex.def)             Requested size: 11.38092pt x 7.62444pt.
  <fig/aus.png, id=5, 100.375pt x 67.25125pt>
 File: fig/aus.png Graphic file (type png)
 
 <use fig/aus.png>
-Package pdftex.def Info: fig/aus.png used on input line 103.
+Package pdftex.def Info: fig/aus.png used on input line 104.
 (pdftex.def)             Requested size: 11.38092pt x 7.62444pt.
 File: fig/aus.png Graphic file (type png)
  <use fig/aus.png>
-Package pdftex.def Info: fig/aus.png used on input line 103.
+Package pdftex.def Info: fig/aus.png used on input line 104.
 (pdftex.def)             Requested size: 11.38092pt x 7.62444pt.
  <fig/ger.png, id=6, 100.375pt x 62.2325pt>
 File: fig/ger.png Graphic file (type png)
 
 <use fig/ger.png>
-Package pdftex.def Info: fig/ger.png used on input line 104.
+Package pdftex.def Info: fig/ger.png used on input line 105.
 (pdftex.def)             Requested size: 11.38092pt x 7.05545pt.
 File: fig/ger.png Graphic file (type png)
  <use fig/ger.png>
-Package pdftex.def Info: fig/ger.png used on input line 104.
+Package pdftex.def Info: fig/ger.png used on input line 105.
 (pdftex.def)             Requested size: 11.38092pt x 7.05545pt.
 
 <fig/swe.png, id=7, 100.375pt x 63.23625pt>
 File: fig/swe.png Graphic file (type png)
  <use fig/swe.png>
-Package pdftex.def Info: fig/swe.png used on input line 105.
+Package pdftex.def Info: fig/swe.png used on input line 106.
 (pdftex.def)             Requested size: 11.38092pt x 7.16925pt.
 File: fig/swe.png Graphic file (type png)
 
 <use fig/swe.png>
-Package pdftex.def Info: fig/swe.png used on input line 105.
+Package pdftex.def Info: fig/swe.png used on input line 106.
 (pdftex.def)             Requested size: 11.38092pt x 7.16925pt.
  [1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fig/fra.png> <./fig/aus.
 png> <./fig/ger.png (PNG copy)> <./fig/swe.png (PNG copy)>] <fig/EAS_Overview.p
-ng, id=22, 806.01125pt x 382.42876pt>
+ng, id=22, 540.03331pt x 242.98654pt>
 File: fig/EAS_Overview.png Graphic file (type png)
 
 <use fig/EAS_Overview.png>
-Package pdftex.def Info: fig/EAS_Overview.png used on input line 174.
-(pdftex.def)             Requested size: 227.62204pt x 107.99547pt.
- [2 <./fig/EAS_Overview.png>] [3] [4]
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no “ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no “ in font cmr10!
- [5]
-<fig/WorkloadMonitor.png, id=38, 747.79375pt x 573.14125pt>
-File: fig/WorkloadMonitor.png Graphic file (type png)
+Package pdftex.def Info: fig/EAS_Overview.png used on input line 175.
+(pdftex.def)             Requested size: 227.62204pt x 102.41699pt.
+ [2 <./fig/EAS_Overview.png>] [3]
+Overfull \hbox (7.73598pt too wide) in paragraph at lines 293--295
+[]\OT1/cmr/m/n/10 The \OT1/cmr/bx/n/10 StarPU \OT1/cmr/m/n/9 (http://starpu.gfo
+rge.inria.fr/)  \OT1/cmr/m/n/10 project at IN-RIA Bor-deaux and the \OT1/cmr/bx
+/n/10 PEP-PHER \OT1/cmr/m/n/9 (http://www.peppher.eu/)
+ []
 
-<use fig/WorkloadMonitor.png>
-Package pdftex.def Info: fig/WorkloadMonitor.png used on input line 339.
-(pdftex.def)             Requested size: 213.39566pt x 163.55684pt.
- [6 <./fig/WorkloadMonitor.png>] [7] [8]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 492.
+[4]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no “ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no “ in font cmr10!
+ <fig/netflix.png, id=36, 178.047pt x 316.674pt>
+File: fig/netflix.png Graphic file (type png)
+ <use fig/netflix.png>
+Package pdftex.def Info: fig/netflix.png used on input line 360.
+(pdftex.def)             Requested size: 128.0374pt x 227.74416pt.
+
+[5] [6 <./fig/netflix.png>] [7] [8]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 521.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 492.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 521.
 
 <fig/schedule.png, id=50, 530.97194pt x 207.45741pt>
 File: fig/schedule.png Graphic file (type png)
  <use fig/schedule.png>
-Package pdftex.def Info: fig/schedule.png used on input line 510.
-(pdftex.def)             Requested size: 424.7781pt x 165.96614pt.
+Package pdftex.def Info: fig/schedule.png used on input line 539.
+(pdftex.def)             Requested size: 371.67781pt x 145.2192pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 519--526
+Underfull \hbox (badness 10000) in paragraph at lines 548--555
 [][]
  []
 
-[9]
-Overfull \hbox (1.16629pt too wide) in paragraph at lines 537--544
+[9 <./fig/schedule.png>]
+Overfull \hbox (1.16629pt too wide) in paragraph at lines 566--573
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 555--563
+Underfull \hbox (badness 10000) in paragraph at lines 584--592
 [][]
  []
 
 
-Overfull \hbox (1.40314pt too wide) in paragraph at lines 575--582
+Overfull \hbox (8.25381pt too wide) in paragraph at lines 607--614
 [][]
  []
 
-[10 <./fig/schedule.png>]
-Overfull \hbox (8.12538pt too wide) in paragraph at lines 596--607
+
+Overfull \hbox (8.12538pt too wide) in paragraph at lines 631--642
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 592--610
+Underfull \hbox (badness 10000) in paragraph at lines 627--645
 
  []
 
-[11] (./Application_Holmbacka.bbl
+[10] [11] (./Application_Holmbacka.bbl
 Missing character: There is no â in font cmr8!
 Missing character: There is no € in font cmr8!
 Missing character: There is no “ in font cmr8!
@@ -1294,13 +1296,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 27494 strings out of 493029
- 562317 string characters out of 6136234
- 586980 words of memory out of 5000000
- 30622 multiletter control sequences out of 15000+600000
+ 27493 strings out of 493029
+ 562253 string characters out of 6136234
+ 588980 words of memory out of 5000000
+ 30621 multiletter control sequences out of 15000+600000
  13262 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,20n,92p,10449b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,20n,92p,10449b,529s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -1314,9 +1316,9 @@ fonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/eurosym/feybr10.pfb>
-Output written on Application_Holmbacka.pdf (12 pages, 333636 bytes).
+Output written on Application_Holmbacka.pdf (12 pages, 477991 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
+ 112 PDF objects out of 1000 (max. 8388607)
  74 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  48 words of extra memory for PDF output out of 10000 (max. 10000000)

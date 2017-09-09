@@ -83,11 +83,6 @@ V.~Spiliopoulos, S.~Kaxiras, and G.~Keramidas.
 \newblock In {\em Green Computing Conference and Workshops (IGCC), 2011
   International}, pages 1--8, July 2011.
 
-\bibitem[Sta06]{ondemand}
-Venkatesh Pallipadi~Alexey Starikovskiy.
-\newblock The ondemand governor.
-\newblock In {\em Proceedings of theLinux Symposium}, 2006.
-
 \bibitem[tB15]{Brinke:15}
 Steven te~Brinke.
 \newblock {\em Developing Energy-Aware Software}.
