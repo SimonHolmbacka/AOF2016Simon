@@ -516,19 +516,18 @@ For the evaluation and demonstration efforts we require the latest hardware tech
 
 \paragraph{Critical points for success. }
 Our intension is not only to provide theoretical insights into energy-aware software, but also the framework needed to enable the programming.
-To ensure success, the critical points and risk factors are listed as follows:
-\begin{itemize}
-  \item \textit{Software design is infeasible}. With an infeasible design, the intended research results cannot be achieved without a major re-design.
-  With our previous experience in energy-aware software, and the results gathered we are confident about the main directions in the research. Although we intend to monitor the feasibility early in the project to ensure an eventual re-design in as early stages as possible.\vspace{-0.2cm}
-  \item \textit{Learning curves lead to delays}. Learning new methods and tools is always a challenge. By exceeding the time budget in methods and tools, the project can be delayed.
-  Our lab environment keep up-to-date with tools and methods by weekly discussions internally in the whole lab group. Practical questions about research can be posted in such sessions, and people share their experience.
-  \vspace{-0.2cm}
- \item \textit{Relocation of research partners}. This project is relying on international cooperation. In the event of relocation of key persons, mobility can be postponed and the research ultimately delayed.
- By having a large network of contacts, we have a safety net in case of relocation events. Work and timelines can be re-adjusted while keeping the core research intact.\vspace{-0.2cm}
- \item \textit{Access to hardware platforms}. Without appropriate hardware, the results in evaluation are inadequate and insufficient.
+To ensure success, the critical points and risk factors are listed as follows:\smallskip
+
+  \textit{Software design is infeasible}. With an infeasible design, the intended research results cannot be achieved without a major re-design.
+  With our previous experience in energy-aware software, and the results gathered we are confident about the main directions in the research. Although we intend to monitor the feasibility early in the project to ensure an eventual re-design in as early stages as possible.\smallskip
+  textit{Learning curves lead to delays}. Learning new methods and tools is always a challenge. By exceeding the time budget in methods and tools, the project can be delayed.
+  Our lab environment keep up-to-date with tools and methods by weekly discussions internally in the whole lab group. Practical questions about research can be posted in such sessions, and people share their experience.\smallskip
+ \textit{Relocation of research partners}. This project is relying on international cooperation. In the event of relocation of key persons, mobility can be postponed and the research ultimately delayed.
+ By having a large network of contacts, we have a safety net in case of relocation events. Work and timelines can be re-adjusted while keeping the core research intact.\smallskip
+ \textit{Access to hardware platforms}. Without appropriate hardware, the results in evaluation are inadequate and insufficient.
  For covering this, risk The PI has connections to the energy efficient middleware group in ARM Cambridge, the leader of which was invited to one of our project workshops in the PARALLAX project.
  On the large scale side, our team has previously obtained the Amazon EC2 grant\footnote{https://aws.amazon.com/grants/} twice enabling access to large scale servers.
-\end{itemize}
+
 
 \section{Ethical Issues \small -- This research project has no ethical issues. }
 
@@ -537,9 +536,32 @@ The schedule of the research work is summarized in Figure \ref{fig:schedule}.
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7]{fig/schedule.png}
-	\caption{Time schedule for the project}
+	\caption{Time schedule for the project and the budget of the project in euros}
 	\label{fig:schedule}
 \end{figure}
+% \paragraph{Budget.}
+% The budget of the project is defined in Table 1.\\
+% \begin{wraptable}{r}{8cm}
+% \vspace{-1.3cm}
+% \small
+% \begin{tabular}{ | l | c | c |c |c |}
+% \hline
+% & {\textbf{2018}} & {\textbf{2019}} & {\textbf{2020}} & {\textbf{2021}} \\ \hline
+% {Salary Post-doc} 	& 34434 & 106172 & 107607 & 72694 \\ \hline
+% {Travel} 			& 5500 	& 5500 	& 5500 	& 5500  \\ \hline
+% {Equipment} 		& 0 	& 2500 	& 1000 	& 2000  \\ \hline
+% {Open access fees} 	& 0 	& 1000 	& 1000 	& 1000  \\ \hline
+% {Mobility} 			& 1000 	& 2000 	& 1000 	& 0  \\ \hline
+% {\textbf{Total}} 	& 40934 & 117172	& 116107 	& 81194  \\ \hline
+% {\textbf{Project total}} 	&  & 	&  	& 355407  \\ \hline
+% \end{tabular}
+% \caption*{Table 1: The budget of the project in euros}
+% \label{tab:budget}
+% \vspace{-1.5cm}
+% \end{wraptable}
+
+
+
 \subsection{Work packages}
 \paragraph{WP1 -- Defining energy-awareness.}
 \begin{wraptable}{r}{9cm}
@@ -547,59 +569,69 @@ The schedule of the research work is summarized in Figure \ref{fig:schedule}.
 \small
 \begin{tabular}{ | l |}
 \hline
-{Task 1.1 State-of-the-art review and defining the meta-data}  \\ \hline
-{Task 1.2 State-of-the-art review and defining the meta-data}  \\ \hline
-{Task 1.3 Tools for introducing meta-data in software}		\\ \hline
+{Task 1.1 Defining self-awareness}  \\ \hline
+{Task 1.2 Tool support for introducing self-awareness}  \\ \hline
+{Task 1.3 library for introducing self-awareness into applications}\\ \hline
 \end{tabular}
 \vspace{-0.3cm}
 \end{wraptable}
-The initial part of the project is to determine how to expose the meta-data to the programmer.
-Therefore the project begins with a state-of-the-art review of currently proposed solutions for defining performance requirements and self-awareness.
-The WP is intended to firstly define what exactly should be included in the meta-data to get a proper description of performance in applications. 
-Further, what must be determined is guidelines for how, where, and when the meta-data should be injected in software to ensure stability and minimal performance overhead.
-Included in this WP is tool support for automatic meta-data injection based on earlier findings.
-
+WP1 is inline with the first objective: to include self-awareness into applications (T1.1), this is needed for the applications to express resource requirements.
+Firstly we determine which meta-data is needed to properly express the intension of the software.
+We determine which details to include in the meta-data, and we put focus on the usability of the meta-data expression.
+To increase the usability and to enable automatic self-awareness assessment, we will include tool support for including self-awareness (T1.2).
+We intende to expand the functionality of the PREESM tool for this purpose, and this is the main focus on Mobility 1.
+Finally we build the backend library (T1.3) for the programmer to easily insert/remove/modify self-awareness in applications.
+The library is primarily intended for the C language, but portability to e.g. Python pip is considered in this WP.
+Deliverables from this WP are scientific publications and the base implementation of the library backend available as opensource on github together with its documentation.
 \paragraph{WP2 -- Interoperability.}
 \begin{wraptable}{r}{9.7cm}
 \vspace{-0.5cm}
 \small
 \begin{tabular}{ | l |}
 \hline
-Task 2.1 Evaluate complementary work and possible integration  \\ \hline
-Task 2.2 Construction of the monitoring interface and framework   \\ \hline
-Task 2.3 Cross-domain evaluation of monitoring system	\\ \hline
+Task 2.1 Application monitoring and implementation of monitor  \\ \hline
+Task 2.2 User interoperability   \\ \hline
+Task 2.3 Tool Support and demonstration	\\ \hline
 \end{tabular}
 \vspace{-0.3cm}
 \end{wraptable}
-WP2 covers the monitoring of the application software.
-This includes how to interconnect the monitor with the application, determine the information flow between the application and the monitor and also how to forward this information to the resource allocation controller.
-The main challenge to tackle is how the application software can be monitored without affecting the functionality or the performance of the system.
+WP2 covers the interoperability and monitoring aspect of the project as discussed in the second objective of this project.
+In this WP we solve the problem of interoperability between the programmer (WP1), the application and the runtime system (WP3).
+To properly handle dynamic applications, a monitoring framework must contineously obtain the performance state of the energy-aware application at runtime.
+The performance of the system shall always be sufficient with respect to the resource requirement set by the programmer (WP1).
+In order to minimize the influence of the application, the montoring framework must be extremely lightweight, and its interface to the application must be simple in order to not affect its usability.
+The first challenge to tackle is how the application can be monitored without affecting the functionality or the performance of the system.
 State-of-the-art monitoring systems such as the MIT heartbeats \cite{Hoffmann:10} will be evaluated as complementary research to the proposed energy-awareness monitor.
 A monitoring interface will be developed and its cross-domain applicability will be evaluated on Android, PC and server systems.
-
+Secondly (T2.2) we intend to allow interoperability between user and runtime system in form of a communications channel.
+The user shall be able to easily modify the energy-awarenress during runtime by callbacks to the backend library.
+We will implement and demonstrate this functionality with a real-world application executing on real hardware (T2.3).
+Deliverables from this WP are scientific publications and the implementation of the monitor and interoperability framework available as opensource on github together with its documentation.
+We also consider complementary implementation to the base backend library from WP1 if deemed necessary.
 \paragraph{WP3 -- Smart-adaption.}
 \begin{wraptable}{r}{9.4cm}
 \vspace{-0.5cm}
 \small
 \begin{tabular}{ | l |}
 \hline
-Task 3.1: Modeling energy consumption\\ \hline
-Task 3.2: Tools for generating energy models \\ \hline
-Task 3.3: Adopting optimization methods for energy efficiency \\ \hline
-Task 3.4: Implementation of runtime controller \\ \hline
+Task 3.1: Modeling energy consumption and tool support\\ \hline
+Task 3.2: Runtime optimization for energy efficiency \\ \hline
+Task 3.3: Implementation of runtime controller \\ \hline
 \end{tabular}
 \vspace{-0.3cm}
 \end{wraptable}
 The tool providing self-awareness from WP1 and the information from the interoperability monitor in WP2 will be directly utilized in WP3 as input for the adaptive control system.
 The main task in WP3 is to define the resource allocation to achieve maximal energy efficiency without performance loss.
-Mathematical models of the underlying system is created upon which optimization methods are deployed.
-Tools for automatically generating models are created to enhance portability between hardware devices.
+We firstly (T3.1) intend to create mathematical models of the underlying system upon which optimization methods are deployed.
+Tools for automatically generating models are created to enhance portability between hardware devices such as IoT systems, embedded devices and server platforms.
 Feasibility and suitability for deployment on real-world platforms is studied, and the scalability of the methods are investigated.
-Implementation of the control system is part of WP3 after the design and optimization methods have been determined.
+To be able to support a wide range of hardware devices and dynamic software, we must develop robust optimization methods (T3.2).
+Initially we intend to study simulation environments such as Philharmonic and Simulink to gain an overview of feasible optimization methods and approaches. 
+The main part of WP3 is the implementation of the control system (T3.3) which is partly completed during Mobility 3.
 Included in this task is extensive experimental science to test and evaluate all aspects of the final control system.
 In focus is the ability to adapt the hardware resources in very diverse software systems, the accuracy of the resource allocation, the performance of the application and the energy consumption.
 Deliverables from this WP are scientific publications and the implementation of the runtime controller available as opensource on github together with its documentation.
-
+We also consider complementary implementation to the base backend library from WP1 if deemed necessary.
 \paragraph{WP4 -- A framework for energy-aware programming and demonstrator.}
 \begin{wraptable}{r}{9.2cm}
 \vspace{-0.5cm}
@@ -623,27 +655,6 @@ and the resulting energy savings this approach will bring.
 We provide small single use-cases of the functionality of the framework and lastly a large scale demonstrator is created running a complete version of the energy-aware software on an off-the-shelf consumer device such as an Android phone or tablet.
 Deliverables from this WP are scientific publications and the implementation of the programming framework as opensource on github together with its documentation and as an available Eclipse source.
 
-\paragraph{Budget.}
-The budget of the project is defined in Table 1.\\
-\begin{wraptable}{r}{8cm}
-\vspace{-1.3cm}
-\small
-\begin{tabular}{ | l | c | c |c |c |}
-\hline
-& {\textbf{2018}} & {\textbf{2019}} & {\textbf{2020}} & {\textbf{2021}} \\ \hline
-{Salary Post-doc} 	& 34434 & 106172 & 107607 & 72694 \\ \hline
-{Travel} 			& 5500 	& 5500 	& 5500 	& 5500  \\ \hline
-{Equipment} 		& 0 	& 2500 	& 1000 	& 2000  \\ \hline
-{Open access fees} 	& 0 	& 1000 	& 1000 	& 1000  \\ \hline
-{Mobility} 			& 1000 	& 2000 	& 1000 	& 0  \\ \hline
-{\textbf{Total}} 	& 40934 & 117172	& 116107 	& 81194  \\ \hline
-{\textbf{Project total}} 	&  & 	&  	& 355407  \\ \hline
-\end{tabular}
-\caption*{Table 1: The budget of the project in euros}
-\label{tab:budget}
-\vspace{-1.5cm}
-\end{wraptable}
-
 \section{Research Team and Collaborative Partners}
 \paragraph{Merits of research team.}
 The PI was awarded the honorary degree for his thesis as well as the \textit{Researcher of the Year award} by AAU for best PhD thesis during the year 2016; this provides a solid ground to start the project from.
@@ -665,6 +676,7 @@ Work on cost and energy efficient cloud scheduling was done by extending the Phi
 A journal has been published in the high ranking IEEE Transactions journal as a result of this cooperation.
 The PI has an active collaboration with Prof. Alexandra Jimborean from Uppsala University in Sweden, inside the MCC workshop group.
 Their lab group is working on compile-time and runtime code analysis and transformation for performance and energy efficiency using LLVM, and they were, together with the PI, a key partner in the 2017 H2020 call on low power programming.
+Since UU is geographically near, we plan ad-hoc visit without a defined timeline at this moment.
 % Her group has developed a monitoring and feedback system for re-organizing instruction calls based on their memory intensity.
 The PI is actively involved in minor collaborations with many universities and companies such as Uni. Carlos III Madrid, Uni. Gronningen, TU Eindhoven, Uni. Uppsala, Uni. Turku, NTNU Trondheim, Uni. Tirana, Elisa Inc., Treelogic Inc., Ingenarius Inc., Comsel systems Inc., Hipperos Inc., RISE Inc., TXT E-Solutions Inc.
 Additional collaboration and mobilities is expected among the other partners.
@@ -682,22 +694,21 @@ Combined with the international co-operation, exchange period and close interact
 \section{Mobility Plan for the Funding Period}
 The mobilities among the main partners are planned as follows and illustrated in Figure \ref{fig:schedule}, but the exact details will be defined later in the project based on the availability of the collaborators and their time schedule.
 
-% With this knowledge, their input is essential in WP2 when constructing the monitor system.
-% Also, our collaboration with overlapping expertise is needed in WP4 constructing the demonstrator.
-% No mobility is planned together with this team, but since Uppsala is located very close to Turku ad-hoc visits can be arranged without extensive pre-planning.
+\textit{Mobility 1} The PI will visit Prof. Jean-Francois Nezan for 3 months in WP1 to gain knowledge about tool support for introducing energy-awareness in applications.
+With a clear definition of self-awareness in T1.1, we expect this mobility to greatly improve T1.2 with the proven expertice of INSA in tool programming.
+We intend extend the PREESM tool with the support for energy-awareness.
+This mobility is crucial to form the link between the programmer and the software library while still keeping the programmability and complexity to the user low. 
+The utilization of PREESM is expected in form of a demonstration environment for WP4.\smallskip
 
-\begin{itemize}
- \item The PI will visit Prof. Jean-Francois Nezan for 3 months in the beginning of WP1 to bring early tool integration of meta-data injection in WP1, and to determine the meta-data model needed for such tool integration. This is crucial to form the link between the programmer and the software library. Their expertice is needed to create a powerful utilization of energy-awareness, while still keeping the programmability and complexity to the user low.
- In the later stages of the project, the utilization of PREESM is expected in form of a demonstration environment for WP4.
-% \vspace{-0.3cm}
- \item The PI will visit Prof. Ivona Brandi\'{c} for 3 months in the beginning of WP2 after the structure of the framework has been established in WP1 in order to adapt and evaluate our framework in cloud environments. Theis years long experience especially in cloud server simulation is needed to prove the scalability of enery aware software on large scale systems. 
- Special focus will be put on the coordination of resource utilization between computing nodes on a multi-server based infrastructure.
-%  \vspace{-0.3cm}
- \item The PI will visit Prof. J\"{o}rg Keller for 6 months in the middle of WP3 mainly for the energy optimization in WP3 and the construction of the controller in WP3.
- The lab group in FernUni has a long and impressive track record in power management systems. 
- Their knowledge is needed to link the resource demands stated in WP1 with the actual actuation in form of resource allocation.
- Scalability in control algorithms is of special focus to support the full range of computer systems.
-\end{itemize}
+\textit{Mobility 2} The PI will visit Prof. Ivona Brandi\'{c} for 3 months in the end of WP2 after the structure of the framework has been established in WP1 in order to adapt and evaluate our framework in cloud environments. 
+Special focus will be put on the coordination of resource utilization between computing nodes on a multi-server based infrastructure.
+We will evaluate the scalability of the interoperability aspect in the cloud simulator Philharmonic developed at TU Wien, particularly to prove that our methods are sound when scaling up the system to several tousands of servers.
+By studying results from large scale datacenter simulations, we expect to gain valuable knowledge for the implementation of the runtime system in WP3 \smallskip
+
+\textit{Mobility 3} The PI will visit Prof. J\"{o}rg Keller for 6 months in the middle of WP3 for supprt on the energy optimization in WP3 and the construction of the controller in WP3.
+The lab group in FernUni has a long and impressive track record in power management systems, 
+and their knowledge is needed to link the resource demands stated in WP1 with the actual actuation in form of resource allocation.
+Scalability in control algorithms is of special focus to support the full range of computer systems.
 
 \bibliographystyle{alpha}
 {\footnotesize
