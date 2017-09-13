@@ -116,28 +116,17 @@ basicstyle=\footnotesize,
 \vspace{-0.9cm}
 \section{Rationale}
 Energy consumption is currently a challenge in all domains of computer systems.
-IoT, cyber physical systems and other mobile systems demand solutions to lower the energy consumption while keeping the same amount of computations,
-and high end systems, servers and exa-scale computing demand more computations for the same energy.
-These problems were traditionally solved by the hardware evolution, but since we now witness the end of the Dennard scaling \cite{Dennard:74} this development is no longer feasible.
-As the improvement in semi-conductors no longer keep the required pace, evolution in energy efficiency must be shifted over to the software.
-The vision behind this research is to significantly improve the energy efficiency of computer systems by involving the application software in the decision of allocating resources -- this branch of self-awareness is called ``\textbf{making the software energy-aware}''.
-Energy-aware software form a stronger link between applications and the runtime system by means of an information flow used to steer the allocation of resources,
-which increases the self-awareness of software. This advancement in software design is required for the research community to take the next step into energy efficient computing.\smallskip
-
+% IoT, cyber physical systems and other mobile systems demand solutions to lower the energy consumption while keeping the same amount of computations,
+% and high end systems, servers and exa-scale computing demand more computations for the same energy.
 From tiny embedded systems to large scale server farms and diverse IoT systems, energy efficiency is becoming the main struggle for system usability, expansion, reliability and scalability.
 The drivers for solving the issues differ depending on the area of focus;
-%\todo[inline,color=green]{Here comes the current problems with high energy consumption:}
-%embedded
 the very usability of battery powered devices depends on its ability to provide the user with the satisfactory experience while consuming the minimal amount of energy.
-%Desktop
 Desktop and laptop systems require high levels of energy efficiency in order to (a) lower noise levels from active cooling, (b) increase the reliability by reducing the heat and (c) minimize the electric bill.
-%server
 Taking into account the bigger picture, the rapid expansion of large scale servers is not in line with ecological development, and now contributes to over 2\% of the total energy consumption in the US\footnote{Statistics according to the U.S. Office of Energy Efficiency \& Renewable Energy: http://energy.gov/eere/femp/resources-data-center-energy-efficiency}, with Facebook alone releasing 650k tonnes of carbon annually\footnote{https://sustainability.fb.com/en/our-footprint/}.
-%exascale
 Lastly, without increased energy efficiency, high performance computing centers cannot reach exa-scale performance.
 The US Department of Energy\footnote{http://ascr-discovery.science.doe.gov/2014/11/exascale-road-bumps/} have defined a maximum power envelope of 20 MW for a single data center, but with current technology, a modern exa-scale computing center would require over 7000 MW.\smallskip
 
-%\todo[inline,color=green]{Here comes that HW was the solution yesterday but not anymore:}
+These problems were traditionally solved by the hardware evolution.
 In order to provide a continuous performance improvement in computing systems, the clock frequency wall was avoid in the beginning of the 2000s by the introduction of multi-core based systems. 
 This led to a new challenge in mid-2000s: the CPU power wall \cite{Danowitz:12,Wang:13}. 
 Indeed, due to physical limitations of semiconductor materials, the power dissipation of a fixed chip area is limited. 
@@ -148,18 +137,12 @@ which has led to an increase in the transistor efficiency in proportion to an in
 However the current increase of the transistor efficiency is not any more proportional to the increase of transistor density \cite{Wang:13}, 
 and the semiconductor device fabrication is currently in a post-Dennard scaling area, where a substantial increase of the performance of computing
 systems cannot be achieved until both the current power dissipation and the related energy consumption issues are resolved.\smallskip
-%Hardware has historically been the solution to these problems, but the energy evolution in hardware is not anymore proportional to the performance due the end the Dennard scaling  \cite{Dennard:74}.
-%This means that as transistors become smaller, energy efficiency is not any more improved by transistor technology alone, such that the power remains in proportion to the chip density. 
-%A typical processor chip has a limited power envelope of roughly 250W before the heat dissipation damages the silicon.
-%which means that all chip area cannot be utilized simultaneously, a phenomenon called ``dark silicon''.
-%Traditionally, chip manufacturers have continuously lowered the chip voltage to solve the energy density problem,
-%but physical limitations to reach millivolt switch voltage in transistors prohibits chip manufacturers from operating on lower voltages than about 1V. 
-%Furthermore on the other front, hardware development, alone, in form of battery development in mobile phones also lacks the ability to keep up with the progress in processor capacity \cite{CPUCapacity,BatteryCapacity}.
-%This means that the increased performance capabilities of the mobile processor is evolving far quicker than the battery capacity.
-% Thus, hardware evolution in terms of energy efficiency cannot keep up with the phase of the increased performance demand.\smallskip
 
-%\todo[inline,color=green]{Here comes what is needed to solve the problem:}
 In eradicate the above-mentioned constraints in this interdisciplinary domain, specific software must inevitably be introduced to make computer systems energy efficient again!
+The vision behind this research is to significantly improve the energy efficiency of computer systems by involving the application software in the decision of allocating resources -- this branch of self-awareness is called ``\textbf{making the software energy-aware}''.
+Energy-aware software form a stronger link between applications and the runtime system by means of an information flow used to steer the allocation of resources,
+which increases the self-awareness of software. This advancement in software design is required for the research community to take the next step into energy efficient computing.\smallskip
+
 The key challenge is to utilize the available hardware resources as efficiently as possible.
 Since general purpose applications behave in a very dynamic way, a runtime environment must continuously adjust the usage of the resources based on the execution of the applications.
 In Linux based systems, attempts have been made to incorporate this behavior by using clock frequency scaling and deep sleep states to scale the hardware resources according to the demand. 
@@ -217,8 +200,8 @@ These type of meta-data must have a sufficiently descriptive form, which can be 
 The interoperability challenge in the domain of energy-awareness in application software is to create an ecosystem capable of exchanging information about the intentions of an application to the resource allocation layer. 
 % The exchanged information must be interpreted by the runtime layer to make sensible decisions regarding the resource allocation.
 Since applications in general are dynamic, the performance of the application depends on a wide set of factors such as memory intensity, use of caches, user interrupts, the data sizes and data types used, interaction with other applications etc. 
-This means that the performance of an application cannot be guaranteed with fixed resources, and online interoperability must guaratee proper information between the running application and the resource allocation.
-To ensure this, the application must be monitored at runtime, and steps must be taken in case the resource demand is not inline with the resource allocation.
+This means that the performance of an application cannot be guaranteed with fixed resources, and online interoperability must guarantee proper information between the running application and the resource allocation.
+To ensure this, the application must be monitored at runtime, and steps must be taken in case the resource demand is not in line with the resource allocation.
 % In case the currently allocated performance is either too high or too low, the monitor reports this issue to the controller which allocates or deallocates resources to accommodate for the real resource requirement.
 % We recognize therefore the need for a proper monitoring framework to insure the interoperability between applications and the runtime system.
 Such a framework must be detailed enough and provide sufficient tools for measuring performance, but simple enough to reduce programmer effort for using it.
@@ -232,9 +215,8 @@ Even though feedback control loops is a well established area of research, the m
 A considerable challenge is to design a scalable control system, which is generic enough to fit into different sizes of computer systems, yet specific enough to handle platform specific actuators and capabilities.
 
 \subsection{Previous work}
-The embedded systems lab in the AAU has for the last seven years focused on low power and energy-aware software. 
-During these years a special interest had been put in mobile phone processors and their significance for energy-awareness in general. 
-This is because it has been noted that the trend of performance requirements by far exceeds the battery capacity of a mobile device, especially since the mobile multi-core revolution \cite{BatteryCapacity,CPUCapacity}. 
+The PI has for the last seven years focused on low power and energy-aware software. 
+It has been noted that the trend of performance requirements by far exceeds e.g the battery capacity of a mobile device, especially since the mobile multi-core revolution \cite{BatteryCapacity,CPUCapacity}. 
 This means that the performance of the hardware and the demand for performance of the user is greater than the energy a battery with limited dimensions can physically store. 
 Because of the slow capacity increase in batteries, the available energy must be used more efficiently in order for such a mobile device to retain its usability.
 In the thesis of the PI ``\textit{Energy Aware Software for Many-Core Systems}'' two guidelines were presented for creating energy-aware software on modern many-core hardware. 
@@ -354,22 +336,14 @@ Incorrect resource allocation results in either poor performance or in energy wa
 % even if the required decoding rate is only 25 frames per second (fps), which the human eye is capable of observing.
 % In other words, the application will be executed unnecessarily fast. 
 %As previous results from our work in \cite{HolmbackaHipeac, HolmbackaDasip} show, executing the application unnecessarily fast wastes significantly more energy than executing the application on a moderate, but still at a sufficiently fast, performance level.\smallskip
-\begin{wrapfigure}{t!}{4.5cm}
-  \begin{center}
-    \vspace{-0.3cm}
-    \includegraphics[width=4.5cm]{fig/netflix.png}
-  \end{center}
-  \caption{Energy-awareness exposed to the user in the left click option on a smart phone}
-%   \caption{Current power management systems: The application causes a workload (illustrated by the gray rectangles), and the frequency governor scales the clock frequency according to the load level.}
-  \label{fig:netflix}
-  \vspace{-0.5cm}
-\end{wrapfigure}
+
 
 Other work such as \cite{Spiliopoulos:11} attempt to refine the functionality of the frequency governors.
 Their frequency governor the ``Green Governor'' scales the clock frequency not only based on the workload, but also based on the memory intensity.
 The assumption made was that higher memory intensity stalls the CPU enough to not benefit from high clock frequency.
 The fundamental problem, however, still remains unsolved because the governor models the performance requirement of the application indirectly.
 Therefore, if the model does not fit the application, either excessive or insufficient resources are allocated to the application.\smallskip
+
 
 
 In contrast to previous research, our objectives to meet the earlier mentioned challenges are:
@@ -384,7 +358,16 @@ In contrast to previous research, our objectives to meet the earlier mentioned c
  \item To provide smart adaptivity in form of an underlying runtime system which, based on the application performance demands, allocates resources from the available hardware actuators (such a clock frequency scaling, sleep states etc.).
   The runtime system replaces the workload-based frequency governors with the input from the energy-aware applications.
 \end{enumerate}
-
+\begin{wrapfigure}{t!}{4.5cm}
+  \begin{center}
+    \vspace{-0.8cm}
+    \includegraphics[width=4.5cm]{fig/netflix.png}
+  \end{center}
+  \caption{Energy-awareness exposed to the user in the left click option on a smart phone}
+%   \caption{Current power management systems: The application causes a workload (illustrated by the gray rectangles), and the frequency governor scales the clock frequency according to the load level.}
+  \label{fig:netflix}
+  \vspace{-1.3cm}
+\end{wrapfigure}
 
 \paragraph{Hypotheses.}
 Based on our previous research, our hypotheses for this project are:
@@ -467,21 +450,27 @@ The publication rate with regard to the project (excluding publications from ext
 
 \section{Research Methods, Material, Support from Research Environment}
 \paragraph{Research methods. }
+The research methods in this project is a combination of design science which focus on building artifacts and experimental science which is used to verify the outcomes of the designed systems.
+In our research process we follow recommendations by \cite{Hevner:04}, \cite{Jarvinen:01} in which we continuously design, build and evaluate.
+In the build phase we diagnose, plan and implement, and in the evaluation phase, we assess and learn to improve on the product until the next cycle.
+Each work package consists of both types, since we aim at deliver both theoretical findings and a practical product as the outcome from each WP.\smallskip
+
 We are working extensively within the \textit{streaming applications} paradigm for a number of reasons. 
 Firstly, streaming systems are usually implemented in environments in which energy efficiency is of essence like video playback systems, web servers, digital filtering systems, telecommunications systems and other multi-media or IoT systems.
 In our research, we are working on simulation environments such as Philharmonic, Simulink etc. to create initial models of complex systems and to pinpoint where specific efforts are to be made.
 Simulation is also used to prove the scalability of the solution, and problems can be early forecasted.
 Secondly, we implement the system in real programming languages e.g. C or Python, whereafter the complete system is benchmarked on real-world platforms.
-To prove our hypotheses for everyday-applications, we will include the framework for energy-aware software in commonly used streaming applications, and verify the correctness or the software with respect to performance and usability.
-We verify our hypotheses by physically measuring the energy consumption for a wide range of applications and configuration parameters.
-To prove our hypotheses for extreme cases, we will to develop specific benchmarks that can obtain corner case execution characteristics such as very high, very low or customized load patterns.
-By covering both extreme- and everyday cases, we can confidently present a range of potential energy savings by using energy-aware software.
-Use-cases are planned to be developed by the PREESM tool which allows rapid prototyping over a large range of hardware platforms
+% To prove our hypotheses for everyday-applications, we will include the framework for energy-aware software in commonly used streaming applications, and verify the correctness or the software with respect to performance and usability.
+% We verify our hypotheses by physically measuring the energy consumption for a wide range of applications and configuration parameters.
+% To prove our hypotheses for extreme cases, we will to develop specific benchmarks that can obtain corner case execution characteristics such as very high, very low or customized load patterns.
+% By covering both extreme- and everyday cases, we can confidently present a range of potential energy savings by using energy-aware software.
+% Use-cases are planned to be developed by the PREESM tool which allows rapid prototyping over a large range of hardware platforms
+The research outputs are classified according to the types in \cite{Jarvinen:01} which are constructs, models, methods, instantiation and proofs.
+In this project we aim at producing collection of methodologies, energy models, power management algorithms, and software libraries.
 The practical usability of the framework is of highest priority.
-We intend to deliver the framework for energy-aware programming as an Eclipse plugin and editor, which the user can install and start using in a few clicks.\smallskip
-
-The primary work of the PI is 1) theoretical research in control methods and the self-awareness field, writing publications and demonstrating the methods 2) practical implementation of a) the energy-awareness framework b) use-cases.
-Practical use-cases will be developed together with our international partners (See Section \ref{sec:cooperation}), and specific implementation details are suggested as Master thesis topics.
+We intend to deliver the framework for energy-aware programming as an Eclipse plug-in and editor, which the user can install and start using in a few clicks.
+% The primary work of the PI is 1) theoretical research in control methods and the self-awareness field, writing publications and demonstrating the methods 2) practical implementation of a) the energy-awareness framework b) use-cases.
+Practical use-cases will be developed together with our international partners in the mobilities (See Section \ref{sec:cooperation}), and specific implementation details are suggested as Master thesis topics.
 Together with traditional programming methods, machine learning, big data and pattern recognition, smart adaptivity in the control loop helps to bring the framework of energy-aware software to a broader domain of computing systems from IoT to exa-scale systems.
 % Secondly, since the content of the streaming data is to a large extent arbitrary, no compiler based optimization (or other static solution) can solve the energy problem. 
 % Thirdly, streaming systems are extremely common and is thus providing a large market to work on from tiny IoT systems up to large cloud server systems.
@@ -504,7 +493,7 @@ Our team has a full time lab technician constructing specialized equipment neede
 Crucial to our experiments is our open hardware datalogger with full Linux tool support capable of high-sample power measurement measurements with 0\% performance overhead in the host system. 
 The team is experienced in building tools based on the theoretical models that enable the use of the models in practice. 
 Some of the previous programming tools created by AAU is the Canals data-flow language and the RVC-CAL to OpenCL translator. 
-The PI is a PC member of PDP\footnote{http://www.pdp2018.org/} the MCC\footnote{https://www.it.uu.se/research/upmarc/events/MCC2017} nordic workshop on multi-core programming, which have resulted in several co-writted articles in high-ranking international conferences.
+The PI is a PC member of PDP\footnote{http://www.pdp2018.org/} the MCC\footnote{https://www.it.uu.se/research/upmarc/events/MCC2017} nordic workshop on multi-core programming, which have resulted in several co-written articles in high-ranking international conferences.
 The PI together with EIT Digital have released an online Coursera course on the subject in ``Development of Real-Time Systems''\footnote{https://www.coursera.org/learn/real-time-systems/} currently followed by over 7000 students world-wide.
 The PI is currently working in Elisa OYJ on the PoDoCo\footnote{http://www.podoco.fi/} grant, which is of great importance to gain insights into the industrial needs of solving the problem of energy efficiency, 
 and how the framework of energy-aware programming can be used in practice.
@@ -525,18 +514,18 @@ To ensure success, the critical points and risk factors are listed as follows:\s
  \textit{Relocation of research partners}. This project is relying on international cooperation. In the event of relocation of key persons, mobility can be postponed and the research ultimately delayed.
  By having a large network of contacts, we have a safety net in case of relocation events. Work and timelines can be re-adjusted while keeping the core research intact.\smallskip
  \textit{Access to hardware platforms}. Without appropriate hardware, the results in evaluation are inadequate and insufficient.
- For covering this, risk The PI has connections to the energy efficient middleware group in ARM Cambridge, the leader of which was invited to one of our project workshops in the PARALLAX project.
+ For covering this, risk the PI has connections to the energy efficient middleware group in ARM Cambridge, who was invited to our project workshops in the PARALLAX project.
  On the large scale side, our team has previously obtained the Amazon EC2 grant\footnote{https://aws.amazon.com/grants/} twice enabling access to large scale servers.
 
 
 \section{Ethical Issues \small -- This research project has no ethical issues. }
 
 \section{Implementation: schedule, budget, distribution of work}
-The schedule of the research work is summarized in Figure \ref{fig:schedule}.
+% The schedule of the research work is summarized in Figure \ref{fig:schedule}.
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7]{fig/schedule.png}
-	\caption{Time schedule for the project and the budget of the project in euros}
+	\caption{The schedule of the research work is summarized in this figure and the budget of the project in Euros}
 	\label{fig:schedule}
 \end{figure}
 % \paragraph{Budget.}
@@ -579,7 +568,7 @@ WP1 is inline with the first objective: to include self-awareness into applicati
 Firstly we determine which meta-data is needed to properly express the intension of the software.
 We determine which details to include in the meta-data, and we put focus on the usability of the meta-data expression.
 To increase the usability and to enable automatic self-awareness assessment, we will include tool support for including self-awareness (T1.2).
-We intende to expand the functionality of the PREESM tool for this purpose, and this is the main focus on Mobility 1.
+We intend to expand the functionality of the PREESM tool for this purpose, and this is the main focus on Mobility 1.
 Finally we build the backend library (T1.3) for the programmer to easily insert/remove/modify self-awareness in applications.
 The library is primarily intended for the C language, but portability to e.g. Python pip is considered in this WP.
 Deliverables from this WP are scientific publications and the base implementation of the library backend available as opensource on github together with its documentation.
@@ -597,20 +586,20 @@ Task 2.3 Tool Support and demonstration	\\ \hline
 \end{wraptable}
 WP2 covers the interoperability and monitoring aspect of the project as discussed in the second objective of this project.
 In this WP we solve the problem of interoperability between the programmer (WP1), the application and the runtime system (WP3).
-To properly handle dynamic applications, a monitoring framework must contineously obtain the performance state of the energy-aware application at runtime.
+To properly handle dynamic applications, a monitoring framework must continuously obtain the performance state of the energy-aware application at runtime.
 The performance of the system shall always be sufficient with respect to the resource requirement set by the programmer (WP1).
-In order to minimize the influence of the application, the montoring framework must be extremely lightweight, and its interface to the application must be simple in order to not affect its usability.
+In order to minimize the influence of the application, the monitoring framework must be extremely lightweight, and its interface to the application must be simple in order to not affect its usability.
 The first challenge to tackle is how the application can be monitored without affecting the functionality or the performance of the system.
 State-of-the-art monitoring systems such as the MIT heartbeats \cite{Hoffmann:10} will be evaluated as complementary research to the proposed energy-awareness monitor.
 A monitoring interface will be developed and its cross-domain applicability will be evaluated on Android, PC and server systems.
 Secondly (T2.2) we intend to allow interoperability between user and runtime system in form of a communications channel.
-The user shall be able to easily modify the energy-awarenress during runtime by callbacks to the backend library.
+The user shall be able to easily modify the energy-awareness during runtime by callbacks to the backend library.
 We will implement and demonstrate this functionality with a real-world application executing on real hardware (T2.3).
 Deliverables from this WP are scientific publications and the implementation of the monitor and interoperability framework available as opensource on github together with its documentation.
 We also consider complementary implementation to the base backend library from WP1 if deemed necessary.
 \paragraph{WP3 -- Smart-adaption.}
 \begin{wraptable}{r}{9.4cm}
-\vspace{-0.5cm}
+\vspace{-0.4cm}
 \small
 \begin{tabular}{ | l |}
 \hline
@@ -634,26 +623,26 @@ Deliverables from this WP are scientific publications and the implementation of 
 We also consider complementary implementation to the base backend library from WP1 if deemed necessary.
 \paragraph{WP4 -- A framework for energy-aware programming and demonstrator.}
 \begin{wraptable}{r}{9.2cm}
-\vspace{-0.5cm}
+\vspace{-0.4cm}
 \small
 \begin{tabular}{ | l |}
 \hline
 Task 4.1: Back-end implementation of programming framework\\ \hline
-Task 4.2: Front-end development in form of an Eclipse plugin \\ \hline
+Task 4.2: Front-end development in form of an Eclipse plug-in \\ \hline
 Task 4.3: Single use-cases and Demonstrator\\ \hline
 \end{tabular}
 \vspace{-0.3cm}
 \end{wraptable}
 The final stage of the research is to bind the previously created methods into a package usable for the programmer.
 Construction of the API framework used for energy-aware programming is defined as the first item in WP4.
-This includes the back-end library which is callable from the programming environment, and the front-end in form on an Eclipse plugin.
+This includes the back-end library which is callable from the programming environment, and the front-end in form on an Eclipse plug-in.
 The parts of the back-end that has been prototyped in WP1 and WP2 are tied together as a fully functioning product.
 % A software library, pragma or other interface is the final deliverable and is the link between the application software and the runtime.
 The API and the back-end is a result from the support for self-awareness in WP1, the monitor and interoperability interface in WP2 and the runtime system in WP3.
 Additional efforts in this WP is put on supporting interdisciplinary domains of platforms, we will demonstrate the feasibility of using energy-aware programming on both mobile devices and large scale servers,
 and the resulting energy savings this approach will bring.
 We provide small single use-cases of the functionality of the framework and lastly a large scale demonstrator is created running a complete version of the energy-aware software on an off-the-shelf consumer device such as an Android phone or tablet.
-Deliverables from this WP are scientific publications and the implementation of the programming framework as opensource on github together with its documentation and as an available Eclipse source.
+Deliverables from this WP are scientific publications and the implementation of the programming framework as opensource on github together with documentation and as an available Eclipse source.
 
 \section{Research Team and Collaborative Partners}
 \paragraph{Merits of research team.}
@@ -678,7 +667,7 @@ The PI has an active collaboration with Prof. Alexandra Jimborean from Uppsala U
 Their lab group is working on compile-time and runtime code analysis and transformation for performance and energy efficiency using LLVM, and they were, together with the PI, a key partner in the 2017 H2020 call on low power programming.
 Since UU is geographically near, we plan ad-hoc visit without a defined timeline at this moment.
 % Her group has developed a monitoring and feedback system for re-organizing instruction calls based on their memory intensity.
-The PI is actively involved in minor collaborations with many universities and companies such as Uni. Carlos III Madrid, Uni. Gronningen, TU Eindhoven, Uni. Uppsala, Uni. Turku, NTNU Trondheim, Uni. Tirana, Elisa Inc., Treelogic Inc., Ingenarius Inc., Comsel systems Inc., Hipperos Inc., RISE Inc., TXT E-Solutions Inc.
+The PI is actively involved in minor collaborations with many universities and companies such as Uni. Carlos III Madrid, Uni. Gronningen, TU Eindhoven, Uni. Turku, NTNU Trondheim, Uni. Tirana, Elisa Inc., Treelogic Inc., Ingenarius Inc., Comsel systems Inc., Hipperos Inc., RISE Inc., TXT E-Solutions Inc.
 Additional collaboration and mobilities is expected among the other partners.
 
 
@@ -686,7 +675,7 @@ Additional collaboration and mobilities is expected among the other partners.
 \label{sec:cooperation}
 \paragraph{Advancing the research career of the applicant and researcher training.}
 With the advancement of this project, the aim of the PI and the university is to claim the leading role for energy-aware software research in Europe.
-The advancement of the carreer is needed to build stronger networks of leading European partners in the area of energy efficiency in computer systems,
+The advancement of the career is needed to build stronger networks of leading European partners in the area of energy efficiency in computer systems,
 and to create a strong collaboration to maximize the impact and breakthrough to lowering the energy consumption of computer systems world-wide.
 The PI stresses the importance of energy efficiency in programming in university teaching, and we will put this niche into practice to attract students from many disciplines and countries.
 Combined with the international co-operation, exchange period and close interaction between participating institutes, the project gives the PI good basis to proceed in the academic career after the project with a docentship specialized in energy-aware software as a goal.
@@ -694,18 +683,18 @@ Combined with the international co-operation, exchange period and close interact
 \section{Mobility Plan for the Funding Period}
 The mobilities among the main partners are planned as follows and illustrated in Figure \ref{fig:schedule}, but the exact details will be defined later in the project based on the availability of the collaborators and their time schedule.
 
-\textit{Mobility 1} The PI will visit Prof. Jean-Francois Nezan for 3 months in WP1 to gain knowledge about tool support for introducing energy-awareness in applications.
-With a clear definition of self-awareness in T1.1, we expect this mobility to greatly improve T1.2 with the proven expertice of INSA in tool programming.
+\textit{Mobility 1 }\includegraphics[width=0.4cm]{fig/fra.png} The PI will visit Prof. Jean-Francois Nezan for 3 months in WP1 to gain knowledge about tool support for introducing energy-awareness in applications.
+With a clear definition of self-awareness in T1.1, we expect this mobility to greatly improve T1.2 with the proven expertise of INSA in tool programming.
 We intend extend the PREESM tool with the support for energy-awareness.
 This mobility is crucial to form the link between the programmer and the software library while still keeping the programmability and complexity to the user low. 
 The utilization of PREESM is expected in form of a demonstration environment for WP4.\smallskip
 
-\textit{Mobility 2} The PI will visit Prof. Ivona Brandi\'{c} for 3 months in the end of WP2 after the structure of the framework has been established in WP1 in order to adapt and evaluate our framework in cloud environments. 
+\textit{Mobility 2 }\includegraphics[width=0.4cm]{fig/aus.png} The PI will visit Prof. Ivona Brandi\'{c} for 3 months in the end of WP2 after the structure of the framework has been established in WP1 in order to adapt and evaluate our framework in cloud environments. 
 Special focus will be put on the coordination of resource utilization between computing nodes on a multi-server based infrastructure.
-We will evaluate the scalability of the interoperability aspect in the cloud simulator Philharmonic developed at TU Wien, particularly to prove that our methods are sound when scaling up the system to several tousands of servers.
-By studying results from large scale datacenter simulations, we expect to gain valuable knowledge for the implementation of the runtime system in WP3 \smallskip
+We will evaluate the scalability of the interoperability aspect in the cloud simulator Philharmonic developed at TU Wien, particularly to prove that our methods are sound when scaling up the system to several thousands of servers.
+By studying results from large scale datacenter simulations, we expect to gain valuable knowledge for the implementation of the runtime system in WP3. \smallskip
 
-\textit{Mobility 3} The PI will visit Prof. J\"{o}rg Keller for 6 months in the middle of WP3 for supprt on the energy optimization in WP3 and the construction of the controller in WP3.
+\textit{Mobility 3 }\includegraphics[width=0.4cm]{fig/ger.png} The PI will visit Prof. J\"{o}rg Keller for 6 months in the middle of WP3 for support on the energy optimization in WP3 and the construction of the controller in WP3.
 The lab group in FernUni has a long and impressive track record in power management systems, 
 and their knowledge is needed to link the resource demands stated in WP1 with the actual actuation in form of resource allocation.
 Scalability in control algorithms is of special focus to support the full range of computer systems.

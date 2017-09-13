@@ -46,6 +46,11 @@ Simon Holmbacka, S\'{e}bastien Lafond, and Johan Lilius.
   Workshop on Energy Efficiency with Heterogeneous Computing}, page 1 – 6.
   HiPEAC, 2015.
 
+\bibitem[HMPR04]{Hevner:04}
+Alan~R. Hevner, Salvatore~T. March, Jinsoo Park, and Sudha Ram.
+\newblock Design science in information systems research.
+\newblock {\em MIS Q.}, 28(1):75--105, March 2004.
+
 \bibitem[HNP{\etalchar{+}}14]{HolmbackaDasip}
 Simon Holmbacka, Erwan Nogues, Maxime Pelcat, S\'{e}bastien Lafond, and Johan
   Lilius.
@@ -65,6 +70,11 @@ Henry Hoffmann, Stelios Sidiroglou, Michael Carbin, Sasa Misailovic, Anant
   Agarwal, and Martin Rinard.
 \newblock Dynamic knobs for responsive power-aware computing.
 \newblock {\em SIGPLAN Not.}, 46(3):199--212, March 2011.
+
+\bibitem[Jar]{Jarvinen:01}
+Pertti Jarvinen.
+\newblock {\em On research methods}.
+\newblock Opinpajan kirja.
 
 \bibitem[PV07]{5514312}
 M.~D. Powell and T.~N. Vijaykumar.

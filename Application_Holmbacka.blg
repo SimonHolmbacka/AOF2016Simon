@@ -3,44 +3,46 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Application_Holmbacka.aux
 The style file: alpha.bst
 Database file #1: sample.bib
-You've used 17 entries,
+Warning--empty year in Jarvinen:01
+You've used 19 entries,
             2543 wiz_defined-function locations,
-            685 strings with 7801 characters,
-and the built_in function-call counts, 7305 in all, are:
-= -- 720
-> -- 382
-< -- 11
-+ -- 132
-- -- 131
-* -- 539
-:= -- 1201
-add.period$ -- 51
-call.type$ -- 17
-change.case$ -- 113
-chr.to.int$ -- 17
-cite$ -- 17
-duplicate$ -- 290
-empty$ -- 498
-format.name$ -- 148
-if$ -- 1504
+            700 strings with 8135 characters,
+and the built_in function-call counts, 8063 in all, are:
+= -- 791
+> -- 421
+< -- 12
++ -- 146
+- -- 145
+* -- 599
+:= -- 1330
+add.period$ -- 57
+call.type$ -- 19
+change.case$ -- 125
+chr.to.int$ -- 19
+cite$ -- 20
+duplicate$ -- 320
+empty$ -- 552
+format.name$ -- 165
+if$ -- 1651
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 10
-newline$ -- 86
-num.names$ -- 55
-pop$ -- 116
+missing$ -- 13
+newline$ -- 96
+num.names$ -- 61
+pop$ -- 134
 preamble$ -- 1
-purify$ -- 133
+purify$ -- 148
 quote$ -- 0
-skip$ -- 262
+skip$ -- 280
 stack$ -- 0
-substring$ -- 338
-swap$ -- 72
-text.length$ -- 11
-text.prefix$ -- 5
+substring$ -- 374
+swap$ -- 74
+text.length$ -- 12
+text.prefix$ -- 6
 top$ -- 0
-type$ -- 136
-warning$ -- 0
-while$ -- 64
-width$ -- 22
-write$ -- 222
+type$ -- 148
+warning$ -- 1
+while$ -- 71
+width$ -- 25
+write$ -- 246
+(There was 1 warning)
