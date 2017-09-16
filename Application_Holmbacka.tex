@@ -127,7 +127,7 @@ Lastly, without increased energy efficiency, high performance computing centers 
 The US Department of Energy\footnote{http://ascr-discovery.science.doe.gov/2014/11/exascale-road-bumps/} have defined a maximum power envelope of 20 MW for a single data center, but with current technology, a modern exa-scale computing center would require over 7000 MW.\smallskip
 
 These problems were traditionally solved by the hardware evolution.
-In order to provide a continuous performance improvement in computing systems, the clock frequency wall was avoid in the beginning of the 2000s by the introduction of multi-core based systems. 
+The clock frequency wall was avoid in the beginning of the 2000s by the introduction of multi-core based systems. 
 This led to a new challenge in mid-2000s: the CPU power wall \cite{Danowitz:12,Wang:13}. 
 Indeed, due to physical limitations of semiconductor materials, the power dissipation of a fixed chip area is limited. 
 With the evolution in the fabrication of semiconductor devices, from a 10$\mu$m manufacturing process in the 70s until the commercialization of 10nm based technology in 2017 (in e.g. the Samsung Galaxy S8), more transistors are squeezed into a smaller silicon area which increases power density \cite{5514312}. 
@@ -150,6 +150,7 @@ The limitations with the existing approaches are that the resources are allocate
 There is no interoperability between applications and the runtime system, and resources are usually allocated based on indirect metrics such as the system \textit{workload}.
 Such a metric does not describe performance demands in applications, and therefore often causes incorrect resource allocation,
 which, in turn, leads to and additional waste of energy \cite{HolmbackaDasip, HolmbackaHipeac}.
+In other words, the software is currently not energy-aware.
 \smallskip
 
 \begin{wrapfigure}{br}{8.5cm}
@@ -170,9 +171,9 @@ With this new vital information, the runtime system is able to allocate resource
 As a result of the inclusion of energy-awareness in software on real-world Linux platforms in our previous research \cite{Holmbacka:15}, an impressive saving of 50\%-60\% in energy was achieved -- 
 without compromising on the performance!
 We are therefore confident that adding energy-awareness in general purpose software can reduce the energy consumption significantly.
-Figure~\ref{fig:EAS} illustrates the purpose of the research: part A) shows the current approach without any interoperability between applications and the resources.
+Figure~\ref{fig:EAS} illustrates the purpose of the research: part A) shows the current approach without any interoperability between applications and the resources, i.e. no energy-awareness.
 Using this approach, resources are allocated based on the level of workload or other indirect means of metric.
-Part B) Figure~\ref{fig:EAS} illustrates the inclusion of energy-awareness. 
+Part B) in Figure~\ref{fig:EAS} illustrates the inclusion of energy-awareness. 
 This is the added interface between the application and the runtime system through which the application communicates.
 It results in a better accuracy of resource allocation by increased in self-awareness and leads to lower energy consumption.\smallskip
 
@@ -180,9 +181,9 @@ The research area in energy efficient computing is a broad domain spanning sever
 The commonality is, however, the ability to propagate information from the highest software layer to the runtime system, and to the hardware.
 Throughout all computing domains in the area of energy efficient computing, we have identified three critical challenges to address in our research further specified in the following paragraphs.
 
-\paragraph{Challenge 1: Self awareness}
+\paragraph{Challenge 1: Self-awareness}
 \label{sec:self}
-Applications must be able to properly express their intentions in terms of performance requirements during an execution. 
+Applications must be able to properly express their intentions in terms of performance requirements during execution. 
 % Such requirements are added to the application software in form of performance meta-data -- a performance goal the application is due to achieve. 
 The challenge is therefore to provide a framework with the capability of handling and expressing proper performance data in an interdisciplinary domain.
 % As previously mentioned, the traditional way of solely monitoring the workload is a very inaccurate and often counter-productive both in terms of performance and energy.
@@ -210,14 +211,14 @@ Since the monitoring framework is a runtime system, a considerably low overhead 
 \paragraph{Challenge 3: Smart adaptivity}
 \label{sec:smart}
 Given a proper dataflow from applications to the runtime system, the final challenge is the allocation of resources. 
-Allocating resources efficiently means having a knowledge of how the resources of one form affects the performance of the application requesting the resources.
-Even though feedback control loops is a well established area of research, the methods must be adapted and applied to the general purpose computing domain. 
-A considerable challenge is to design a scalable control system, which is generic enough to fit into different sizes of computer systems, yet specific enough to handle platform specific actuators and capabilities.
+Allocating resources efficiently means having knowledge of how the resources of one form affects the performance of the application requesting the resources.
+The methods must be adapted and applied to the general purpose computing domain. 
+A considerable challenge is to design a scalable control system, which is generic enough to fit into different sizes of computer systems, yet specific enough to handle platform specific actuators and capabilities, whether it is PID controllers, fuzzy controllers or machine learning-based controllers.
 
 \subsection{Previous work}
 The PI has for the last seven years focused on low power and energy-aware software. 
 It has been noted that the trend of performance requirements by far exceeds e.g the battery capacity of a mobile device, especially since the mobile multi-core revolution \cite{BatteryCapacity,CPUCapacity}. 
-This means that the performance of the hardware and the demand for performance of the user is greater than the energy a battery with limited dimensions can physically store. 
+% This means that the performance of the hardware and the demand for performance of the user is greater than the energy a battery with limited dimensions can physically store.Fwhich  
 Because of the slow capacity increase in batteries, the available energy must be used more efficiently in order for such a mobile device to retain its usability.
 In the thesis of the PI ``\textit{Energy Aware Software for Many-Core Systems}'' two guidelines were presented for creating energy-aware software on modern many-core hardware. 
 Implementing the recommendations in software has proven to reduce the energy consumption up to 50\% without degrading the performance \cite{HolmbackaHipeac}, especially on mobile multi-core hardware. 
@@ -487,15 +488,15 @@ Zenodo\footnote{http://zenodo.org/} has been selected as the platform where we p
 The PI will be well supported by infrastructure available at through the Centre for Computer Science (TUCS).
 % TUCS boasts a long history of high-level achievements of its affiliated researchers, in terms of articles in high-level journals and conferences and a high number of citations.
 TUCS has been a Center of Excellence of Research of the Academy of Finland in the very first round of such centers in Finland, 1995-1999 and in 2002-2007. 
-The PI is an active member of the COST action IC1305 NESUS Working Group), which is very active, and pushes to tighten European cooperation between universities and companies.
+The PI is an active member of the COST action IC1305 NESUS Working Group), which pushes to tighten European cooperation between universities and companies.
 % Joint articles have been published in the COST action between the PI and the group in TU Wien led by Ivona Brandi\'{c}, which was published in IEEE Transactions and one between the PI and the group in University of Tirana led by Neki Frasheri. \smallskip
 Our team has a full time lab technician constructing specialized equipment needed in our experimental work such as measurement tools for externally probing and measuring running systems. 
 Crucial to our experiments is our open hardware datalogger with full Linux tool support capable of high-sample power measurement measurements with 0\% performance overhead in the host system. 
 The team is experienced in building tools based on the theoretical models that enable the use of the models in practice. 
 Some of the previous programming tools created by AAU is the Canals data-flow language and the RVC-CAL to OpenCL translator. 
-The PI is a PC member of PDP\footnote{http://www.pdp2018.org/} the MCC\footnote{https://www.it.uu.se/research/upmarc/events/MCC2017} nordic workshop on multi-core programming, which have resulted in several co-written articles in high-ranking international conferences.
+The PI is a PC member of the PDP\footnote{http://www.pdp2018.org/} conference the MCC\footnote{https://www.it.uu.se/research/upmarc/events/MCC2017} nordic workshop on multi-core programming, which have resulted in several co-written articles in high-ranking international conferences and journals.
 The PI together with EIT Digital have released an online Coursera course on the subject in ``Development of Real-Time Systems''\footnote{https://www.coursera.org/learn/real-time-systems/} currently followed by over 7000 students world-wide.
-The PI is currently working in Elisa OYJ on the PoDoCo\footnote{http://www.podoco.fi/} grant, which is of great importance to gain insights into the industrial needs of solving the problem of energy efficiency, 
+The PI is currently cooperating with Elisa OYJ on the PoDoCo\footnote{http://www.podoco.fi/} grant, which is of great importance to gain insights into the industrial needs of solving the problem of energy efficiency, 
 and how the framework of energy-aware programming can be used in practice.
 
 \paragraph{Utilization of research infrastructure. }
@@ -568,7 +569,7 @@ WP1 is inline with the first objective: to include self-awareness into applicati
 Firstly we determine which meta-data is needed to properly express the intension of the software.
 We determine which details to include in the meta-data, and we put focus on the usability of the meta-data expression.
 To increase the usability and to enable automatic self-awareness assessment, we will include tool support for including self-awareness (T1.2).
-We intend to expand the functionality of the PREESM tool for this purpose, and this is the main focus on Mobility 1.
+We intend to expand the functionality of the PREESM tool for this purpose, and this is the main focus in Mobility 1.
 Finally we build the backend library (T1.3) for the programmer to easily insert/remove/modify self-awareness in applications.
 The library is primarily intended for the C language, but portability to e.g. Python pip is considered in this WP.
 Deliverables from this WP are scientific publications and the base implementation of the library backend available as opensource on github together with its documentation.
@@ -611,7 +612,7 @@ Task 3.3: Implementation of runtime controller \\ \hline
 \end{wraptable}
 The tool providing self-awareness from WP1 and the information from the interoperability monitor in WP2 will be directly utilized in WP3 as input for the adaptive control system.
 The main task in WP3 is to define the resource allocation to achieve maximal energy efficiency without performance loss.
-We firstly (T3.1) intend to create mathematical models of the underlying system upon which optimization methods are deployed.
+We firstly (T3.1) create mathematical models of the underlying system upon which optimization methods are deployed.
 Tools for automatically generating models are created to enhance portability between hardware devices such as IoT systems, embedded devices and server platforms.
 Feasibility and suitability for deployment on real-world platforms is studied, and the scalability of the methods are investigated.
 To be able to support a wide range of hardware devices and dynamic software, we must develop robust optimization methods (T3.2).
@@ -643,6 +644,7 @@ Additional efforts in this WP is put on supporting interdisciplinary domains of 
 and the resulting energy savings this approach will bring.
 We provide small single use-cases of the functionality of the framework and lastly a large scale demonstrator is created running a complete version of the energy-aware software on an off-the-shelf consumer device such as an Android phone or tablet.
 Deliverables from this WP are scientific publications and the implementation of the programming framework as opensource on github together with documentation and as an available Eclipse source.
+We also plan to attend industrial sessions and hands-on tutorials to demonstrate the final product.
 
 \section{Research Team and Collaborative Partners}
 \paragraph{Merits of research team.}
@@ -668,7 +670,7 @@ Their lab group is working on compile-time and runtime code analysis and transfo
 Since UU is geographically near, we plan ad-hoc visit without a defined timeline at this moment.
 % Her group has developed a monitoring and feedback system for re-organizing instruction calls based on their memory intensity.
 The PI is actively involved in minor collaborations with many universities and companies such as Uni. Carlos III Madrid, Uni. Gronningen, TU Eindhoven, Uni. Turku, NTNU Trondheim, Uni. Tirana, Elisa Inc., Treelogic Inc., Ingenarius Inc., Comsel systems Inc., Hipperos Inc., RISE Inc., TXT E-Solutions Inc.
-Additional collaboration and mobilities is expected among the other partners.
+Additional collaboration and mobilities is expected among these partners.
 
 
 \section{Research Careers and Research Training}
@@ -691,7 +693,8 @@ The utilization of PREESM is expected in form of a demonstration environment for
 
 \textit{Mobility 2 }\includegraphics[width=0.4cm]{fig/aus.png} The PI will visit Prof. Ivona Brandi\'{c} for 3 months in the end of WP2 after the structure of the framework has been established in WP1 in order to adapt and evaluate our framework in cloud environments. 
 Special focus will be put on the coordination of resource utilization between computing nodes on a multi-server based infrastructure.
-We will evaluate the scalability of the interoperability aspect in the cloud simulator Philharmonic developed at TU Wien, particularly to prove that our methods are sound when scaling up the system to several thousands of servers.
+We will evaluate the scalability of the interoperability aspect in the cloud simulator Philharmonic developed at TU Wien, particularly to prove that our methods are sound when scaling up the system to several thousands of servers. 
+If needed, we will add support to Philharmonic as part of this mobility.
 By studying results from large scale datacenter simulations, we expect to gain valuable knowledge for the implementation of the runtime system in WP3. \smallskip
 
 \textit{Mobility 3 }\includegraphics[width=0.4cm]{fig/ger.png} The PI will visit Prof. J\"{o}rg Keller for 6 months in the middle of WP3 for support on the energy optimization in WP3 and the construction of the controller in WP3.
